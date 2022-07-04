@@ -4,7 +4,11 @@ import "./App.css";
 function App() {
     return (
         <div>
-            <form>
+            <form onSubmit={(event) => {
+                const formData = new FormData(event.currentTarget);
+                event.preventDefault();
+                console.log(Array.from(formData.entries()))
+            }}>
                 <fieldset id="personals" name="Personals">
                     <legend>Personalia:</legend>
                     <label htmlFor="name">Name:</label>
@@ -22,6 +26,7 @@ function App() {
                     <label htmlFor="romantic">La-lala</label>
                 </fieldset>
                 <button type="submit">Submit</button>
+                {/*// pobranie wartosci formularza - evt.preventDefault()*/}
             </form>
         </div>
     );
