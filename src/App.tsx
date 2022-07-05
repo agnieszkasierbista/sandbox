@@ -1,14 +1,32 @@
 import React from 'react';
 import "./App.css";
 
+function validate(data: [string, FormDataEntryValue][]): boolean {
+    return true
+}
+
+function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    const formData = new FormData(event.currentTarget);
+    event.preventDefault();
+    console.log(Array.from(formData.entries()))
+
+    if (validate(Array.from(formData.entries()))) {
+        fetch('https://localhost:8080/abc').then((res) => {
+            console.log('res', res)
+        }).catch((err) => {
+            console.log('err', err)
+        })
+    }
+}
+
+
+
+
 function App() {
+
     return (
         <div>
-            <form onSubmit={(event) => {
-                const formData = new FormData(event.currentTarget);
-                event.preventDefault();
-                console.log(Array.from(formData.entries()))
-            }}>
+            <form onSubmit={(event) => handleSubmit(event)}>
                 <fieldset id="personals" name="Personals">
                     <legend>Personalia:</legend>
                     <label htmlFor="name">Name:</label>
@@ -26,7 +44,6 @@ function App() {
                     <label htmlFor="romantic">La-lala</label>
                 </fieldset>
                 <button type="submit">Submit</button>
-                {/*// pobranie wartosci formularza - evt.preventDefault()*/}
             </form>
         </div>
     );
