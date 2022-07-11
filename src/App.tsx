@@ -3,25 +3,25 @@ import "./App.css";
 
 function findEmptyFields(data: [string, FormDataEntryValue][]): string[] {
 
-    const emptyFields = data.filter(xxx => {
-        const f = xxx[1];
+    const emptyFields = data.filter(field => {
+        const fieldValue = field[1];
 
-        if (typeof f === "string") {
-            return f.length === 0
+        if (typeof fieldValue === "string") {
+            return fieldValue.length === 0
         }
     })
 
-    return emptyFields.map(x => x[0])
+    return emptyFields.map(emptyField => emptyField[0])
 
 }
 
 function validate(data: [string, FormDataEntryValue][]): boolean {
 
-    const isAString = data.find(xxx => {
-        const f = xxx[1];
+    const isAString = data.find(entry => {
+        const entryValue = entry[1];
 
-        if (typeof f === "string") {
-            return f.length > 0
+        if (typeof entryValue === "string") {
+            return entryValue.length > 0
         }
     })
 
