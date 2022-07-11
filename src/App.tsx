@@ -26,6 +26,8 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         }).catch((err) => {
             console.log('err', err)
         })
+    } else {
+        alert("Wrong data!");
     }
 }
 
