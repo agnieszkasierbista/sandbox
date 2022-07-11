@@ -1,6 +1,19 @@
 import React from 'react';
 import "./App.css";
 
+function findEmptyFields(data: [string, FormDataEntryValue][]): string[] {
+
+    const emptyFields = data.filter(xxx => {
+        const f = xxx[1];
+
+        if (typeof f === "string") {
+            return f.length === 0
+        }
+    })
+
+    return emptyFields.map(x => x[0])
+
+}
 
 function validate(data: [string, FormDataEntryValue][]): boolean {
 
@@ -15,10 +28,12 @@ function validate(data: [string, FormDataEntryValue][]): boolean {
     return !!isAString;
 }
 
+
 function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     const formData = new FormData(event.currentTarget);
     event.preventDefault();
     console.log(Array.from(formData.entries()))
+    console.log("EMPTY", findEmptyFields(Array.from(formData.entries())))
 
     if (validate(Array.from(formData.entries()))) {
         fetch('https://localhost:8080/abc').then((res) => {
