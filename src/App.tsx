@@ -1,8 +1,18 @@
 import React from 'react';
 import "./App.css";
 
+
 function validate(data: [string, FormDataEntryValue][]): boolean {
-    return true
+
+    const isAString = data.find(xxx => {
+        const f = xxx[1];
+
+        if (typeof f === "string") {
+            return f.length > 0
+        }
+    })
+
+    return !!isAString;
 }
 
 function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -18,8 +28,6 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         })
     }
 }
-
-
 
 
 function App() {
