@@ -1,5 +1,8 @@
 import React from 'react';
 import "./App.css";
+import { StyledInput } from './App.styled';
+
+// type FormData = [string, FormDataEntryValue][];
 
 function findEmptyFields(data: [string, FormDataEntryValue][]): string[] {
 
@@ -29,10 +32,10 @@ function validate(data: [string, FormDataEntryValue][]): boolean {
 }
 
 
-function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    const formData = new FormData(event.currentTarget);
+function handleSubmit(event: React.FormEvent<HTMLFormElement>, formData: FormData) {
+
     event.preventDefault();
-    console.log(Array.from(formData.entries()))
+    console.log("all form data", Array.from(formData.entries()))
     console.log("EMPTY", findEmptyFields(Array.from(formData.entries())))
 
     if (validate(Array.from(formData.entries()))) {
@@ -42,6 +45,7 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
             console.log('err', err)
         })
     } else {
+
         alert("Wrong data!");
     }
 }
@@ -49,26 +53,39 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 
 function App() {
 
+    //2 możliwe rozwiazania podkreslenia niewypełnionych pol na czerwono - hooki ref i set state
+    const reference = React.useRef<HTMLFormElement>(null);
+
+    const [state, setState] = React.useState<string[]>([]);
+
     return (
         <div>
-            <form onSubmit={(event) => handleSubmit(event)}>
+            <form ref={reference}
+                  onSubmit={(event) => {
+                      console.log(reference.current);
+                      const formData = new FormData(event.currentTarget);
+                      console.log(reference.current && Array.from(new FormData(reference.current).entries()));
+                      handleSubmit(event, formData);
+                      setState(findEmptyFields(Array.from(formData.entries())));
+                  }}>
                 <fieldset id="personals" name="Personals">
                     <legend>Personalia:</legend>
                     <label htmlFor="name">Name:</label>
-                    <input id="name" type="text" name="name"/>
+                    <StyledInput id="name" type="text" name="name" isEmpty={state.includes("name")}/>
                     <label htmlFor="sName">Second name:</label>
-                    <input id="sName" type="text" name="sName"/>
+                    <StyledInput id="sName" type="text" name="sName" isEmpty={state.includes("sName")}/>
                 </fieldset>
                 <fieldset id="favouriteMusic">
                     <legend>My music:</legend>
-                    <input type="checkbox" id="rap" value="rap" name="rap" hidden/>
+                    <StyledInput type="checkbox" id="rap" value="rap" name="rap" hidden isEmpty={state.includes("rap")}/>
                     <label htmlFor="rap">B-rrrap</label>
-                    <input type="checkbox" id="techno" value="techno" name="techno"/>
+                    <StyledInput type="checkbox" id="techno" value="techno" name="techno" isEmpty={state.includes("techno")}/>
                     <label htmlFor="techno">Umc-umc</label>
-                    <input type="checkbox" id="romantic" value="romantic" name="romantic"/>
+                    <StyledInput type="checkbox" id="romantic" value="romantic" name="romantic" isEmpty={state.includes("romantic")}/>
                     <label htmlFor="romantic">La-lala</label>
                 </fieldset>
                 <button type="submit">Submit</button>
+                <div>{state}</div>
             </form>
         </div>
     );
