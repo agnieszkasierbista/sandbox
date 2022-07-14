@@ -64,7 +64,22 @@ function handleOnBlur(inputValue: string) {
     }
 }
 
-function AutoValidateInput() {
+function validateField(inputValue: string) {
+    if (inputValue.includes("abc")) {
+        return {
+            isValid: true,
+            errors: []
+        }
+    } else {
+        return {
+            isValid: false,
+            errors: ["You must type a word containing abc in this field!"]
+        }
+    }
+
+}
+
+const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => { isValid: boolean, errors: string[] } }> = props => {
 
     const [stateOnBlur, setStateOnBlur] = React.useState<{ isValid: boolean, errors: string[] }>();
 
@@ -73,10 +88,11 @@ function AutoValidateInput() {
             <StyledTextInput
                 type="text"
                 onBlur={(event) => {
-                    const targetOnBlur = handleOnBlur(event.target.value);
+                    const targetOnBlur = props.handleOnBlur(event.target.value);
                     setStateOnBlur(targetOnBlur);
                 }}
             />
+
 
             <p>
                 {
@@ -85,7 +101,7 @@ function AutoValidateInput() {
             </p>
         </StyledAutoValidateInput>
     )
-}
+};
 
 function App() {
 
@@ -124,7 +140,8 @@ function App() {
                     <label htmlFor="romantic">La-lala</label>
                 </fieldset>
 
-                <AutoValidateInput/>
+                <AutoValidateInput handleOnBlur={handleOnBlur}/>
+                <AutoValidateInput handleOnBlur={validateField}/>
 
                 <button type="submit">Submit</button>
                 <div>{state}</div>
