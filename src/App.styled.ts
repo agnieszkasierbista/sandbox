@@ -9,6 +9,6 @@ export const StyledTextInput = styled.input<{}>`
 
 `;
 
-export const StyledAutoValidateInput = styled.div`
-    
+export const StyledAutoValidateInput = styled.div<{isValid: boolean | undefined}>`
+    outline: ${(props) => props.isValid === false ? "4px solid red" : ""};
 `;

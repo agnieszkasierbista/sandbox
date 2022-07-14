@@ -84,7 +84,7 @@ const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => { isValid: 
     const [stateOnBlur, setStateOnBlur] = React.useState<{ isValid: boolean, errors: string[] }>();
 
     return (
-        <StyledAutoValidateInput>
+        <StyledAutoValidateInput isValid={stateOnBlur?.isValid}>
             <StyledTextInput
                 type="text"
                 onBlur={(event) => {
