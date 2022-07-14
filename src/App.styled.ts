@@ -8,3 +8,7 @@ export const StyledInput = styled.input<{isEmpty?: boolean}>`
 export const StyledTextInput = styled.input<{}>`
 
 `;
+
+export const StyledAutoValidateInput = styled.div`
+    
+`;

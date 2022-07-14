@@ -1,6 +1,6 @@
 import React from 'react';
 import "./App.css";
-import {StyledInput, StyledTextInput} from './App.styled';
+import {StyledAutoValidateInput, StyledInput, StyledTextInput} from './App.styled';
 
 // type FormData = [string, FormDataEntryValue][];
 
@@ -64,13 +64,35 @@ function handleOnBlur(inputValue: string) {
     }
 }
 
+function AutoValidateInput() {
+
+    const [stateOnBlur, setStateOnBlur] = React.useState<{ isValid: boolean, errors: string[] }>();
+
+    return (
+        <StyledAutoValidateInput>
+            <StyledTextInput
+                type="text"
+                onBlur={(event) => {
+                    const targetOnBlur = handleOnBlur(event.target.value);
+                    setStateOnBlur(targetOnBlur);
+                }}
+            />
+
+            <p>
+                {
+                    stateOnBlur && stateOnBlur.errors
+                }
+            </p>
+        </StyledAutoValidateInput>
+    )
+}
+
 function App() {
 
     //2 możliwe rozwiazania podkreslenia niewypełnionych pol na czerwono - hooki ref i set state
     const reference = React.useRef<HTMLFormElement>(null);
 
     const [state, setState] = React.useState<string[]>([]);
-    const [stateOnBlur, setStateOnBlur] = React.useState<{isValid: boolean, errors: string[]}>();
 
     return (
         <div>
@@ -102,19 +124,7 @@ function App() {
                     <label htmlFor="romantic">La-lala</label>
                 </fieldset>
 
-                <StyledTextInput
-                    type="text"
-                    onBlur={(event) => {
-                        const targetOnBlur = handleOnBlur(event.target.value);
-                        setStateOnBlur(targetOnBlur);
-                    }}
-                />
-
-                <p>
-                    {
-                        stateOnBlur && stateOnBlur.errors
-                    }
-                </p>
+                <AutoValidateInput/>
 
                 <button type="submit">Submit</button>
                 <div>{state}</div>
