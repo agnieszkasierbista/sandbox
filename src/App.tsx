@@ -2,9 +2,9 @@ import React from 'react';
 import "./App.css";
 import {StyledAutoValidateInput, StyledInput, StyledTextInput} from './App.styled';
 
-// type FormData = [string, FormDataEntryValue][];
+type FormFieldNameAndValueArray = [string, FormDataEntryValue][];
 
-function findEmptyFields(data: [string, FormDataEntryValue][]): string[] {
+function findEmptyFields(data: FormFieldNameAndValueArray): string[] {
 
     const emptyFields = data.filter(field => {
         const fieldValue = field[1];
@@ -18,7 +18,7 @@ function findEmptyFields(data: [string, FormDataEntryValue][]): string[] {
 
 }
 
-function validate(data: [string, FormDataEntryValue][]): boolean {
+function validate(data: FormFieldNameAndValueArray): boolean {
 
     const isAString = data.find(entry => {
         const entryValue = entry[1];
@@ -50,7 +50,7 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>, formData: FormDat
     }
 }
 
-function handleOnBlur(inputValue: string) {
+function validateInputLength(inputValue: string) {
     if (inputValue.length > 0 && inputValue.length < 6) {
         return {
             isValid: true,
@@ -64,7 +64,7 @@ function handleOnBlur(inputValue: string) {
     }
 }
 
-function validateField(inputValue: string) {
+function validateInputContent(inputValue: string) {
     if (inputValue.includes("abc")) {
         return {
             isValid: true,
@@ -79,9 +79,14 @@ function validateField(inputValue: string) {
 
 }
 
-const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => { isValid: boolean, errors: string[] } }> = props => {
+interface StateOnBlur {
+    isValid: boolean,
+    errors: string[]
+}
 
-    const [stateOnBlur, setStateOnBlur] = React.useState<{ isValid: boolean, errors: string[] }>();
+const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => StateOnBlur }> = props => {
+
+    const [stateOnBlur, setStateOnBlur] = React.useState<StateOnBlur>();
 
     return (
         <StyledAutoValidateInput isValid={stateOnBlur?.isValid}>
@@ -92,7 +97,6 @@ const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => { isValid: 
                     setStateOnBlur(targetOnBlur);
                 }}
             />
-
 
             <p>
                 {
@@ -140,8 +144,8 @@ function App() {
                     <label htmlFor="romantic">La-lala</label>
                 </fieldset>
 
-                <AutoValidateInput handleOnBlur={handleOnBlur}/>
-                <AutoValidateInput handleOnBlur={validateField}/>
+                <AutoValidateInput handleOnBlur={validateInputLength}/>
+                <AutoValidateInput handleOnBlur={validateInputContent}/>
 
                 <button type="submit">Submit</button>
                 <div>{state}</div>
