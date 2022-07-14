@@ -70,7 +70,7 @@ function App() {
     const reference = React.useRef<HTMLFormElement>(null);
 
     const [state, setState] = React.useState<string[]>([]);
-    const [stateOnBlur, setStateOnBlur] = React.useState();
+    const [stateOnBlur, setStateOnBlur] = React.useState<{isValid: boolean, errors: string[]}>();
 
     return (
         <div>
@@ -105,14 +105,13 @@ function App() {
                 <StyledTextInput
                     type="text"
                     onBlur={(event) => {
-                        //@ts-ignore
-                        setStateOnBlur(handleOnBlur(event.target.value));
+                        const targetOnBlur = handleOnBlur(event.target.value);
+                        setStateOnBlur(targetOnBlur);
                     }}
                 />
 
                 <p>
                     {
-                        //@ts-ignore
                         stateOnBlur && stateOnBlur.errors
                     }
                 </p>
