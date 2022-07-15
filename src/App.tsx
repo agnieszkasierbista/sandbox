@@ -89,6 +89,14 @@ interface Dfs extends StateOnBlur {
     formattedData: string,
 }
 
+function formatting(inputValue: string): string {
+    if (inputValue.length === 5) {
+        return "xx-xxx";
+    } else {
+        return "No good";
+    }
+}
+
 const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => StateOnBlur }> = props => {
 
     const [stateOnBlur, setStateOnBlur] = React.useState<Dfs>();
@@ -98,6 +106,17 @@ const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => StateOnBlur
             <StyledTextInput
                 isValid={stateOnBlur?.isValid}
                 type="text"
+                value={stateOnBlur?.formattedData || ""}
+                onChange={(evt) => {
+                    //@ts-ignore
+                    setStateOnBlur((prev) => {
+                       return {
+                           ...prev,
+                           rawData: evt.target.value || "",
+                           formattedData: evt.target.value || ""
+                       }
+                    })
+                }}
                 onBlur={(event) => {
                     const evtValue = event.target.value;
                     const targetOnBlur = props.handleOnBlur(evtValue);
@@ -109,6 +128,7 @@ const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => StateOnBlur
                 {
                     stateOnBlur && stateOnBlur.errors
                 }
+                {stateOnBlur && formatting(stateOnBlur.rawData)}
             </p>
         </StyledAutoValidateInput>
     )
