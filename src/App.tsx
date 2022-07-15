@@ -18,7 +18,7 @@ function findEmptyFields(data: FormFieldNameAndValueArray): string[] {
 
 }
 
-function validate(data: FormFieldNameAndValueArray): boolean {
+function isString(data: FormFieldNameAndValueArray): boolean {
 
     const isAString = data.find(entry => {
         const entryValue = entry[1];
@@ -38,7 +38,7 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>, formData: FormDat
     console.log("all form data", Array.from(formData.entries()))
     console.log("EMPTY", findEmptyFields(Array.from(formData.entries())))
 
-    if (validate(Array.from(formData.entries()))) {
+    if (isString(Array.from(formData.entries()))) {
         fetch('https://localhost:8080/abc').then((res) => {
             console.log('res', res)
         }).catch((err) => {
@@ -50,7 +50,7 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>, formData: FormDat
     }
 }
 
-function validateInputLength(inputValue: string) {
+function validateInputLength(inputValue: string): Validation {
     if (inputValue.length > 0 && inputValue.length < 6) {
         return {
             isValid: true,
@@ -64,7 +64,7 @@ function validateInputLength(inputValue: string) {
     }
 }
 
-function validateInputContent(inputValue: string) {
+function validateInputContent(inputValue: string): Validation {
     if (inputValue.includes("abc")) {
         return {
             isValid: true,
@@ -79,27 +79,27 @@ function validateInputContent(inputValue: string) {
 
 }
 
-interface StateOnBlur {
+interface Validation {
     isValid: boolean,
     errors: string[],
 }
 
-interface Dfs extends StateOnBlur {
+interface StateOnBlur extends Validation {
     rawData: string,
     formattedData: string,
 }
 
-function formatting(inputValue: string): string {
+function formattingPostalCode(inputValue: string): string {
     if (inputValue.length === 5) {
-        return "xx-xxx";
+        return inputValue.slice(0, 2) + "-" + inputValue.slice(2, 5);
     } else {
         return "No good";
     }
 }
 
-const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => StateOnBlur }> = props => {
+const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => Validation }> = props => {
 
-    const [stateOnBlur, setStateOnBlur] = React.useState<Dfs>();
+    const [stateOnBlur, setStateOnBlur] = React.useState<StateOnBlur>();
 
     return (
         <StyledAutoValidateInput>
@@ -128,7 +128,7 @@ const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => StateOnBlur
                 {
                     stateOnBlur && stateOnBlur.errors
                 }
-                {stateOnBlur && formatting(stateOnBlur.rawData)}
+                {stateOnBlur && formattingPostalCode(stateOnBlur.rawData)}
             </p>
         </StyledAutoValidateInput>
     )
