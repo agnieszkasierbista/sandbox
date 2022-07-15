@@ -1,8 +1,8 @@
 import React from 'react';
 import "./App.css";
 import {StyledAutoValidateInput, StyledInput, StyledTextInput} from './App.styled';
+import {StateOnBlur, Validation, FormFieldNameAndValueArray} from "./App.types";
 
-type FormFieldNameAndValueArray = [string, FormDataEntryValue][];
 
 function findEmptyFields(data: FormFieldNameAndValueArray): string[] {
 
@@ -79,16 +79,6 @@ function validateInputContent(inputValue: string): Validation {
 
 }
 
-interface Validation {
-    isValid: boolean,
-    errors: string[],
-}
-
-interface StateOnBlur extends Validation {
-    rawData: string,
-    formattedData: string,
-}
-
 function formattingPostalCode(inputValue: string): string {
     if (inputValue.length === 5) {
         return inputValue.slice(0, 2) + "-" + inputValue.slice(2, 5);
@@ -110,11 +100,11 @@ const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => Validation 
                 onChange={(evt) => {
                     //@ts-ignore
                     setStateOnBlur((prev) => {
-                       return {
-                           ...prev,
-                           rawData: evt.target.value || "",
-                           formattedData: evt.target.value || ""
-                       }
+                        return {
+                            ...prev,
+                            rawData: evt.target.value || "",
+                            formattedData: evt.target.value || ""
+                        }
                     })
                 }}
                 onBlur={(event) => {
