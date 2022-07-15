@@ -81,21 +81,27 @@ function validateInputContent(inputValue: string) {
 
 interface StateOnBlur {
     isValid: boolean,
-    errors: string[]
+    errors: string[],
+}
+
+interface Dfs extends StateOnBlur {
+    rawData: string,
+    formattedData: string,
 }
 
 const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => StateOnBlur }> = props => {
 
-    const [stateOnBlur, setStateOnBlur] = React.useState<StateOnBlur>();
+    const [stateOnBlur, setStateOnBlur] = React.useState<Dfs>();
 
     return (
-        <StyledAutoValidateInput >
+        <StyledAutoValidateInput>
             <StyledTextInput
                 isValid={stateOnBlur?.isValid}
                 type="text"
                 onBlur={(event) => {
-                    const targetOnBlur = props.handleOnBlur(event.target.value);
-                    setStateOnBlur(targetOnBlur);
+                    const evtValue = event.target.value;
+                    const targetOnBlur = props.handleOnBlur(evtValue);
+                    setStateOnBlur({...targetOnBlur, rawData: evtValue, formattedData: evtValue});
                 }}
             />
 
