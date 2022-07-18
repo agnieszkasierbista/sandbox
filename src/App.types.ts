@@ -7,4 +7,5 @@ export interface Validation {
 
 export interface FieldState extends Validation {
     value: string,
+    isFormatted: boolean
 }

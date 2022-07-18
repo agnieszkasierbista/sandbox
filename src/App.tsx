@@ -79,15 +79,25 @@ function validateInputContent(inputValue: string): Validation {
 
 }
 
-function formatToPostalCode(inputValue: string): string {
+function formatToPostalCode(inputValue: string): {value: string, isFormatted: boolean} {
     if (inputValue.length === 5) {
-        return inputValue.slice(0, 2) + "-" + inputValue.slice(2, 5);
+        return {
+            value: inputValue.slice(0, 2) + "-" + inputValue.slice(2, 5),
+            isFormatted: true
+        }
     } else {
-        return "No good";
+        return {
+            value: inputValue,
+            isFormatted: false
+        };
     }
 }
 
 function formatFromPostalCode(formattedData: string): string {
+    if (formattedData) {
+        return "12345"
+    }
+
     return "12345"
 }
 
@@ -96,7 +106,8 @@ const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => Validation 
     const [fieldState, setFieldState] = React.useState<FieldState>({
         isValid: undefined,
         value: "",
-        errors: []
+        errors: [],
+        isFormatted: false
     });
 
     return (
@@ -118,17 +129,16 @@ const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => Validation 
                     const targetOnBlur = props.handleOnBlur(evtValue);
                     setFieldState({
                         ...targetOnBlur,
-                        value: formatToPostalCode(evtValue)
+                       ...formatToPostalCode(evtValue)
                     });
                 }}
-                onFocus={(evt) => {
-                    if (evt.target.value) {
-                        setFieldState((prev) => {
-                            return {
-                                ...prev,
-                                value: formatFromPostalCode(evt.target.value)
-                            }
-                        })
+                onFocus={() => {
+                    if (fieldState.value && fieldState.isFormatted) {
+                        setFieldState(
+                            {
+                                ...fieldState,
+                                value: formatFromPostalCode(fieldState.value)
+                            })
                     }
                 }}
             />
@@ -137,7 +147,6 @@ const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => Validation 
                 {
                     fieldState && fieldState.errors
                 }
-                {fieldState && fieldState.value}
             </p>
         </StyledAutoValidateInput>
     )
