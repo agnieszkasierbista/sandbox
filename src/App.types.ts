@@ -1,11 +1,10 @@
 export type FormFieldNameAndValueArray = [string, FormDataEntryValue][];
 
 export interface Validation {
-    isValid: boolean,
+    isValid: boolean | undefined,
     errors: string[],
 }
 
-export interface StateOnBlur extends Validation {
-    rawData: string,
-    formattedData: string,
+export interface FieldState extends Validation {
+    value: string,
 }
