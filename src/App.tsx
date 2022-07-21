@@ -52,7 +52,7 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>, formData: FormDat
 }
 
 function validateInputLength(inputValue: string): Validation {
-    if (inputValue.length > 0 && inputValue.length < 6) {
+    if (inputValue.length === 5) {
         return {
             isValid: true,
             errors: []
@@ -60,7 +60,7 @@ function validateInputLength(inputValue: string): Validation {
     } else {
         return {
             isValid: false,
-            errors: ["The input has wrong length! Try to fit between one and six characters!"]
+            errors: ["The input has wrong length! Type exactly 5 characters!"]
         }
     }
 }
@@ -221,7 +221,7 @@ function App() {
                     formatFrom={formatFromPostalCode}
                 />
                 <AutoValidateInput
-                    validate={[validateIfInputContainsOnlyNumbers]}
+                    validate={[validateIfInputContainsOnlyNumbers, validateInputLength]}
                     formatTo={formatToPostalCode}
                     formatFrom={formatFromPostalCode}
                 />
