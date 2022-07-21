@@ -1,7 +1,7 @@
 import React from 'react';
 import "./App.css";
 import {StyledAutoValidateInput, StyledInput, StyledTextInput} from './App.styled';
-import {FieldState, Validation, FormFieldNameAndValueArray} from "./App.types";
+import {FieldState, Validation, FormFieldNameAndValueArray, Format} from "./App.types";
 import {compose} from 'ramda';
 
 
@@ -51,7 +51,7 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>, formData: FormDat
     }
 }
 
-function validateInputLength(inputValue: string): Validation {
+function validateInputLengthEquals5(inputValue: string): Validation {
     if (inputValue.length === 5) {
         return {
             isValid: true,
@@ -65,7 +65,7 @@ function validateInputLength(inputValue: string): Validation {
     }
 }
 
-function validateInputContent(inputValue: string): Validation {
+function validateInputContentContainsAbcLowerCase(inputValue: string): Validation {
     if (inputValue.includes("abc")) {
         return {
             isValid: true,
@@ -96,31 +96,20 @@ function validateIfInputContainsOnlyNumbers(inputValue: string): Validation {
 
 }
 
-function formatToPostalCode(inputValue: string): { value: string, isFormatted: boolean } {
-    if (inputValue.length === 5) {
-        return {
-            value: inputValue.slice(0, 2) + "-" + inputValue.slice(2, 5),
-            isFormatted: true
-        }
-    } else {
-        return {
-            value: inputValue,
-            isFormatted: false
-        };
+function formatToPostalCode(inputValue: string): Format {
+    return {
+        value: inputValue.slice(0, 2) + "-" + inputValue.slice(2, 5),
+        isFormatted: true
     }
 }
 
 function formatFromPostalCode(formattedValue: string): string {
-    if (formattedValue.includes("-")) {
-        return formattedValue.slice(0, 2) + formattedValue.slice(3, 6)
-    } else {
-        return formattedValue
-    }
+    return formattedValue.slice(0, 2) + formattedValue.slice(3, 6)
 }
 
 const AutoValidateInput: React.FC<{
     validate: ((value: string) => Validation)[],
-    formatTo: (value: string) => { value: string, isFormatted: boolean },
+    formatTo: (value: string) => Format,
     formatFrom: (formattedValue: string) => string
 }> = props => {
 
@@ -148,12 +137,12 @@ const AutoValidateInput: React.FC<{
                 }}
                 onBlur={(event) => {
                     const evtValue = event.target.value;
-                    const validationResult = props.validate.find((validating) => validating(evtValue).isValid === false)?.(evtValue);
-                    const qqq = (validationResult || {isValid: true, errors: []});
+                    const validationResult = props.validate.find((validatingFunction) => validatingFunction(evtValue).isValid === false)?.(evtValue);
+                    const postValidationState = (validationResult || {isValid: true, errors: []});
                     setFieldState((prev) => ({
                         ...prev,
-                        ...qqq,
-                        ...(qqq.isValid ? props.formatTo(evtValue) : {})
+                        ...postValidationState,
+                        ...(postValidationState.isValid ? props.formatTo(evtValue) : {})
 
                     }));
                     console.log("state on blur", fieldState);
@@ -166,7 +155,7 @@ const AutoValidateInput: React.FC<{
                         setFieldState(
                             {
                                 ...fieldState,
-                                value: props.formatFrom(fieldState.value)
+                                value: (fieldState.isFormatted ? props.formatFrom(fieldState.value) : fieldState.value)
                             })
                     }
                 }}
@@ -219,12 +208,12 @@ function App() {
                 </fieldset>
 
                 <AutoValidateInput
-                    validate={[validateInputLength]}
+                    validate={[validateInputLengthEquals5]}
                     formatTo={formatToPostalCode}
                     formatFrom={formatFromPostalCode}
                 />
                 <AutoValidateInput
-                    validate={[validateIfInputContainsOnlyNumbers, validateInputLength]}
+                    validate={[validateIfInputContainsOnlyNumbers, validateInputLengthEquals5]}
                     formatTo={formatToPostalCode}
                     formatFrom={formatFromPostalCode}
                 />
