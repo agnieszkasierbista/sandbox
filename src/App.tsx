@@ -2,6 +2,7 @@ import React from 'react';
 import "./App.css";
 import {StyledAutoValidateInput, StyledInput, StyledTextInput} from './App.styled';
 import {FieldState, Validation, FormFieldNameAndValueArray} from "./App.types";
+import {compose} from 'ramda';
 
 
 function findEmptyFields(data: FormFieldNameAndValueArray): string[] {
@@ -118,7 +119,7 @@ function formatFromPostalCode(formattedValue: string): string {
 }
 
 const AutoValidateInput: React.FC<{
-    validate: (value: string) => Validation,
+    validate: ((value: string) => Validation)[],
     formatTo: (value: string) => { value: string, isFormatted: boolean },
     formatFrom: (formattedValue: string) => string
 }> = props => {
@@ -147,7 +148,7 @@ const AutoValidateInput: React.FC<{
                 }}
                 onBlur={(event) => {
                     const evtValue = event.target.value;
-                    const targetOnBlur = props.validate(evtValue);
+                    const targetOnBlur = props.validate[0](evtValue);
                     setFieldState({
                         ...targetOnBlur,
                         ...props.formatTo(evtValue)
@@ -215,12 +216,12 @@ function App() {
                 </fieldset>
 
                 <AutoValidateInput
-                    validate={validateInputLength}
+                    validate={[validateInputLength]}
                     formatTo={formatToPostalCode}
                     formatFrom={formatFromPostalCode}
                 />
                 <AutoValidateInput
-                    validate={validateIfInputContainsOnlyNumbers}
+                    validate={[validateIfInputContainsOnlyNumbers]}
                     formatTo={formatToPostalCode}
                     formatFrom={formatFromPostalCode}
                 />
