@@ -79,6 +79,22 @@ function validateInputContent(inputValue: string): Validation {
 
 }
 
+function validateIfInputContainsOnlyNumbers(inputValue: string): Validation {
+    if (inputValue.match(/[A-Za-z]+/)) {
+        console.log("Bang!")
+        return {
+            isValid: false,
+            errors: ["You must type numbers only!"]
+        }
+    } else {
+        return {
+            isValid: true,
+            errors: []
+        }
+    }
+
+}
+
 function formatToPostalCode(inputValue: string): { value: string, isFormatted: boolean } {
     if (inputValue.length === 5) {
         return {
@@ -204,7 +220,7 @@ function App() {
                     formatFrom={formatFromPostalCode}
                 />
                 <AutoValidateInput
-                    validate={validateInputContent}
+                    validate={validateIfInputContainsOnlyNumbers}
                     formatTo={formatToPostalCode}
                     formatFrom={formatFromPostalCode}
                 />
