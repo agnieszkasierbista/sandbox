@@ -79,7 +79,7 @@ function validateInputContent(inputValue: string): Validation {
 
 }
 
-function formatToPostalCode(inputValue: string): {value: string, isFormatted: boolean} {
+function formatToPostalCode(inputValue: string): { value: string, isFormatted: boolean } {
     if (inputValue.length === 5) {
         return {
             value: inputValue.slice(0, 2) + "-" + inputValue.slice(2, 5),
@@ -93,15 +93,19 @@ function formatToPostalCode(inputValue: string): {value: string, isFormatted: bo
     }
 }
 
-function formatFromPostalCode(formattedData: string): string {
-    if (formattedData) {
-        return "12345"
+function formatFromPostalCode(formattedValue: string): string {
+    if (formattedValue.includes("-")) {
+        return formattedValue.slice(0, 2) + formattedValue.slice(3, 6)
+    } else {
+        return formattedValue
     }
-
-    return "12345"
 }
 
-const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => Validation }> = props => {
+const AutoValidateInput: React.FC<{
+    validate: (value: string) => Validation,
+    formatTo: (value: string) => { value: string, isFormatted: boolean },
+    formatFrom: (formattedValue: string) => string
+}> = props => {
 
     const [fieldState, setFieldState] = React.useState<FieldState>({
         isValid: undefined,
@@ -117,6 +121,7 @@ const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => Validation 
                 type="text"
                 value={fieldState?.value || ""}
                 onChange={(evt) => {
+                    console.log("state on change", fieldState);
                     setFieldState((prev) => {
                         return {
                             ...prev,
@@ -126,18 +131,22 @@ const AutoValidateInput: React.FC<{ handleOnBlur: (value: string) => Validation 
                 }}
                 onBlur={(event) => {
                     const evtValue = event.target.value;
-                    const targetOnBlur = props.handleOnBlur(evtValue);
+                    const targetOnBlur = props.validate(evtValue);
                     setFieldState({
                         ...targetOnBlur,
-                       ...formatToPostalCode(evtValue)
+                        ...props.formatTo(evtValue)
                     });
+                    console.log("state on blur", fieldState);
+
                 }}
                 onFocus={() => {
+                    console.log("state on focus", fieldState);
+
                     if (fieldState.value && fieldState.isFormatted) {
                         setFieldState(
                             {
                                 ...fieldState,
-                                value: formatFromPostalCode(fieldState.value)
+                                value: props.formatFrom(fieldState.value)
                             })
                     }
                 }}
@@ -189,8 +198,16 @@ function App() {
                     <label htmlFor="romantic">La-lala</label>
                 </fieldset>
 
-                <AutoValidateInput handleOnBlur={validateInputLength}/>
-                <AutoValidateInput handleOnBlur={validateInputContent}/>
+                <AutoValidateInput
+                    validate={validateInputLength}
+                    formatTo={formatToPostalCode}
+                    formatFrom={formatFromPostalCode}
+                />
+                <AutoValidateInput
+                    validate={validateInputContent}
+                    formatTo={formatToPostalCode}
+                    formatFrom={formatFromPostalCode}
+                />
 
                 <button type="submit">Submit</button>
                 <div>{state}</div>

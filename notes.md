@@ -3,3 +3,5 @@
 3. Walidacja w locie
 4. walidacja HTML5 (dodaje sam valid/invalid)
 5. Zmień raw data tylko na onChange, formatted data zmieniaj tylko na onBlur
+6. poprawic nazwe handleOnBlur
+7. wyprowadzić funkcje to i from do propów.
