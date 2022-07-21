@@ -148,11 +148,14 @@ const AutoValidateInput: React.FC<{
                 }}
                 onBlur={(event) => {
                     const evtValue = event.target.value;
-                    const targetOnBlur = props.validate.find((validating) => validating(evtValue).isValid === false)?.(evtValue);
-                    setFieldState({
-                        ...(targetOnBlur || {isValid: true, errors: []}),
-                        ...props.formatTo(evtValue)
-                    });
+                    const validationResult = props.validate.find((validating) => validating(evtValue).isValid === false)?.(evtValue);
+                    const qqq = (validationResult || {isValid: true, errors: []});
+                    setFieldState((prev) => ({
+                        ...prev,
+                        ...qqq,
+                        ...(qqq.isValid ? props.formatTo(evtValue) : {})
+
+                    }));
                     console.log("state on blur", fieldState);
 
                 }}
