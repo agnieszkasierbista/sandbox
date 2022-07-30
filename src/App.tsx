@@ -155,7 +155,8 @@ const AutoValidateInput: React.FC<{
                         setFieldState(
                             {
                                 ...fieldState,
-                                value: (fieldState.isFormatted ? props.formatFrom(fieldState.value) : fieldState.value)
+                                value: (fieldState.isFormatted ? props.formatFrom(fieldState.value) : fieldState.value),
+                                isFormatted: false
                             })
                     }
                 }}
