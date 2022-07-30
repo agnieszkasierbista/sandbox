@@ -65,6 +65,20 @@ function validateInputLengthEquals5(inputValue: string): Validation {
     }
 }
 
+function validateInputLengthEquals16(inputValue: string): Validation {
+    if (inputValue.length === 16) {
+        return {
+            isValid: true,
+            errors: []
+        }
+    } else {
+        return {
+            isValid: false,
+            errors: ["The input has wrong length! Type exactly 16 numbers!"]
+        }
+    }
+}
+
 function validateInputContentContainsAbcLowerCase(inputValue: string): Validation {
     if (inputValue.includes("abc")) {
         return {
@@ -105,6 +119,17 @@ function formatToPostalCode(inputValue: string): Format {
 
 function formatFromPostalCode(formattedValue: string): string {
     return formattedValue.slice(0, 2) + formattedValue.slice(3, 6)
+}
+
+function formatToCreditCardNumber(inputValue: string): Format {
+    return {
+        value: inputValue.slice(0, 4) + "-" + inputValue.slice(4, 8) + "-" + inputValue.slice(8, 12) + "-" + inputValue.slice(12, 16),
+        isFormatted: true
+    }
+}
+
+function formatFromCreditCardNumber(formattedValue: string): string {
+    return formattedValue.slice(0, 4) + formattedValue.slice(5, 9) + formattedValue.slice(10, 14) + formattedValue.slice(15, 19)
 }
 
 const AutoValidateInput: React.FC<{
@@ -217,6 +242,12 @@ function App() {
                     validate={[validateIfInputContainsOnlyNumbers, validateInputLengthEquals5]}
                     formatTo={formatToPostalCode}
                     formatFrom={formatFromPostalCode}
+                />
+
+                <AutoValidateInput
+                    validate={[validateIfInputContainsOnlyNumbers, validateInputLengthEquals16]}
+                    formatTo={formatToCreditCardNumber}
+                    formatFrom={formatFromCreditCardNumber}
                 />
 
                 <button type="submit">Submit</button>
