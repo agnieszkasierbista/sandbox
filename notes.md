@@ -8,4 +8,5 @@
 ~~8. poprawna walidacja postal code: tylko cyfry i tylko 5 cyfr: array of functions, jezeli valid to dalej, jezeli invalid to go zwracamy~~
 ~~9. funkcja formatująca, jej uruchomienie musi być uzależnione od wyniku funkcji validującej~~
 ~~10. usunąć z formaterów logikę walidacji~~
-   11. dodać input na numer kart kredytowych z odpowiednimi walidacjami
+   ~~11. dodać input na numer kart kredytowych z odpowiednimi walidacjami~~
+12, input z dropdownem z podpowiedziami uzależnionymi od tego co wpisaliśmy, to bedzie lista, po kliknięciu której podsawi sie wybór.

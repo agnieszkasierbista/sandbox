@@ -1,8 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./App.css";
-import {StyledAutoValidateInput, StyledInput, StyledTextInput} from './App.styled';
+import {
+    StyledAutoValidateInput,
+    StyledCustomDropdown,
+    StyledDropdownContainer,
+    StyledDropdownContent,
+    StyledDropdownElement,
+    StyledDropdownListElement,
+    StyledInput,
+    StyledTextInput,
+    StyledTextInputForDropdown
+} from './App.styled';
 import {FieldState, Validation, FormFieldNameAndValueArray, Format} from "./App.types";
-import {compose} from 'ramda';
+import {compose, is} from 'ramda';
+import {isVisible} from "@testing-library/user-event/dist/utils";
 
 
 function findEmptyFields(data: FormFieldNameAndValueArray): string[] {
@@ -196,6 +207,60 @@ const AutoValidateInput: React.FC<{
     )
 };
 
+const CustomDropdown: React.FC = props => {
+
+    const [dropdownState, setDropdownState] = useState({
+        isVisible: false,
+        dropdownContents: ["aaa", "aaab", "aaabbb", "bbbccc", "bbbddd", "cccddd", "ccctttt", "bbb", "bbbbeee"],
+        value: ""
+    });
+
+    return (
+        <StyledCustomDropdown
+            onBlur={() => setDropdownState({...dropdownState, isVisible: false})}
+            tabIndex={0}
+        >
+            <StyledTextInputForDropdown
+                type="text"
+                name="dropdown"
+                onChange={(event) => {
+                    console.log("value", event.target.value);
+                    if (event.target.value.length <= 1) {
+                        setDropdownState({...dropdownState, isVisible: false, value: event.target.value})
+                    } else {
+                        setDropdownState({...dropdownState, isVisible: true, value: event.target.value})
+
+                    }
+
+                }}
+
+            />
+            <StyledDropdownContent
+               isVisible={dropdownState.isVisible}
+            >
+                <StyledDropdownContainer>
+                    {
+                        dropdownState.dropdownContents
+                            .filter((cellData) => cellData.includes(dropdownState.value))
+                            .map((cellData, idx) => {
+                                return (
+                                  <StyledDropdownListElement key={idx}>
+                                      <StyledDropdownElement
+                                          onMouseDown={() => {
+                                              console.log("Bam!", cellData);
+                                          }}>
+                                          {cellData}
+                                      </StyledDropdownElement>
+                                  </StyledDropdownListElement>
+                                )
+                            })
+                    }
+                </StyledDropdownContainer>
+            </StyledDropdownContent>
+        </StyledCustomDropdown>
+    )
+}
+
 function App() {
 
     //2 możliwe rozwiazania podkreslenia niewypełnionych pol na czerwono - hooki ref i set state
@@ -232,23 +297,30 @@ function App() {
                                  isEmpty={state.includes("romantic")}/>
                     <label htmlFor="romantic">La-lala</label>
                 </fieldset>
+                <fieldset id="autovalidationGroup">
+                    <legend>My numbers:</legend>
+                    <AutoValidateInput
+                        validate={[validateInputLengthEquals5]}
+                        formatTo={formatToPostalCode}
+                        formatFrom={formatFromPostalCode}
+                    />
+                    <AutoValidateInput
+                        validate={[validateIfInputContainsOnlyNumbers, validateInputLengthEquals5]}
+                        formatTo={formatToPostalCode}
+                        formatFrom={formatFromPostalCode}
+                    />
 
-                <AutoValidateInput
-                    validate={[validateInputLengthEquals5]}
-                    formatTo={formatToPostalCode}
-                    formatFrom={formatFromPostalCode}
-                />
-                <AutoValidateInput
-                    validate={[validateIfInputContainsOnlyNumbers, validateInputLengthEquals5]}
-                    formatTo={formatToPostalCode}
-                    formatFrom={formatFromPostalCode}
-                />
+                    <AutoValidateInput
+                        validate={[validateIfInputContainsOnlyNumbers, validateInputLengthEquals16]}
+                        formatTo={formatToCreditCardNumber}
+                        formatFrom={formatFromCreditCardNumber}
+                    />
+                </fieldset>
+                <fieldset id="dropdowns">
+                    <legend>My dropdown:</legend>
+                    <CustomDropdown/>
+                </fieldset>
 
-                <AutoValidateInput
-                    validate={[validateIfInputContainsOnlyNumbers, validateInputLengthEquals16]}
-                    formatTo={formatToCreditCardNumber}
-                    formatFrom={formatFromCreditCardNumber}
-                />
 
                 <button type="submit">Submit</button>
                 <div>{state}</div>
