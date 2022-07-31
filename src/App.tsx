@@ -214,6 +214,10 @@ const CustomDropdown: React.FC = props => {
         value: ""
     });
 
+    const [inputState, setInputState] = useState({
+        value: ""
+    });
+
     return (
         <StyledCustomDropdown
             onBlur={() => setDropdownState({...dropdownState, isVisible: false})}
@@ -222,16 +226,18 @@ const CustomDropdown: React.FC = props => {
             <StyledTextInputForDropdown
                 type="text"
                 name="dropdown"
-                value={dropdownState.value}
+                value={inputState.value}
                 onChange={(event) => {
                     console.log("value", event.target.value);
                     if (event.target.value.length <= 1) {
-                        setDropdownState({...dropdownState, isVisible: false, value: event.target.value})
+                        setDropdownState({...dropdownState, isVisible: false})
+                        setInputState({value: event.target.value})
                     } else {
-                        setDropdownState({...dropdownState, isVisible: true, value: event.target.value})
+                        setInputState({...dropdownState, value: event.target.value})
+
+                        setTimeout(() => setDropdownState({...dropdownState, isVisible: true}), 1000)
 
                     }
-
                 }}
 
             />
@@ -241,13 +247,13 @@ const CustomDropdown: React.FC = props => {
                 <StyledDropdownContainer>
                     {
                         dropdownState.dropdownContents
-                            .filter((cellData) => cellData.includes(dropdownState.value))
+                            .filter((cellData) => cellData.includes(inputState.value))
                             .map((cellData, idx) => {
                                 return (
                                     <StyledDropdownListElement key={idx}>
                                         <StyledDropdownElement
                                             onMouseDown={() => {
-                                                setDropdownState({...dropdownState, value: cellData});
+                                                setInputState({...inputState, value: cellData});
                                             }}>
                                             {cellData}
                                         </StyledDropdownElement>

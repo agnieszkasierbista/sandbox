@@ -10,5 +10,6 @@
 ~~10. usunąć z formaterów logikę walidacji~~
 ~~11. dodać input na numer kart kredytowych z odpowiednimi walidacjami~~
 ~~12, input z dropdownem z podpowiedziami uzależnionymi od tego co wpisaliśmy, to bedzie lista, po kliknięciu której podsawi sie wybór.~~
-13. żeby w inpucie podstawiła się wartość z konkretnego klikniętego elementu
-14.
+~~13. żeby w inpucie podstawiła się wartość z konkretnego klikniętego elementu~~
+~~14. opóznienie w pokazaniu podpowiedzi~~
+15. wyslanie akcji reduxa, żeby przyszły dane w propie (mapStateToProps)
