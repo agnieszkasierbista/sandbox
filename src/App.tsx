@@ -13,7 +13,6 @@ import {
 } from './App.styled';
 import {FieldState, Validation, FormFieldNameAndValueArray, Format} from "./App.types";
 import {compose, is} from 'ramda';
-import {isVisible} from "@testing-library/user-event/dist/utils";
 
 
 function findEmptyFields(data: FormFieldNameAndValueArray): string[] {
@@ -223,6 +222,7 @@ const CustomDropdown: React.FC = props => {
             <StyledTextInputForDropdown
                 type="text"
                 name="dropdown"
+                value={dropdownState.value}
                 onChange={(event) => {
                     console.log("value", event.target.value);
                     if (event.target.value.length <= 1) {
@@ -236,7 +236,7 @@ const CustomDropdown: React.FC = props => {
 
             />
             <StyledDropdownContent
-               isVisible={dropdownState.isVisible}
+                isVisible={dropdownState.isVisible}
             >
                 <StyledDropdownContainer>
                     {
@@ -244,14 +244,14 @@ const CustomDropdown: React.FC = props => {
                             .filter((cellData) => cellData.includes(dropdownState.value))
                             .map((cellData, idx) => {
                                 return (
-                                  <StyledDropdownListElement key={idx}>
-                                      <StyledDropdownElement
-                                          onMouseDown={() => {
-                                              console.log("Bam!", cellData);
-                                          }}>
-                                          {cellData}
-                                      </StyledDropdownElement>
-                                  </StyledDropdownListElement>
+                                    <StyledDropdownListElement key={idx}>
+                                        <StyledDropdownElement
+                                            onMouseDown={() => {
+                                                setDropdownState({...dropdownState, value: cellData});
+                                            }}>
+                                            {cellData}
+                                        </StyledDropdownElement>
+                                    </StyledDropdownListElement>
                                 )
                             })
                     }
