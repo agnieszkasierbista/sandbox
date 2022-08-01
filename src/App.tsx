@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import "./App.css";
 import {
     StyledAutoValidateInput,
@@ -11,9 +11,9 @@ import {
     StyledTextInput,
     StyledTextInputForDropdown
 } from './App.styled';
-import {FieldState, Validation, FormFieldNameAndValueArray, Format} from "./App.types";
-import {compose, is} from 'ramda';
-import {Provider} from 'react-redux';
+import { FieldState, Validation, FormFieldNameAndValueArray, Format } from "./App.types";
+import { compose, is } from 'ramda';
+import { Provider } from 'react-redux';
 import store from "./store";
 
 
@@ -175,7 +175,7 @@ const AutoValidateInput: React.FC<{
                 onBlur={(event) => {
                     const evtValue = event.target.value;
                     const validationResult = props.validate.find((validatingFunction) => validatingFunction(evtValue).isValid === false)?.(evtValue);
-                    const postValidationState = (validationResult || {isValid: true, errors: []});
+                    const postValidationState = (validationResult || { isValid: true, errors: [] });
                     setFieldState((prev) => ({
                         ...prev,
                         ...postValidationState,
@@ -222,7 +222,7 @@ const CustomDropdown: React.FC<any> = props => {
 
     return (
         <StyledCustomDropdown
-            onBlur={() => setDropdownState({...dropdownState, isVisible: false})}
+            onBlur={() => setDropdownState({ ...dropdownState, isVisible: false })}
             tabIndex={0}
         >
             <StyledTextInputForDropdown
@@ -232,12 +232,12 @@ const CustomDropdown: React.FC<any> = props => {
                 onChange={(event) => {
                     console.log("value", event.target.value);
                     if (event.target.value.length <= 1) {
-                        setDropdownState({...dropdownState, isVisible: false})
-                        setInputState({value: event.target.value})
+                        setDropdownState({ ...dropdownState, isVisible: false })
+                        setInputState({ value: event.target.value })
                     } else {
-                        setInputState({...dropdownState, value: event.target.value})
+                        setInputState({ ...dropdownState, value: event.target.value })
 
-                        setTimeout(() => setDropdownState({...dropdownState, isVisible: true}), 1000)
+                        setTimeout(() => setDropdownState({ ...dropdownState, isVisible: true }), 1000)
 
                         props.dispatchSetDropdownContent();
                     }
@@ -256,7 +256,7 @@ const CustomDropdown: React.FC<any> = props => {
                                     <StyledDropdownListElement key={idx}>
                                         <StyledDropdownElement
                                             onMouseDown={() => {
-                                                setInputState({...inputState, value: cellData});
+                                                setInputState({ ...inputState, value: cellData });
                                             }}>
                                             {cellData}
                                         </StyledDropdownElement>
@@ -279,30 +279,30 @@ function App(props: any) {
 
     return (
         <form ref={reference}
-              onSubmit={(event) => {
-                  console.log(reference.current);
-                  const formData = new FormData(event.currentTarget);
-                  console.log(reference.current && Array.from(new FormData(reference.current).entries()));
-                  handleSubmit(event, formData);
-                  setState(findEmptyFields(Array.from(formData.entries())));
-              }}>
+            onSubmit={(event) => {
+                console.log(reference.current);
+                const formData = new FormData(event.currentTarget);
+                console.log(reference.current && Array.from(new FormData(reference.current).entries()));
+                handleSubmit(event, formData);
+                setState(findEmptyFields(Array.from(formData.entries())));
+            }}>
             <fieldset id="personals" name="Personals">
                 <legend>Personalia:</legend>
                 <label htmlFor="name">Name:</label>
-                <StyledInput id="name" type="text" name="name" isEmpty={state.includes("name")}/>
+                <StyledInput id="name" type="text" name="name" isEmpty={state.includes("name")} />
                 <label htmlFor="sName">Second name:</label>
-                <StyledInput id="sName" type="text" name="sName" isEmpty={state.includes("sName")}/>
+                <StyledInput id="sName" type="text" name="sName" isEmpty={state.includes("sName")} />
             </fieldset>
             <fieldset id="favouriteMusic">
                 <legend>My music:</legend>
                 <StyledInput type="checkbox" id="rap" value="rap" name="rap" hidden
-                             isEmpty={state.includes("rap")}/>
+                    isEmpty={state.includes("rap")} />
                 <label htmlFor="rap">B-rrrap</label>
                 <StyledInput type="checkbox" id="techno" value="techno" name="techno"
-                             isEmpty={state.includes("techno")}/>
+                    isEmpty={state.includes("techno")} />
                 <label htmlFor="techno">Umc-umc</label>
                 <StyledInput type="checkbox" id="romantic" value="romantic" name="romantic"
-                             isEmpty={state.includes("romantic")}/>
+                    isEmpty={state.includes("romantic")} />
                 <label htmlFor="romantic">La-lala</label>
             </fieldset>
             <fieldset id="autovalidationGroup">
@@ -326,7 +326,7 @@ function App(props: any) {
             </fieldset>
             <fieldset id="dropdowns">
                 <legend>My dropdown:</legend>
-                <CustomDropdown dispatchSetDropdownContent={props.dispatchSetDropdownContent}/>
+                <CustomDropdown dispatchSetDropdownContent={props.dispatchSetDropdownContent} />
             </fieldset>
 
 
