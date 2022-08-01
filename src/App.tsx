@@ -13,6 +13,8 @@ import {
 } from './App.styled';
 import {FieldState, Validation, FormFieldNameAndValueArray, Format} from "./App.types";
 import {compose, is} from 'ramda';
+import {Provider} from 'react-redux';
+import store from "./store";
 
 
 function findEmptyFields(data: FormFieldNameAndValueArray): string[] {
@@ -206,7 +208,7 @@ const AutoValidateInput: React.FC<{
     )
 };
 
-const CustomDropdown: React.FC = props => {
+const CustomDropdown: React.FC<any> = props => {
 
     const [dropdownState, setDropdownState] = useState({
         isVisible: false,
@@ -237,6 +239,7 @@ const CustomDropdown: React.FC = props => {
 
                         setTimeout(() => setDropdownState({...dropdownState, isVisible: true}), 1000)
 
+                        props.dispatchSetDropdownContent();
                     }
                 }}
 
@@ -267,7 +270,7 @@ const CustomDropdown: React.FC = props => {
     )
 }
 
-function App() {
+function App(props: any) {
 
     //2 możliwe rozwiazania podkreslenia niewypełnionych pol na czerwono - hooki ref i set state
     const reference = React.useRef<HTMLFormElement>(null);
@@ -275,63 +278,61 @@ function App() {
     const [state, setState] = React.useState<string[]>([]);
 
     return (
-        <div>
-            <form ref={reference}
-                  onSubmit={(event) => {
-                      console.log(reference.current);
-                      const formData = new FormData(event.currentTarget);
-                      console.log(reference.current && Array.from(new FormData(reference.current).entries()));
-                      handleSubmit(event, formData);
-                      setState(findEmptyFields(Array.from(formData.entries())));
-                  }}>
-                <fieldset id="personals" name="Personals">
-                    <legend>Personalia:</legend>
-                    <label htmlFor="name">Name:</label>
-                    <StyledInput id="name" type="text" name="name" isEmpty={state.includes("name")}/>
-                    <label htmlFor="sName">Second name:</label>
-                    <StyledInput id="sName" type="text" name="sName" isEmpty={state.includes("sName")}/>
-                </fieldset>
-                <fieldset id="favouriteMusic">
-                    <legend>My music:</legend>
-                    <StyledInput type="checkbox" id="rap" value="rap" name="rap" hidden
-                                 isEmpty={state.includes("rap")}/>
-                    <label htmlFor="rap">B-rrrap</label>
-                    <StyledInput type="checkbox" id="techno" value="techno" name="techno"
-                                 isEmpty={state.includes("techno")}/>
-                    <label htmlFor="techno">Umc-umc</label>
-                    <StyledInput type="checkbox" id="romantic" value="romantic" name="romantic"
-                                 isEmpty={state.includes("romantic")}/>
-                    <label htmlFor="romantic">La-lala</label>
-                </fieldset>
-                <fieldset id="autovalidationGroup">
-                    <legend>My numbers:</legend>
-                    <AutoValidateInput
-                        validate={[validateInputLengthEquals5]}
-                        formatTo={formatToPostalCode}
-                        formatFrom={formatFromPostalCode}
-                    />
-                    <AutoValidateInput
-                        validate={[validateIfInputContainsOnlyNumbers, validateInputLengthEquals5]}
-                        formatTo={formatToPostalCode}
-                        formatFrom={formatFromPostalCode}
-                    />
+        <form ref={reference}
+              onSubmit={(event) => {
+                  console.log(reference.current);
+                  const formData = new FormData(event.currentTarget);
+                  console.log(reference.current && Array.from(new FormData(reference.current).entries()));
+                  handleSubmit(event, formData);
+                  setState(findEmptyFields(Array.from(formData.entries())));
+              }}>
+            <fieldset id="personals" name="Personals">
+                <legend>Personalia:</legend>
+                <label htmlFor="name">Name:</label>
+                <StyledInput id="name" type="text" name="name" isEmpty={state.includes("name")}/>
+                <label htmlFor="sName">Second name:</label>
+                <StyledInput id="sName" type="text" name="sName" isEmpty={state.includes("sName")}/>
+            </fieldset>
+            <fieldset id="favouriteMusic">
+                <legend>My music:</legend>
+                <StyledInput type="checkbox" id="rap" value="rap" name="rap" hidden
+                             isEmpty={state.includes("rap")}/>
+                <label htmlFor="rap">B-rrrap</label>
+                <StyledInput type="checkbox" id="techno" value="techno" name="techno"
+                             isEmpty={state.includes("techno")}/>
+                <label htmlFor="techno">Umc-umc</label>
+                <StyledInput type="checkbox" id="romantic" value="romantic" name="romantic"
+                             isEmpty={state.includes("romantic")}/>
+                <label htmlFor="romantic">La-lala</label>
+            </fieldset>
+            <fieldset id="autovalidationGroup">
+                <legend>My numbers:</legend>
+                <AutoValidateInput
+                    validate={[validateInputLengthEquals5]}
+                    formatTo={formatToPostalCode}
+                    formatFrom={formatFromPostalCode}
+                />
+                <AutoValidateInput
+                    validate={[validateIfInputContainsOnlyNumbers, validateInputLengthEquals5]}
+                    formatTo={formatToPostalCode}
+                    formatFrom={formatFromPostalCode}
+                />
 
-                    <AutoValidateInput
-                        validate={[validateIfInputContainsOnlyNumbers, validateInputLengthEquals16]}
-                        formatTo={formatToCreditCardNumber}
-                        formatFrom={formatFromCreditCardNumber}
-                    />
-                </fieldset>
-                <fieldset id="dropdowns">
-                    <legend>My dropdown:</legend>
-                    <CustomDropdown/>
-                </fieldset>
+                <AutoValidateInput
+                    validate={[validateIfInputContainsOnlyNumbers, validateInputLengthEquals16]}
+                    formatTo={formatToCreditCardNumber}
+                    formatFrom={formatFromCreditCardNumber}
+                />
+            </fieldset>
+            <fieldset id="dropdowns">
+                <legend>My dropdown:</legend>
+                <CustomDropdown dispatchSetDropdownContent={props.dispatchSetDropdownContent}/>
+            </fieldset>
 
 
-                <button type="submit">Submit</button>
-                <div>{state}</div>
-            </form>
-        </div>
+            <button type="submit">Submit</button>
+            <div>{state}</div>
+        </form>
     );
 }
 
