@@ -12,3 +12,7 @@ export interface Format {
     value: string,
     isFormatted: boolean
 }
+
+export interface State {
+    values: string[]
+}

@@ -1,10 +1,14 @@
 import {connect} from "react-redux"
 import {Dispatch} from "redux";
 import App from "./App";
+import { State } from "./App.types";
 
 
-export function mapStateToProps(state: any) {
-
+export function mapStateToProps(state: State) {
+    console.log(state, "state")
+    return {
+        values: state.values
+    }
 }
 
 export function mapDispatchToProps(dispatch: Dispatch) {
@@ -13,4 +17,4 @@ export function mapDispatchToProps(dispatch: Dispatch) {
     }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

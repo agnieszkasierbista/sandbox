@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Dispatch, useState } from 'react';
 import {
     StyledCustomDropdown,
     StyledDropdownContainer,
@@ -7,7 +7,7 @@ import {
     StyledDropdownListElement, StyledTextInputForDropdown
 } from './App.styled';
 
-export const CustomDropdown: React.FC<any> = props => {
+export const CustomDropdown: React.FC<{values: string[], dispatchSetDropdownContent: () => void}> = props => {
 
     const [dropdownState, setDropdownState] = useState({
         isVisible: false,
@@ -40,12 +40,13 @@ export const CustomDropdown: React.FC<any> = props => {
 
                         props.dispatchSetDropdownContent();
                     }
-                }} />
+                }}
+            />
             <StyledDropdownContent
                 isVisible={dropdownState.isVisible}
             >
                 <StyledDropdownContainer>
-                    {dropdownState.dropdownContents
+                    {props.values
                         .filter((cellData) => cellData.includes(inputState.value))
                         .map((cellData, idx) => {
                             return (

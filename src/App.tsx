@@ -87,7 +87,9 @@ function App(props: any) {
             </fieldset>
             <fieldset id="dropdowns">
                 <legend>My dropdown:</legend>
-                <CustomDropdown dispatchSetDropdownContent={props.dispatchSetDropdownContent} />
+                <CustomDropdown
+                    dispatchSetDropdownContent={props.dispatchSetDropdownContent}
+                    values={props.values} />
             </fieldset>
 
 
