@@ -7,7 +7,8 @@ import { State } from "./App.types";
 export function mapStateToProps(state: State) {
     console.log(state, "state")
     return {
-        values: state.values
+        values: state.values,
+        isFetching: state.isFetching
     }
 }
 

@@ -11,6 +11,7 @@ import { formatToPostalCode, formatFromPostalCode, formatToCreditCardNumber, for
 import { AutoValidateInput } from './AutoValidateInput';
 import { CustomDropdown } from './CustomDropdown';
 import { findEmptyFields, isString } from './helpers';
+import { Spinner } from './spinner';
 
 
 function handleSubmit(event: React.FormEvent<HTMLFormElement>, formData: FormData) {
@@ -90,6 +91,7 @@ function App(props: any) {
                 <CustomDropdown
                     dispatchSetDropdownContent={props.dispatchSetDropdownContent}
                     values={props.values} />
+                <Spinner isSpinning={props.isFetching} />
             </fieldset>
 
 

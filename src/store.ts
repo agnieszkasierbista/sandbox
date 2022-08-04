@@ -3,14 +3,22 @@ import { createEpicMiddleware } from "redux-observable";
 import { State } from "./App.types";
 import { rootEpic } from "./epics";
 
-const preloadedState = {values: []};
+const preloadedState = {values: [], isFetching: false};
 
-const reducer: Reducer = (state: State = {values: []}, action) => {
+const reducer: Reducer = (state: State = {values: [], isFetching: false}, action) => {
     switch (action.type) {
+        case "ABC":
+            return {
+                ...state,
+                isFetching: true
+            }
+
         case "XYZ":
             return {
                 ...state,
-                values: ["aaa", "aaab", "aaabbb", "bbbccc", "bbbddd", "cccddd", "ccctttt", "bbb", "bbbbeee"]
+                values: ["aaa", "aaab", "aaabbb", "bbbccc", 
+                "bbbddd", "cccddd", "ccctttt", "bbb", "bbbbeee"],
+                isFetching: false
             }
 
         default:

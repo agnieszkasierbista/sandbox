@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 export const StyledInput = styled.input<{ isEmpty?: boolean }>`
   outline: 4px solid red;
@@ -48,3 +48,26 @@ export const StyledCustomDropdown = styled.div`
   display: inline-block;
   position: relative;
 `;
+
+
+const spin = keyframes`
+  from {
+    transform: rotate(0deg)
+  }
+
+  to {
+    transform: rotate(180deg)
+  }
+`;
+
+const anim = css`animation: ${(props: { isSpinning: boolean }) => props.isSpinning ? css`${spin} 2s linear infinite` : null};`
+
+export const StyledSpinner = styled.div<{ isSpinning: boolean }>`
+  display: inline-block;
+  vertical-align: middle;
+  height: 30px;
+  width: 30px;
+  background-color: blue;
+  ${anim}
+`;
+

@@ -14,5 +14,6 @@ export interface Format {
 }
 
 export interface State {
-    values: string[]
+    values: string[],
+    isFetching: boolean
 }

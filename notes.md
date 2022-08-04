@@ -12,4 +12,5 @@
 ~~12, input z dropdownem z podpowiedziami uzależnionymi od tego co wpisaliśmy, to bedzie lista, po kliknięciu której podsawi sie wybór.~~
 ~~13. żeby w inpucie podstawiła się wartość z konkretnego klikniętego elementu~~
 ~~14. opóznienie w pokazaniu podpowiedzi~~
-15. wyslanie akcji reduxa, żeby przyszły dane w propie (mapStateToProps)
+~~15. wyslanie akcji reduxa, żeby przyszły dane w propie (mapStateToProps)~~
+16.obok inputa po prawej ikonka sygnalizująca czy sie wyszukuje 
