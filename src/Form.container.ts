@@ -1,6 +1,6 @@
 import {connect} from "react-redux"
 import {Dispatch} from "redux";
-import App from "./App";
+import Form from "./Form";
 import { State } from "./App.types";
 
 
@@ -18,4 +18,4 @@ export function mapDispatchToProps(dispatch: Dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
