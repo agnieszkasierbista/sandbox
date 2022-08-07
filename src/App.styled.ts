@@ -80,21 +80,21 @@ export const StyledCarousel = styled.div`
   width: 300px;
 `;
 
-const moveLeft = keyframes`
+const moveLeft = (x: number, y: number) => keyframes`
   from {
-    transform: translateX(0)
+    transform: translateX(${y}%)
   }
 
   to {
-    transform: translateX(-100%)
+    transform: translateX(${x}%)
   }
 `;
 
-export const StyledCarouselChild = styled.div`
+export const StyledCarouselChild = styled.div<{counter: number}>`
   flex-shrink: 0;
-  transform: translateX(-100%);
   background-color: green;
   height: 100%;
   width: 100%;
-  animation: ${moveLeft} 3s;
+  animation: ${props => moveLeft(props.counter * -100, (props.counter - 1) * -100)} 3s;
+  animation-fill-mode: forwards;
 `;

@@ -13,4 +13,5 @@
 ~~13. żeby w inpucie podstawiła się wartość z konkretnego klikniętego elementu~~
 ~~14. opóznienie w pokazaniu podpowiedzi~~
 ~~15. wyslanie akcji reduxa, żeby przyszły dane w propie (mapStateToProps)~~
-16.obok inputa po prawej ikonka sygnalizująca czy sie wyszukuje 
+~~16.obok inputa po prawej ikonka sygnalizująca czy sie wyszukuje ~~
+17. na kliknięcie calego diva przesuwam na kolejnego childa
