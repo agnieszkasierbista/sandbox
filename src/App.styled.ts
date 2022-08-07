@@ -71,3 +71,30 @@ export const StyledSpinner = styled.div<{ isSpinning: boolean }>`
   ${anim}
 `;
 
+export const StyledCarousel = styled.div`
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  background-color: yellow;
+  height: 300px;
+  width: 300px;
+`;
+
+const moveLeft = keyframes`
+  from {
+    transform: translateX(0)
+  }
+
+  to {
+    transform: translateX(-100%)
+  }
+`;
+
+export const StyledCarouselChild = styled.div`
+  flex-shrink: 0;
+  transform: translateX(-100%);
+  background-color: green;
+  height: 100%;
+  width: 100%;
+  animation: ${moveLeft} 3s;
+`;
