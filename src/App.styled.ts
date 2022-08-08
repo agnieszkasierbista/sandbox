@@ -71,6 +71,22 @@ export const StyledSpinner = styled.div<{ isSpinning: boolean }>`
   ${anim}
 `;
 
+export const StyledCarouselContainer = styled.div`
+  display: inline-flex;
+  margin: auto;
+  background-color: skyblue;
+`;
+
+export const StyledArrowLeft = styled.div`
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.5);
+`;
+
+export const StyledArrowRight = styled.div`
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.5);
+`;
+
 export const StyledCarousel = styled.div`
   display: flex;
   flex-direction: row;
@@ -80,21 +96,24 @@ export const StyledCarousel = styled.div`
   width: 300px;
 `;
 
-const moveLeft = (x: number, y: number) => keyframes`
+const move = (x1: number, x2: number) => keyframes`
   from {
-    transform: translateX(${y}%)
+    transform: translateX(${x1}%)
   }
 
   to {
-    transform: translateX(${x}%)
+    transform: translateX(${x2}%)
   }
 `;
 
-export const StyledCarouselChild = styled.div<{counter: number}>`
+export const StyledCarouselChild = styled.div<{ counter: number, direction: string }>`
   flex-shrink: 0;
   background-color: green;
   height: 100%;
   width: 100%;
-  animation: ${props => moveLeft(props.counter * -100, (props.counter - 1) * -100)} 3s;
+  animation: ${props => props.direction && move(
+    (props.counter - (props.direction === "right" ? 1 : -1)) * -100, 
+    (props.counter - (props.direction === "right" ? 0 : 0)) * -100
+    )} 3s;
   animation-fill-mode: forwards;
 `;
