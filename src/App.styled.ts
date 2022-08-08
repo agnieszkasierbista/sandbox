@@ -132,9 +132,9 @@ export const StyledCarouselNav = styled.div`
   padding: 5px;
   `;
 
-export const StyledPaginationItem = styled.div`
-  background-color: orange;
-  border: 1px solid gray;
+export const StyledPaginationItem = styled.div<{ isActive: boolean }>`
+  background-color: ${props => props.isActive ? "red" : "orange"};
+  border: ${props => props.isActive ? "2px solid black" : "1px solid gray"};
   border-radius: 5px;
   padding: 8px 16px;
   margin: 2px 2px;
