@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowButton, StyledArrowContainer, StyledCarousel, StyledCarouselChild, StyledCarouselContainer } from "./App.styled"
 import { Carousel } from "./Carousel";
+import { CarouselNav } from "./CarouselNav";
 
 
 export const CarouselContainer = () => {
@@ -27,6 +28,8 @@ export const CarouselContainer = () => {
                 }}>
                 <ArrowButton src="/pictures/arrowRight.png" height="45" width="45" />
             </StyledArrowContainer>
+            <div style={{flexBasis: "100%"}}></div>
+            <CarouselNav setCounter={setCounter} setDirection={setDirection} counter={counter}/>
         </StyledCarouselContainer>
     )
 }

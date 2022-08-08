@@ -73,7 +73,8 @@ export const StyledSpinner = styled.div<{ isSpinning: boolean }>`
 
 export const StyledCarouselContainer = styled.div`
   display: inline-flex;
-  margin: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
   background-color: skyblue;
 `;
 
@@ -81,6 +82,7 @@ export const StyledArrowContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 1 1;
   background-color: rgba(0, 0, 0, 0.1);
 `;
 
@@ -94,8 +96,9 @@ export const StyledCarousel = styled.div`
   flex-direction: row;
   overflow: hidden;
   background-color: yellow;
-  height: 300px;
-  width: 300px;
+  flex: 8 0;
+  height: 400px;
+  width: 400px;
 `;
 
 const move = (x1: number, x2: number) => keyframes`
@@ -118,4 +121,21 @@ export const StyledCarouselChild = styled.div<{ counter: number, direction: stri
   (props.counter - (props.direction === "right" ? 0 : 0)) * -100
 )} 1s ease;
   animation-fill-mode: forwards;
+`;
+
+export const StyledCarouselNav = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row;
+  flex-basis: 100%;
+  padding: 5px;
+  `;
+
+export const StyledPaginationItem = styled.div`
+  background-color: orange;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 8px 16px;
+  margin: 2px 2px;
 `;
