@@ -28,7 +28,6 @@ export const CarouselContainer = () => {
                 }}>
                 <ArrowButton src="/pictures/arrowRight.png" height="45" width="45" />
             </StyledArrowContainer>
-            <div style={{flexBasis: "100%"}}></div>
             <CarouselNav setCounter={setCounter} setDirection={setDirection} counter={counter}/>
         </StyledCarouselContainer>
     )

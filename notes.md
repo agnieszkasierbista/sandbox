@@ -16,5 +16,5 @@
 ~~16.obok inputa po prawej ikonka sygnalizująca czy sie wyszukuje ~~
 ~~17. na kliknięcie calego diva przesuwam na kolejnego childa~~
 ~~18. strzałki prawa / lewa (z b lewa przenosi do a, a prawa do c)~~
-19. chcemy zapętlić, z c prawa strzałka przenosi do a, a z a lewa przenosi do c
-20. paginacja - na dole są cyferki które informują na której stronie jesteśmy (moga być bullety), pu ich kliknięciu też przenosi do odpowiedniego widoku
+~~19. chcemy zapętlić, z c prawa strzałka przenosi do a, a z a lewa przenosi do c~~
+~~20. paginacja - na dole są cyferki które informują na której stronie jesteśmy (moga być bullety), pu ich kliknięciu też przenosi do odpowiedniego widoku !!(przy przewijaniu o 2 dzieją się rzeczy niestworzone - c zmienia sie w b)~~
