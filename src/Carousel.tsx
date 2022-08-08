@@ -1,32 +1,12 @@
-import { useState } from "react";
-import { StyledArrowLeft, StyledArrowRight, StyledCarousel, StyledCarouselChild, StyledCarouselContainer } from "./App.styled"
+import React from 'react';
+import { StyledCarousel, StyledCarouselChild } from './App.styled';
 
-
-export const Carousel = () => {
-
-    const [counter, setCounter] = useState(0);
-    const [direction, setDirection] = useState("");
+export const Carousel = (props: { direction: string; counter: number; }) => {
     return (
-        <StyledCarouselContainer>
-            <StyledArrowLeft
-                onClick={() => {
-                    setCounter((prev) => prev - 1);
-                    setDirection("left");
-                }}>
-                <img src="/pictures/arrowLeft.png" height="45" width="45" />
-            </StyledArrowLeft>
-            <StyledCarousel>
-                <StyledCarouselChild direction={direction} counter={counter}>A</StyledCarouselChild>
-                <StyledCarouselChild direction={direction} counter={counter}>B</StyledCarouselChild>
-                <StyledCarouselChild direction={direction} counter={counter}>C</StyledCarouselChild>
-            </StyledCarousel>
-            <StyledArrowRight 
-            onClick={() => {
-                    setCounter((prev) => prev + 1);
-                    setDirection("right");
-                }}>
-                <img src="/pictures/arrowRight.png" height="45" width="45" />
-            </StyledArrowRight>
-        </StyledCarouselContainer>
+        <StyledCarousel>
+            <StyledCarouselChild direction={props.direction} counter={props.counter}>A</StyledCarouselChild>
+            <StyledCarouselChild direction={props.direction} counter={props.counter}>B</StyledCarouselChild>
+            <StyledCarouselChild direction={props.direction} counter={props.counter}>C</StyledCarouselChild>
+        </StyledCarousel>
     )
 }

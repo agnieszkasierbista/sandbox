@@ -77,14 +77,16 @@ export const StyledCarouselContainer = styled.div`
   background-color: skyblue;
 `;
 
-export const StyledArrowLeft = styled.div`
-  display: inline-block;
-  background-color: rgba(0, 0, 0, 0.5);
+export const StyledArrowContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
 `;
 
-export const StyledArrowRight = styled.div`
-  display: inline-block;
-  background-color: rgba(0, 0, 0, 0.5);
+export const ArrowButton = styled.img`
+  height: 45px;
+  width: 45px;
 `;
 
 export const StyledCarousel = styled.div`
@@ -112,8 +114,8 @@ export const StyledCarouselChild = styled.div<{ counter: number, direction: stri
   height: 100%;
   width: 100%;
   animation: ${props => props.direction && move(
-    (props.counter - (props.direction === "right" ? 1 : -1)) * -100, 
-    (props.counter - (props.direction === "right" ? 0 : 0)) * -100
-    )} 3s;
+  (props.counter - (props.direction === "right" ? 1 : -1)) * -100,
+  (props.counter - (props.direction === "right" ? 0 : 0)) * -100
+)} 1s ease;
   animation-fill-mode: forwards;
 `;
