@@ -149,3 +149,25 @@ export const StyledNav = styled.nav`
   height: 100%;
 
 `;
+
+export const StyledAccordeon = styled.div`
+  padding: 20px;
+  background-color: cornflowerblue;
+  border: 2px solid navy;
+  color: black;
+  width: 700px;
+`;
+
+export const StyledAccordeonHeader = styled.div`
+  padding: 20px;
+  background-color: deepskyblue;
+  border: 2px dashed gray;
+`;
+
+export const StyledAccordeonContent = styled.div<{isExpanded: boolean}>`
+  padding: 20px;
+  overflow: hidden;
+  backround-color: mediumvioletred;
+  border: 2px dotted purple;
+  height: ${(props) => props.isExpanded? "100%" : 0}
+`;
