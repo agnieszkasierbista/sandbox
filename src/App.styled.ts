@@ -139,3 +139,13 @@ export const StyledPaginationItem = styled.div<{ isActive: boolean }>`
   padding: 8px 16px;
   margin: 2px 2px;
 `;
+
+export const StyledNav = styled.nav`
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: aqua;
+  width: min-content;
+  height: 100%;
+
+`;

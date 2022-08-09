@@ -99,7 +99,6 @@ function Form(props: any) {
             <button type="submit">Submit</button>
             <div>{state}</div>
         </form>
-        <Link to="/a">Aaaaaaaa</Link>
     </>
     );
 }
