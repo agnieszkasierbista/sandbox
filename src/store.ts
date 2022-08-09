@@ -1,11 +1,11 @@
-import { configureStore, Reducer } from "@reduxjs/toolkit";
+import { combineReducers, configureStore, Reducer } from "@reduxjs/toolkit";
 import { createEpicMiddleware } from "redux-observable";
 import { State } from "./App.types";
 import { rootEpic } from "./epics";
 
-const preloadedState = {values: [], isFetching: false};
+const preloadedState = { values: [], isFetching: false, isLoading: false };
 
-const reducer: Reducer = (state: State = {values: [], isFetching: false}, action) => {
+const reducer: Reducer = (state: State = { values: [], isFetching: false, isLoading: false }, action) => {
     switch (action.type) {
         case "ABC":
             return {
@@ -16,9 +16,15 @@ const reducer: Reducer = (state: State = {values: [], isFetching: false}, action
         case "XYZ":
             return {
                 ...state,
-                values: ["aaa", "aaab", "aaabbb", "bbbccc", 
-                "bbbddd", "cccddd", "ccctttt", "bbb", "bbbbeee"],
+                values: ["aaa", "aaab", "aaabbb", "bbbccc",
+                    "bbbddd", "cccddd", "ccctttt", "bbb", "bbbbeee"],
                 isFetching: false
+            }
+
+            case "TOGGGLE":
+            return {
+                ...state,
+                isLoading: !state.isLoading
             }
 
         default:
@@ -28,6 +34,7 @@ const reducer: Reducer = (state: State = {values: [], isFetching: false}, action
 };
 
 const epicMiddleware = createEpicMiddleware();
+
 
 const store = configureStore({
     reducer,

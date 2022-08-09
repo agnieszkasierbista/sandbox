@@ -185,3 +185,27 @@ export const StyledChevron = styled.img<{isExpanded: boolean}>`
   transform: rotate(${props => props.isExpanded ? "180deg" : 0});
   transition: transform 1s;
 `;
+
+export const StyledLoader = styled.div<{isLoading: boolean}>`
+    display: inline-block;
+    height: 20px;
+    width: 80%;
+    border: 2px solid gray;
+    border-radius: 10px;
+
+`;
+
+export const StyledLoadingStars = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    width: 80%;
+    border: 2px solid gray;
+    border-radius: 10px; 
+`;
+
+export const StyledStar = styled.img`
+    display: inline-block;
+`;

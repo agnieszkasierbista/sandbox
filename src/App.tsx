@@ -4,6 +4,8 @@ import { Accordeon } from "./Accordeon";
 import { StyledNav } from "./App.styled";
 import { CarouselContainer } from "./CarouselContainer";
 import Form from "./Form.container";
+import { Loader } from "./Loader";
+import Progress from "./Progress.container";
 
 const App = () => {
     return (
@@ -11,7 +13,7 @@ const App = () => {
 
             <StyledNav>
                 <Link to="/">Form </Link>
-                <Link to="/c">Cccccc </Link>
+                <Link to="/c">Loader </Link>
                 <Link to="/a">Carousel </Link>
                 <Link to="/b">Accordeon </Link>
             </StyledNav>
@@ -23,7 +25,7 @@ const App = () => {
                 <Route path="/b" element={<Accordeon />}>
                 </Route>
 
-                <Route path="/c" element={<div>CCCCCc</div>}>
+                <Route path="/c" element={<Progress/>}>
                 </Route>
 
                 <Route path="/" element={<Form />}>
