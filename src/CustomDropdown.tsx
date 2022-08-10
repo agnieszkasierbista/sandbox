@@ -27,6 +27,7 @@ export const CustomDropdown: React.FC<{values: string[], dispatchSetDropdownCont
             <StyledTextInputForDropdown
                 type="text"
                 name="dropdown"
+                autoComplete='off'
                 value={inputState.value}
                 onChange={(event) => {
                     console.log("value", event.target.value);

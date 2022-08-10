@@ -3,16 +3,13 @@ import "./App.css";
 import {
     StyledInput
 } from './App.styled';
-import { compose, is } from 'ramda';
-import { Provider } from 'react-redux';
-import store from "./store";
-import { validateInputLengthEquals5, validateIfInputContainsOnlyNumbers, validateInputLengthEquals16 } from "./validators";
+import { validateInputLengthEquals5, validateIfInputContainsOnlyNumbers, validateInputLengthEquals16, validateIfInputContainsAtLeastOneUppercaseLetter, validateIfInputContainsAtLeastOneLowercaseLetter, validateIfInputContainsAtLeastOneNumber, validateIfInputContainsAtLeastOneSpecialCharacter } from "./validators";
 import { formatToPostalCode, formatFromPostalCode, formatToCreditCardNumber, formatFromCreditCardNumber } from './formatters';
 import { AutoValidateInput } from './AutoValidateInput';
 import { CustomDropdown } from './CustomDropdown';
 import { findEmptyFields, isString } from './helpers';
 import { Spinner } from './spinner';
-import { Link } from 'react-router-dom';
+import { PasswordStrengthChecker } from './PasswordStrenghtChecker';
 
 
 function handleSubmit(event: React.FormEvent<HTMLFormElement>, formData: FormData) {
@@ -35,7 +32,6 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>, formData: FormDat
 
 function Form(props: any) {
 
-    //2 możliwe rozwiazania podkreslenia niewypełnionych pol na czerwono - hooki ref i set state
     const reference = React.useRef<HTMLFormElement>(null);
 
     const [state, setState] = React.useState<string[]>([]);
@@ -43,9 +39,9 @@ function Form(props: any) {
     return (<>
         <form ref={reference}
             onSubmit={(event) => {
-                console.log(reference.current);
+                // console.log(reference.current);
                 const formData = new FormData(event.currentTarget);
-                console.log(reference.current && Array.from(new FormData(reference.current).entries()));
+                // console.log(reference.current && Array.from(new FormData(reference.current).entries()));
                 handleSubmit(event, formData);
                 setState(findEmptyFields(Array.from(formData.entries())));
             }}>
@@ -94,7 +90,16 @@ function Form(props: any) {
                     values={props.values} />
                 <Spinner isSpinning={props.isFetching} />
             </fieldset>
-            
+            <fieldset id="passwordChecker">
+                <legend>Check your password strenght!</legend>
+                <PasswordStrengthChecker
+                    validate={[validateIfInputContainsAtLeastOneUppercaseLetter, 
+                        validateIfInputContainsAtLeastOneLowercaseLetter, 
+                        validateIfInputContainsAtLeastOneNumber, 
+                        validateIfInputContainsAtLeastOneSpecialCharacter]}
+                />
+            </fieldset>
+
 
             <button type="submit">Submit</button>
             <div>{state}</div>

@@ -1,4 +1,5 @@
 import styled, { keyframes, css } from "styled-components";
+import { Validation } from "./App.types";
 
 export const StyledInput = styled.input<{ isEmpty?: boolean }>`
   outline: 4px solid red;
@@ -233,5 +234,13 @@ export const StyledFillingStars = styled.div`
       height: 100px;
       border: 2px solid gray;
       border-radius: 10px; 
+
+`;
+
+export const StyledPasswordStrengthChecker = styled.article`
+
+`;
+
+export const StyledSecurityRating = styled.div`
 
 `;

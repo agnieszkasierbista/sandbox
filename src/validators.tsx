@@ -55,3 +55,58 @@ export function validateIfInputContainsOnlyNumbers(inputValue: string): Validati
     }
 
 }
+export function validateIfInputContainsAtLeastOneUppercaseLetter(inputValue: string): Validation {
+    if (inputValue.match(/[A-Z]+/)) {
+        return {
+            isValid: true,
+            errors: []
+        };
+    } else {
+        return {
+            isValid: false,
+            errors: ["Your password must contain at least one uppercase letter!"]
+        }
+    }
+}
+
+export function validateIfInputContainsAtLeastOneLowercaseLetter(inputValue: string): Validation {
+    if (inputValue.match(/[a-z]+/)) {
+        return {
+            isValid: true,
+            errors: []
+        };
+    } else {
+        return {
+            isValid: false,
+            errors: ["Your password must contain at least one lowercase letter!"]
+        }
+    }
+}
+
+export function validateIfInputContainsAtLeastOneNumber(inputValue: string): Validation {
+    if (inputValue.match(/[0-9]+/)) {
+        return {
+            isValid: true,
+            errors: []
+        };
+    } else {
+        return {
+            isValid: false,
+            errors: ["Your password must contain at least one number!"]
+        }
+    }
+}
+
+export function validateIfInputContainsAtLeastOneSpecialCharacter(inputValue: string): Validation {
+    if (inputValue.match(/[.,!@#$%]+/)) {
+        return {
+            isValid: true,
+            errors: []
+        };
+    } else {
+        return {
+            isValid: false,
+            errors: ["Your password must contain at least one special character from .,!@#$% !"]
+        }
+    }
+}
