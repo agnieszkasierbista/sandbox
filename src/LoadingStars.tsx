@@ -16,7 +16,7 @@ export const LoadingStars = (props: {toggleLoading: () => void}) => {
 
         const timer = setInterval(() => {
 
-            if (state.counter <= 5) {
+            if (state.counter <= 9) {
                 setState((prev) => {
 
                     const b: number[] = prev?.counterArray;

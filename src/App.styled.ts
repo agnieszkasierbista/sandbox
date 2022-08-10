@@ -167,12 +167,12 @@ export const StyledAccordeonHeader = styled.div`
   border: 2px dashed gray;
 `;
 
-export const StyledAccordeonContent = styled.div<{isExpanded: boolean}>`
+export const StyledAccordeonContent = styled.div<{ isExpanded: boolean }>`
   padding: 20px;
   overflow-y: auto;
   backround-color: mediumvioletred;
   border: 2px dotted purple;
-  height: ${(props) => props.isExpanded? "350px" : "20px"};
+  height: ${(props) => props.isExpanded ? "350px" : "20px"};
   transition: height 1s;
 `;
 
@@ -180,7 +180,7 @@ export const StyledAccordeonHearedContent = styled.div`
   display: inline-block;
 
 `;
-export const StyledChevron = styled.img<{isExpanded: boolean}>`
+export const StyledChevron = styled.img<{ isExpanded: boolean }>`
   display: inline-block;
   transform: rotate(${props => props.isExpanded ? "180deg" : 0});
   transition: transform 1s;
@@ -188,17 +188,17 @@ export const StyledChevron = styled.img<{isExpanded: boolean}>`
 
 const animateGradient = () => keyframes`
 0% {
-  background-position: 0% 50%;
+  background-position: 0% 0%;
 }
 50% {
-  background-position: 100% 50%;
+  background-position: 100% 0%;
 }
 100% {
-  background-position: 0% 50%;
+  background-position: 200% 0%;
 }
 `;
 
-export const StyledLoader = styled.div<{isLoading: boolean}>`
+export const StyledLoader = styled.div<{ isLoading: boolean }>`
     display: inline-block;
     height: 20px;
     width: 80%;
@@ -206,10 +206,10 @@ export const StyledLoader = styled.div<{isLoading: boolean}>`
     border-radius: 10px;
     background-size: 200% 200%;
     background-color: ${props => props.isLoading ? "blue" : "green"};
-    background-image: ${props => props.isLoading 
-      ? "linear-gradient(-45deg, blue, turquoise, red, yellow, magenta)" 
+    background-image: ${props => props.isLoading
+      ? "repeating-linear-gradient(90deg, blue, turquoise, red, yellow, magenta, blue)"
       : "none"};
-    animation: ${animateGradient} 10s ease infinite;
+    animation: ${animateGradient} 5s linear infinite;
 `;
 
 export const StyledLoadingStars = styled.div`
