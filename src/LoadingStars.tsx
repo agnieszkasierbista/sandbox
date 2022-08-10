@@ -16,7 +16,7 @@ export const LoadingStars = (props: {toggleLoading: () => void}) => {
 
         const timer = setInterval(() => {
 
-            if (state.counter <= 19) {
+            if (state.counter <= 5) {
                 setState((prev) => {
 
                     const b: number[] = prev?.counterArray;
@@ -69,9 +69,9 @@ export const LoadingStars = (props: {toggleLoading: () => void}) => {
     
     // aaa(state.isUpdating)();
 
-    console.log(state.counter, "counter");
-    console.log(state.isUpdating);
-    console.log(state.counterArray, "Pa tera Mati");
+    // console.log(state.counter, "counter");
+    // console.log(state.isUpdating);
+    // console.log(state.counterArray, "Pa tera Mati");
 
 
     const star = <StyledStar src="/pictures/star.png" />;
@@ -81,7 +81,7 @@ export const LoadingStars = (props: {toggleLoading: () => void}) => {
         <StyledLoadingStars >
 
             {
-                state.counterArray.map((item) => item % 2 ? <div id={"a" + item}>{star}</div> : <div id={"a" + item}>{emptyStar}</div>)
+                state.counterArray.map((item, idx) => item % 2 ? <div key={"a" + idx}>{star}</div> : <div key={"ab" + item + idx}>{emptyStar}</div>)
 
             }
         </StyledLoadingStars>

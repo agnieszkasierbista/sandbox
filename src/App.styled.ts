@@ -226,3 +226,12 @@ export const StyledLoadingStars = styled.div`
 export const StyledStar = styled.img`
     display: inline-block;
 `;
+
+export const StyledFillingStars = styled.div`
+      display: flex;
+      width: 80%;
+      height: 100px;
+      border: 2px solid gray;
+      border-radius: 10px; 
+
+`;

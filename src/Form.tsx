@@ -94,7 +94,7 @@ function Form(props: any) {
                     values={props.values} />
                 <Spinner isSpinning={props.isFetching} />
             </fieldset>
-
+            
 
             <button type="submit">Submit</button>
             <div>{state}</div>

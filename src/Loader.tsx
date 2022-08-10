@@ -7,7 +7,7 @@ React.useEffect(() => {
     
 },[props.isLoading])
 
-    console.log(props.isLoading, "isLoading");
+    // console.log(props.isLoading, "isLoading");
 
     return (
         
