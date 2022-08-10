@@ -21,3 +21,5 @@
 ~~21. akordeon - znacznik np. div, i jest w nim tresc Lorem ipsum, gdy jest wyświetlany, możesz chcieć zwinąć treść klikając w szewrona. Akordeon zapewnia mechanizm do zwijania i rozwijania, bez animacji. Po zwinięciu jest albo skrót tekstu albo jakiś tytuł czy cos.~~
 ~~22. animacja do zwijania i rowijania akordeonu~~
 23. loader - pozioma kreska bedzie sie ładować narastanie procesu. Zielony cały, że sie załadowało.
+24. Zrobic wariacje gwiazdek jako progress bar, gdzie najpierw wszystkie puste są wyświetlone i po jednej sie zapełniają.
+25. gwiadzki jako wskażnik mocy hasła (input z walidatorami ktory weryfikuje i przedstawia w formie zakolorowanych gwiazdek)
