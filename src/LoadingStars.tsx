@@ -81,7 +81,7 @@ export const LoadingStars = (props: {toggleLoading: () => void}) => {
         <StyledLoadingStars >
 
             {
-                state.counterArray.map((item) => item % 2 ? <div>{star}</div> : <div>{emptyStar}</div>)
+                state.counterArray.map((item) => item % 2 ? <div id={"a" + item}>{star}</div> : <div id={"a" + item}>{emptyStar}</div>)
 
             }
         </StyledLoadingStars>

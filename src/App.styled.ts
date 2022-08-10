@@ -186,13 +186,30 @@ export const StyledChevron = styled.img<{isExpanded: boolean}>`
   transition: transform 1s;
 `;
 
+const animateGradient = () => keyframes`
+0% {
+  background-position: 0% 50%;
+}
+50% {
+  background-position: 100% 50%;
+}
+100% {
+  background-position: 0% 50%;
+}
+`;
+
 export const StyledLoader = styled.div<{isLoading: boolean}>`
     display: inline-block;
     height: 20px;
     width: 80%;
     border: 2px solid gray;
     border-radius: 10px;
-
+    background-size: 200% 200%;
+    background-color: ${props => props.isLoading ? "blue" : "green"};
+    background-image: ${props => props.isLoading 
+      ? "linear-gradient(-45deg, blue, turquoise, red, yellow, magenta)" 
+      : "none"};
+    animation: ${animateGradient} 10s ease infinite;
 `;
 
 export const StyledLoadingStars = styled.div`

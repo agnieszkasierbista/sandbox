@@ -21,7 +21,7 @@ const reducer: Reducer = (state: State = { values: [], isFetching: false, isLoad
                 isFetching: false
             }
 
-            case "TOGGGLE":
+            case "TOGGLE":
             return {
                 ...state,
                 isLoading: !state.isLoading
