@@ -1,5 +1,6 @@
 import styled, { keyframes, css } from "styled-components";
 import { Validation } from "./App.types";
+import { Link } from "react-router-dom";
 
 export const StyledInput = styled.input<{ isEmpty?: boolean }>`
   outline: 4px solid red;
@@ -145,10 +146,20 @@ export const StyledNav = styled.nav`
   position: fixed;
   top: 0;
   right: 0;
+  padding: 5px;
   background-color: aqua;
   width: min-content;
   height: 100%;
 
+`;
+
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+    display: block;
+    margin-top: 2px;
+    padding: 6px 8px;
+    border: 1px solid navy;
+    border-radius: 5px;
 `;
 
 export const StyledAccordeon = styled.div`
@@ -200,28 +211,28 @@ const animateGradient = () => keyframes`
 `;
 
 export const StyledLoader = styled.div<{ isLoading: boolean }>`
-    display: inline-block;
-    height: 20px;
-    width: 80%;
-    border: 2px solid gray;
-    border-radius: 10px;
-    background-size: 200% 200%;
-    background-color: ${props => props.isLoading ? "blue" : "green"};
-    background-image: ${props => props.isLoading
-    ? "repeating-linear-gradient(90deg, blue, turquoise, red, yellow, magenta, blue)"
-    : "none"};
-    animation: ${animateGradient} 5s linear infinite;
+  display: inline-block;
+  height: 20px;
+  width: 80%;
+  border: 2px solid gray;
+  border-radius: 10px;
+  background-size: 200% 200%;
+  background-color: ${props => props.isLoading ? "blue" : "green"};
+  background-image: ${props => props.isLoading
+  ? "repeating-linear-gradient(90deg, blue, turquoise, red, yellow, magenta, blue)"
+  : "none"};
+  animation: ${animateGradient} 5s linear infinite;
 `;
 
 export const StyledLoadingStars = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    width: 80%;
-    border: 2px solid gray;
-    border-radius: 10px; 
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 80%;
+  border: 2px solid gray;
+  border-radius: 10px; 
 `;
 
 export const StyledStar = styled.img`
@@ -251,16 +262,17 @@ export const StyledColoredStar = styled.img<{ validationResults: Validation[] }>
 `;
 
 export const StyledFillingStars = styled.div`
-      display: flex;
-      width: 80%;
-      height: 100px;
-      border: 2px solid gray;
-      border-radius: 10px; 
+  display: flex;
+  width: 80%;
+  height: 100px;
+  border: 2px solid gray;
+  border-radius: 10px; 
 
 `;
 
 export const StyledPasswordStrengthChecker = styled.article`
-
+  display: flex;
+  align-items: center;
 `;
 
 export const StyledSecurityRating = styled.div`

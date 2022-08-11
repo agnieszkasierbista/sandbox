@@ -1,7 +1,7 @@
 import React from "react";
 import { Router, Link, Route, Routes } from "react-router-dom";
 import { Accordeon } from "./Accordeon";
-import { StyledNav } from "./App.styled";
+import { StyledLink, StyledNav } from "./App.styled";
 import { CarouselContainer } from "./CarouselContainer";
 import Form from "./Form.container";
 import { Loader } from "./Loader";
@@ -12,10 +12,10 @@ const App = () => {
         <>
 
             <StyledNav>
-                <Link to="/">Form </Link>
-                <Link to="/c">Loader </Link>
-                <Link to="/a">Carousel </Link>
-                <Link to="/b">Accordeon </Link>
+                <StyledLink to="/">Form </StyledLink>
+                <StyledLink to="/c">Loader </StyledLink>
+                <StyledLink to="/a">Carousel </StyledLink>
+                <StyledLink to="/b">Accordeon </StyledLink>
             </StyledNav>
 
             <Routes>
