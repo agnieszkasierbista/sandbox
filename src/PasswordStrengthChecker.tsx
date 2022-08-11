@@ -10,7 +10,7 @@ export const PasswordStrengthChecker = (props: { validate: ((inputValue: string)
 
     const [state, setState] = React.useState({
         inputValue: "",
-        validationResults: [],
+        validationResults: [] as Validation[],
         starsArray: starsArray
     })
 
@@ -27,7 +27,6 @@ console.log(state.validationResults.length, "AAAAAAAAAAAAAAAAa")
         })
 
         console.log(arrayOfPassedValidationsResults);
-//@ts-ignore
         setState((prev) => {
             const updatedArray = prev.starsArray.map((item, idx) => {
                 if (idx <= arrayOfPassedValidationsResults.length - 1) {
