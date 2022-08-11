@@ -5,7 +5,7 @@ import { AutoValidateInput } from "./AutoValidateInput"
 
 export const PasswordStrengthChecker = (props: { validate: ((inputValue: string) => Validation)[] }) => {
 
-    const starsCount = 4;
+    const starsCount = props.validate.length;
     const starsArray: number[] = new Array(starsCount).fill(0);
 
     const [state, setState] = React.useState({
@@ -14,7 +14,6 @@ export const PasswordStrengthChecker = (props: { validate: ((inputValue: string)
         starsArray: starsArray
     })
 
-console.log(state.validationResults.length, "AAAAAAAAAAAAAAAAa")
 
     const star = <StyledColoredStar validationResults={state.validationResults} src="/pictures/star.png" />;
     const emptyStar = <StyledStar src="/pictures/star_empty.png" />;
@@ -26,7 +25,6 @@ console.log(state.validationResults.length, "AAAAAAAAAAAAAAAAa")
             return item(state.inputValue)
         })
 
-        console.log(arrayOfPassedValidationsResults);
         setState((prev) => {
             const updatedArray = prev.starsArray.map((item, idx) => {
                 if (idx <= arrayOfPassedValidationsResults.length - 1) {
@@ -54,8 +52,7 @@ console.log(state.validationResults.length, "AAAAAAAAAAAAAAAAa")
         <StyledPasswordStrengthChecker>
             <AutoValidateInput
                 validate={props.validate}
-                formatTo={(a) => ({ value: a, isFormatted: true })}
-                formatFrom={(a) => a}
+               
                 observe={(a: any) => {
                     setState((prev) => {
                         return { ...prev, inputValue: a }

@@ -24,4 +24,4 @@
 ~~24. Zrobic wariacje gwiazdek jako progress bar, gdzie najpierw wszystkie puste są wyświetlone i po jednej sie zapełniają.~~
 ~~25. gwiadzki jako wskażnik mocy hasła (input z walidatorami ktory weryfikuje i przedstawia w formie zakolorowanych gwiazdek)~~
 ~~26. opcjonaly formatTo i formatFrom~~
-27. PasswordStrengthChecker linia 30 //@ts-ignore!!!!!!!!!
+27. pomyśleć jak rozłożyć kolorowanie gwiazdek w zależności od ilosci uzytych validatorów (proponuje dac max 10, bo po co komu wiecej)

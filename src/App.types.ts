@@ -23,5 +23,5 @@ export interface AutoValidateInputType {
     validate: ((value: string) => Validation)[];
     formatTo?: (value: string) => Format;
     formatFrom?: (formattedValue: string) => string;
-    observe?: any
+    observe?: (inputValue: string) => void
 }
