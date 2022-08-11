@@ -1,5 +1,4 @@
 import React from "react";
-import { clearTimeout } from "timers";
 import { StyledFillingStars, StyledStar } from "./App.styled";
 
 export const FillingStars = () => {
@@ -45,14 +44,20 @@ export const FillingStars = () => {
 
     }
 
+    React.useEffect(() => {
 
-    state.isLoading && updateState();
+        state.isLoading && updateState();
+
+    }, [state.isLoading, state.starsArray])
+
 
     return (
         <StyledFillingStars>
             <button onClick={() => {
                 setState((prev) => { return { ...prev, isLoading: !prev.isLoading } });
-            }}>Activate Loading</button>
+            }}>
+                Activate Loading
+            </button>
             {
                 state.starsArray.map((item, idx) => {
                     if (item === 0) {
