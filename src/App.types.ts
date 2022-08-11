@@ -18,3 +18,10 @@ export interface State {
     isFetching: boolean,
     isLoading: boolean,
 }
+
+export interface AutoValidateInputType {
+    validate: ((value: string) => Validation)[];
+    formatTo?: (value: string) => Format;
+    formatFrom?: (formattedValue: string) => string;
+    observe?: any
+}

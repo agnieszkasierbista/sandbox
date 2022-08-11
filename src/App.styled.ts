@@ -208,8 +208,8 @@ export const StyledLoader = styled.div<{ isLoading: boolean }>`
     background-size: 200% 200%;
     background-color: ${props => props.isLoading ? "blue" : "green"};
     background-image: ${props => props.isLoading
-      ? "repeating-linear-gradient(90deg, blue, turquoise, red, yellow, magenta, blue)"
-      : "none"};
+    ? "repeating-linear-gradient(90deg, blue, turquoise, red, yellow, magenta, blue)"
+    : "none"};
     animation: ${animateGradient} 5s linear infinite;
 `;
 
@@ -228,6 +228,28 @@ export const StyledStar = styled.img`
     display: inline-block;
 `;
 
+export const StyledColoredStar = styled.img<{ validationResults: Validation[] }>`
+    display: inline-block;
+    filter: ${(props) => {
+    switch (props.validationResults.length) {
+      case 1:
+        return "invert(37%) sepia(97%) saturate(6380%) hue-rotate(352deg) brightness(96%) contrast(137%)"
+      case 2:
+        return "invert(88%) sepia(100%) saturate(7500%) hue-rotate(352deg) brightness(105%) contrast(107%)"
+      case 3:
+        return "invert(64%) sepia(94%) saturate(4101%) hue-rotate(83deg) brightness(124%) contrast(120%)"
+      case 4:
+        return "invert(21%) sepia(91%) saturate(4804%) hue-rotate(101deg) brightness(99%) contrast(102%)"
+      default:
+        return "none"
+    }
+
+
+  }
+
+  };
+`;
+
 export const StyledFillingStars = styled.div`
       display: flex;
       width: 80%;
@@ -242,5 +264,5 @@ export const StyledPasswordStrengthChecker = styled.article`
 `;
 
 export const StyledSecurityRating = styled.div`
-
+  display: flex;
 `;

@@ -22,5 +22,6 @@
 ~~22. animacja do zwijania i rowijania akordeonu~~
 ~~23. loader - pozioma kreska bedzie sie ładować narastanie procesu. Zielony cały, że sie załadowało.~~
 ~~24. Zrobic wariacje gwiazdek jako progress bar, gdzie najpierw wszystkie puste są wyświetlone i po jednej sie zapełniają.~~
-25. gwiadzki jako wskażnik mocy hasła (input z walidatorami ktory weryfikuje i przedstawia w formie zakolorowanych gwiazdek)
-26. 
+~~25. gwiadzki jako wskażnik mocy hasła (input z walidatorami ktory weryfikuje i przedstawia w formie zakolorowanych gwiazdek)~~
+~~26. opcjonaly formatTo i formatFrom~~
+27. PasswordStrengthChecker linia 30 //@ts-ignore!!!!!!!!!

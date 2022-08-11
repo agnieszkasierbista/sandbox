@@ -1,12 +1,8 @@
 import React from 'react';
 import { StyledAutoValidateInput, StyledTextInput } from './App.styled';
-import { FieldState, Validation, Format } from "./App.types";
+import { FieldState, Validation, Format, AutoValidateInputType } from "./App.types";
 
-export const AutoValidateInput: React.FC<{
-    validate: ((value: string) => Validation)[];
-    formatTo: (value: string) => Format;
-    formatFrom: (formattedValue: string) => string;
-}> = props => {
+export const AutoValidateInput: React.FC<AutoValidateInputType> = props => {
 
     const [fieldState, setFieldState] = React.useState<FieldState>({
         isValid: undefined,
@@ -22,6 +18,7 @@ export const AutoValidateInput: React.FC<{
                 type="text"
                 value={fieldState?.value || ""}
                 onChange={(evt) => {
+                   props.observe?.(evt.target.value);
                     console.log("state on change", fieldState);
                     setFieldState((prev) => {
                         return {
@@ -37,7 +34,7 @@ export const AutoValidateInput: React.FC<{
                     setFieldState((prev) => ({
                         ...prev,
                         ...postValidationState,
-                        ...(postValidationState.isValid ? props.formatTo(evtValue) : {})
+                        ...(postValidationState.isValid ? props.formatTo?.(evtValue) : {})
                     }));
                     console.log("state on blur", fieldState);
 
@@ -49,7 +46,7 @@ export const AutoValidateInput: React.FC<{
                         setFieldState(
                             {
                                 ...fieldState,
-                                value: (fieldState.isFormatted ? props.formatFrom(fieldState.value) : fieldState.value),
+                                value: (fieldState.isFormatted ? props.formatFrom?.(fieldState.value) || "": fieldState.value),
                                 isFormatted: false
                             });
                     }

@@ -9,7 +9,7 @@ import { AutoValidateInput } from './AutoValidateInput';
 import { CustomDropdown } from './CustomDropdown';
 import { findEmptyFields, isString } from './helpers';
 import { Spinner } from './spinner';
-import { PasswordStrengthChecker } from './PasswordStrenghtChecker';
+import { PasswordStrengthChecker } from './PasswordStrengthChecker';
 
 
 function handleSubmit(event: React.FormEvent<HTMLFormElement>, formData: FormData) {
@@ -93,9 +93,9 @@ function Form(props: any) {
             <fieldset id="passwordChecker">
                 <legend>Check your password strenght!</legend>
                 <PasswordStrengthChecker
-                    validate={[validateIfInputContainsAtLeastOneUppercaseLetter, 
-                        validateIfInputContainsAtLeastOneLowercaseLetter, 
-                        validateIfInputContainsAtLeastOneNumber, 
+                    validate={[validateIfInputContainsAtLeastOneUppercaseLetter,
+                        validateIfInputContainsAtLeastOneLowercaseLetter,
+                        validateIfInputContainsAtLeastOneNumber,
                         validateIfInputContainsAtLeastOneSpecialCharacter]}
                 />
             </fieldset>
