@@ -308,3 +308,7 @@ export const StyledModalContent = styled.div`
   background-color: yellow;
   border: 2px solid gold;
 `;
+
+export const StyledSection = styled.section<{isHidden: boolean}>`
+  visibility: ${props => props.isHidden ? "hidden" : "visible" };
+`;
