@@ -1,6 +1,7 @@
 import React from 'react';
 import "./App.css";
 import {
+    StyledForm,
     StyledInput
 } from './App.styled';
 import { validateInputLengthEquals5, validateIfInputContainsOnlyNumbers, validateInputLengthEquals16, validateIfInputContainsAtLeastOneUppercaseLetter, validateIfInputContainsAtLeastOneLowercaseLetter, validateIfInputContainsAtLeastOneNumber, validateIfInputContainsAtLeastOneSpecialCharacter } from "./validators";
@@ -10,6 +11,7 @@ import { CustomDropdown } from './CustomDropdown';
 import { findEmptyFields, isString } from './helpers';
 import { Spinner } from './spinner';
 import { PasswordStrengthChecker } from './PasswordStrengthChecker';
+import { CustomizableModal } from './CustomizableModal';
 
 
 function handleSubmit(event: React.FormEvent<HTMLFormElement>, formData: FormData) {
@@ -37,7 +39,7 @@ function Form(props: any) {
     const [state, setState] = React.useState<string[]>([]);
 
     return (<>
-        <form ref={reference}
+        <StyledForm ref={reference}
             onSubmit={(event) => {
                 // console.log(reference.current);
                 const formData = new FormData(event.currentTarget);
@@ -99,11 +101,15 @@ function Form(props: any) {
                         validateIfInputContainsAtLeastOneSpecialCharacter]}
                 />
             </fieldset>
+            <fieldset id="modalCustomizer">
+                <legend>Modal window customizer:</legend>
+                <CustomizableModal />
+            </fieldset>
 
 
             <button type="submit">Submit</button>
             <div>{state}</div>
-        </form>
+        </StyledForm>
     </>
     );
 }

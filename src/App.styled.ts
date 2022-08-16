@@ -2,6 +2,10 @@ import styled, { keyframes, css } from "styled-components";
 import { Validation } from "./App.types";
 import { Link } from "react-router-dom";
 
+export const StyledForm = styled.form`
+  width: 80%;
+`;
+
 export const StyledInput = styled.input<{ isEmpty?: boolean }>`
   outline: 4px solid red;
   background-color: ${(props) => props.isEmpty ? "red" : "blue"};
@@ -277,4 +281,9 @@ export const StyledPasswordStrengthChecker = styled.article`
 
 export const StyledSecurityRating = styled.div`
   display: flex;
+`;
+
+export const StyledCustomizableModal = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
