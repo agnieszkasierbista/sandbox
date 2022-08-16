@@ -1,7 +1,7 @@
 import { Dispatch } from "redux";
 import { connect } from "react-redux"
-import { CustomModal } from "./CustomModal"
 import { ModalState, State } from "./App.types";
+import { ModalWizard } from "./ModalWizard";
 
 function mapStateToProps(state: State) {
     return{
@@ -15,4 +15,4 @@ function mapDispatchToProps(dispatch: Dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CustomModal);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalWizard);

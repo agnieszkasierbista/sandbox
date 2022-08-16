@@ -14,9 +14,12 @@ export interface Format {
 }
 
 export interface LoadingStarsState {
+    isLoading: boolean,
+}
+
+export interface FetchingState {
     values: string[],
     isFetching: boolean,
-    isLoading: boolean,
 }
 
 export interface AutoValidateInputType {
@@ -31,6 +34,7 @@ export interface ModalState {
 }
 
 export interface State {
-    reducerA: LoadingStarsState,
+    reducerA: FetchingState,
     reducerB: ModalState,
+    reducerC: LoadingStarsState
 }

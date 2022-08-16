@@ -5,7 +5,7 @@ export const CustomModal = (props: any) => {
         props.isModalVisible 
         ?
         <div>
-            <StyledOverlay>
+            <StyledOverlay onClick={() => props.dispatchToggleModalVisibility()}>
 
             <StyledModalContent>
                 <div>x</div>

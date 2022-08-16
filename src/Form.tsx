@@ -2,9 +2,7 @@ import React from 'react';
 import "./App.css";
 import {
     StyledForm,
-    StyledInput,
-    StyledOverlay
-} from './App.styled';
+    StyledInput} from './App.styled';
 import { validateInputLengthEquals5, validateIfInputContainsOnlyNumbers, validateInputLengthEquals16, validateIfInputContainsAtLeastOneUppercaseLetter, validateIfInputContainsAtLeastOneLowercaseLetter, validateIfInputContainsAtLeastOneNumber, validateIfInputContainsAtLeastOneSpecialCharacter } from "./validators";
 import { formatToPostalCode, formatFromPostalCode, formatToCreditCardNumber, formatFromCreditCardNumber } from './formatters';
 import { AutoValidateInput } from './AutoValidateInput';
@@ -12,8 +10,7 @@ import { CustomDropdown } from './CustomDropdown';
 import { findEmptyFields, isString } from './helpers';
 import { Spinner } from './spinner';
 import { PasswordStrengthChecker } from './PasswordStrengthChecker';
-import { CustomizableModal } from './CustomizableModal';
-import { CustomModal } from './CustomModal';
+import ModalWizard from './ModalWizard.container';
 
 
 function handleSubmit(event: React.FormEvent<HTMLFormElement>, formData: FormData) {
@@ -105,8 +102,8 @@ function Form(props: any) {
             </fieldset>
             <fieldset id="modalCustomizer">
                 <legend>Modal window customizer:</legend>
-                <CustomizableModal />
-                
+                <ModalWizard />
+
             </fieldset>
 
 
