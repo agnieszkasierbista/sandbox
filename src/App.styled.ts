@@ -287,3 +287,24 @@ export const StyledCustomizableModal = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const StyledOverlay = styled.div`
+  position: fixed;
+  display: block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+
+`;
+
+export const StyledModalContent = styled.div`
+  position: relative;
+  top: 50px;
+  width: 50%;
+  height: 50%;
+  background-color: yellow;
+  border: 2px solid gold;
+`;

@@ -1,11 +1,12 @@
 import {connect} from "react-redux"
 import {Dispatch} from "redux";
+import { State } from "./App.types";
 import { Progress } from "./Progress.layout";
 
 
-export function mapStateToProps(state: {isLoading: boolean}) {
+export function mapStateToProps(state: State) {
     return {
-        isLoading: state.isLoading
+        isLoading: state.reducerA.isLoading
     }
 }
 

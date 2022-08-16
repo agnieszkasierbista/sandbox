@@ -2,7 +2,8 @@ import React from 'react';
 import "./App.css";
 import {
     StyledForm,
-    StyledInput
+    StyledInput,
+    StyledOverlay
 } from './App.styled';
 import { validateInputLengthEquals5, validateIfInputContainsOnlyNumbers, validateInputLengthEquals16, validateIfInputContainsAtLeastOneUppercaseLetter, validateIfInputContainsAtLeastOneLowercaseLetter, validateIfInputContainsAtLeastOneNumber, validateIfInputContainsAtLeastOneSpecialCharacter } from "./validators";
 import { formatToPostalCode, formatFromPostalCode, formatToCreditCardNumber, formatFromCreditCardNumber } from './formatters';
@@ -12,6 +13,7 @@ import { findEmptyFields, isString } from './helpers';
 import { Spinner } from './spinner';
 import { PasswordStrengthChecker } from './PasswordStrengthChecker';
 import { CustomizableModal } from './CustomizableModal';
+import { CustomModal } from './CustomModal';
 
 
 function handleSubmit(event: React.FormEvent<HTMLFormElement>, formData: FormData) {
@@ -104,6 +106,7 @@ function Form(props: any) {
             <fieldset id="modalCustomizer">
                 <legend>Modal window customizer:</legend>
                 <CustomizableModal />
+                
             </fieldset>
 
 

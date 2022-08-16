@@ -26,4 +26,6 @@
 ~~26. opcjonaly formatTo i formatFrom~~
 27. okno modalne - wyskakuje na środku, bedzie miało overlay, pełny kolor, blurowany, transaprentny albo mieszany (input typu radio z wyborem i modal wyskakuje na button).
 28. Wariacje modala: bez uzycia reactowego createPortal, druga z createPortal, trzecia natywny dialog.
-27.  Focus trap - https://focus-trap.github.io/focus-trap-react/demo/
+29.  Focus trap - https://focus-trap.github.io/focus-trap-react/demo/
+30. kiedy jest wyświetlony modal blokuje sie scroll.
+31. content modala pochodzi z propów.

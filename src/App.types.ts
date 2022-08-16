@@ -13,7 +13,7 @@ export interface Format {
     isFormatted: boolean
 }
 
-export interface State {
+export interface LoadingStarsState {
     values: string[],
     isFetching: boolean,
     isLoading: boolean,
@@ -24,4 +24,13 @@ export interface AutoValidateInputType {
     formatTo?: (value: string) => Format;
     formatFrom?: (formattedValue: string) => string;
     observe?: (inputValue: string) => void
+}
+
+export interface ModalState {
+    isModalVisible: boolean,
+}
+
+export interface State {
+    reducerA: LoadingStarsState,
+    reducerB: ModalState,
 }

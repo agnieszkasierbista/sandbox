@@ -5,11 +5,11 @@ export const CustomizableModal = () => {
         <StyledCustomizableModal>
             <section>
                 <h2>Choose your background:</h2>
-                <input type="radio" name="modalBackground" value="transparent" id="transparent"/>
+                <input type="checkbox" name="modalBackground" value="transparent" id="transparent"/>
                 <label htmlFor="transparent">Transparent</label><br/>
-                <input type="radio" name="modalBackground" value="blured" id="blured"/>
+                <input type="checkbox" name="modalBackground" value="blured" id="blured"/>
                 <label htmlFor="blured">Blur</label><br/>
-                <input type="radio" name="modalBackground" value="colored" id="colored"/>
+                <input type="checkbox" name="modalBackground" value="colored" id="colored"/>
                 <label htmlFor="colored">Color</label><br/>
             </section>
 
@@ -33,7 +33,7 @@ export const CustomizableModal = () => {
                 <label htmlFor="custom">Custom</label><br/>
             </section>
 
-            <button>Create modal!</button>
+            <button type="button" >Create modal!</button>
         </StyledCustomizableModal>
     )
 }
