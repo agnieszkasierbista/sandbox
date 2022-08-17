@@ -5,8 +5,13 @@ import { LoadingStarsState, State } from "./App.types";
 import { rootEpic } from "./epics";
 
 export const preloadedState: State = {
-    reducerA: { values: [], isFetching: false},
-    reducerB: { isModalVisible: false },
+    reducerA: { values: [], isFetching: false },
+    reducerB: {
+        isModalVisible: false,
+        color: ["modalColor", ""],
+        background: [["modalBackground", ""]],
+        creator: ["modalCreator", ""]
+    },
     reducerC: { isLoading: false }
 };
 

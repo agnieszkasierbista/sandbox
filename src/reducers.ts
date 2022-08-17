@@ -1,4 +1,4 @@
-import { ModalState, LoadingStarsState, State } from "./App.types";
+import { ModalState, LoadingStarsState, State, Background } from "./App.types";
 import { combineReducers } from "redux";
 import { Reducer } from "redux";
 
@@ -12,7 +12,7 @@ export const reducerA: Reducer = (state = initialStateReducerA, action: any) => 
             return {
                 ...state,
                 isFetching: true
-                
+
             }
 
         case "XYZ":
@@ -23,21 +23,36 @@ export const reducerA: Reducer = (state = initialStateReducerA, action: any) => 
                 isFetching: false
             }
 
-       
+
         default:
             return state
     }
 
 };
 
-export const initialStateReducerB = { isModalVisible: false };
+export const initialStateReducerB = { isModalVisible: false, color: [], background: [], creator: [] };
 
 export const reducerB: Reducer = (state = initialStateReducerB, action: any) => {
+
+    const payload = action.payload;
+    const backgroundOptions = payload?.filter((item: string[]) => item[0] === "modalBackground") || []
+    const colorOption = payload?.filter((item: string[]) => item[0] === "modalColor") || []
+    const creatorOption = payload?.filter((item: string[]) => item[0] === "modalCreator") || []
+    
+
     switch (action.type) {
         case "MODAL_TOGGLE":
             return {
                 ...state,
-                isModalVisible: !state.isModalVisible
+                isModalVisible: state.creator.length ? !state.isModalVisible : state.isModalVisible
+            }
+
+        case "UPDATE_WIZARD_VALUES":
+            return {
+                ...state,
+                background: backgroundOptions,
+                color: backgroundOptions.map((option: string[]) => option[1]).includes("colored") ? colorOption.flatMap((x: any) => x) : [],
+                creator: creatorOption.flatMap((x: any) => x),
             }
 
         default:
@@ -46,7 +61,7 @@ export const reducerB: Reducer = (state = initialStateReducerB, action: any) => 
 
 };
 
-export const initialStateReducerC = {isLoading: false};
+export const initialStateReducerC = { isLoading: false };
 
 export const reducerC: Reducer = (state = initialStateReducerC, action: any) => {
 

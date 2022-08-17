@@ -5,7 +5,10 @@ import { ModalState, State } from "./App.types";
 
 function mapStateToProps(state: State) {
     return{
-        isModalVisible: state.reducerB.isModalVisible
+        isModalVisible: state.reducerB.isModalVisible,
+        creator: state.reducerB.creator,
+        background: state.reducerB.background,
+        color: state.reducerB.color
     }
 }
 

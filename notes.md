@@ -24,8 +24,9 @@
 ~~24. Zrobic wariacje gwiazdek jako progress bar, gdzie najpierw wszystkie puste są wyświetlone i po jednej sie zapełniają.~~
 ~~25. gwiadzki jako wskażnik mocy hasła (input z walidatorami ktory weryfikuje i przedstawia w formie zakolorowanych gwiazdek)~~
 ~~26. opcjonaly formatTo i formatFrom~~
-27. okno modalne - wyskakuje na środku, bedzie miało overlay, pełny kolor, blurowany, transaprentny albo mieszany (input typu radio z wyborem i modal wyskakuje na button).
+~~27. okno modalne - wyskakuje na środku, bedzie miało overlay, pełny kolor, blurowany, transaprentny albo mieszany (input typu radio z wyborem i modal wyskakuje na button).~~
 28. Wariacje modala: bez uzycia reactowego createPortal, druga z createPortal, trzecia natywny dialog.
 29.  Focus trap - https://focus-trap.github.io/focus-trap-react/demo/
 30. kiedy jest wyświetlony modal blokuje sie scroll.
 31. content modala pochodzi z propów.
+32. poziom blura równiez konfigurowalny z propa

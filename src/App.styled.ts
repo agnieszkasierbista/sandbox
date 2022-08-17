@@ -1,5 +1,5 @@
 import styled, { keyframes, css } from "styled-components";
-import { Validation } from "./App.types";
+import { Background, Color, Validation } from "./App.types";
 import { Link } from "react-router-dom";
 
 export const StyledForm = styled.form`
@@ -223,8 +223,8 @@ export const StyledLoader = styled.div<{ isLoading: boolean }>`
   background-size: 200% 200%;
   background-color: ${props => props.isLoading ? "blue" : "green"};
   background-image: ${props => props.isLoading
-  ? "repeating-linear-gradient(90deg, blue, turquoise, red, yellow, magenta, blue)"
-  : "none"};
+    ? "repeating-linear-gradient(90deg, blue, turquoise, red, yellow, magenta, blue)"
+    : "none"};
   animation: ${animateGradient} 5s linear infinite;
 `;
 
@@ -289,7 +289,7 @@ export const StyledCustomizableModal = styled.div`
   border-top: 3px dashed magenta;
 `;
 
-export const StyledOverlay = styled.div`
+export const StyledOverlay = styled.div<{ colorOption: Color, backgroundOption: Background }>`
   position: fixed;
   display: block;
   top: 0;
@@ -297,21 +297,59 @@ export const StyledOverlay = styled.div`
   bottom: 0;
   left: 0;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: ${(props) => {
 
+    const val = props.colorOption[1];
+    const a = props.backgroundOption.map(option => option[1]).includes("transparent");
+    console.log("props.backgroundOption", props.backgroundOption, "a co to?", a)
+
+    if (props.backgroundOption.map(option => option[1]).includes("transparent")) {
+
+
+      switch (val) {
+        case "yellow":
+          return "rgba(255,255,0, 0.5)"
+
+        case "blue":
+          return "rgba(0, 0, 255, 0.5)"
+
+        case "green":
+          return "rgba(0,128,0, 0.5)"
+
+        default:
+          return "none"
+      }
+    } else {
+      switch (val) {
+        case "yellow":
+          return "rgb(255,255,0)"
+
+        case "blue":
+          return "rgb(0, 0, 255)"
+
+        case "green":
+          return "rgb(0,128,0)"
+
+        default:
+          return "none"
+      }
+    }
+  }};
+  backdrop-filter: ${props => props.backgroundOption.map(option => option[1]).includes("blured") ? css`blur(2px)` : css`blur(0)`};
 `;
 
 export const StyledModalContent = styled.div`
   position: relative;
-  top: 50px;
+  top: 150px;
+  left: 200px;
   width: 50%;
   height: 50%;
   background-color: yellow;
   border: 2px solid gold;
 `;
 
-export const StyledSection = styled.section<{isHidden: boolean}>`
-  visibility: ${props => props.isHidden ? "hidden" : "visible" };
+export const StyledSection = styled.section<{ isHidden: boolean }>`
+  visibility: ${props => props.isHidden ? "hidden" : "visible"};
 `;
 
 export const StyledFormForWizard = styled.form`

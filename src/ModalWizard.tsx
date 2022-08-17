@@ -1,13 +1,35 @@
 import React from "react";
 import { StyledCustomizableModal as StyledModalWizard, StyledFieldset, StyledFormForWizard, StyledSection } from "./App.styled"
 
+
+//@ts-ignore
+function handleSubmit(payload, updateFunc, toggleFunc) {
+
+    updateFunc(payload);
+    toggleFunc();
+
+}
+
 export const ModalWizard = (props: any) => {
 
     const [isHidden, setIsHidden] = React.useState(true);
 
     return (
         <StyledModalWizard>
-            <StyledFormForWizard name="modalWizard">
+            <StyledFormForWizard 
+            name="modalWizard"
+            onSubmit={(event) => {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                const formData = new FormData(event.currentTarget);
+                const formEntries = Array.from(formData.entries());
+
+                handleSubmit(formEntries, props.dispatchUpdateWizardValues, props.dispatchToggleModalVisibility);
+
+            }}
+            >
             <StyledFieldset id="modalCustomizer">
                 <legend>Modal window customizer:</legend>
             <section>
@@ -40,7 +62,7 @@ export const ModalWizard = (props: any) => {
                 <label htmlFor="custom">Custom</label><br />
             </section>
 
-            <button type="button" onClick={() => props.dispatchToggleModalVisibility()}>Create modal!</button>
+            <button type="submit">Create modal!</button>
             </StyledFieldset>
             </StyledFormForWizard>
         </StyledModalWizard>

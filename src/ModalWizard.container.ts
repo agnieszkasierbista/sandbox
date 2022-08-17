@@ -11,7 +11,8 @@ function mapStateToProps(state: State) {
 
 function mapDispatchToProps(dispatch: Dispatch) {
     return {
-        dispatchToggleModalVisibility: () => dispatch({type: "MODAL_TOGGLE"})
+        dispatchToggleModalVisibility: () => dispatch({type: "MODAL_TOGGLE"}),
+        dispatchUpdateWizardValues: (values: []) => dispatch({type: "UPDATE_WIZARD_VALUES", payload: values})
     }
 }
 
