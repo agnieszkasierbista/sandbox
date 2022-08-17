@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledCustomizableModal as StyledModalWizard, StyledSection } from "./App.styled"
+import { StyledCustomizableModal as StyledModalWizard, StyledFieldset, StyledFormForWizard, StyledSection } from "./App.styled"
 
 export const ModalWizard = (props: any) => {
 
@@ -7,6 +7,9 @@ export const ModalWizard = (props: any) => {
 
     return (
         <StyledModalWizard>
+            <StyledFormForWizard name="modalWizard">
+            <StyledFieldset id="modalCustomizer">
+                <legend>Modal window customizer:</legend>
             <section>
                 <h2>Choose your background:</h2>
                 <input type="checkbox" name="modalBackground" value="transparent" id="transparent" />
@@ -38,6 +41,8 @@ export const ModalWizard = (props: any) => {
             </section>
 
             <button type="button" onClick={() => props.dispatchToggleModalVisibility()}>Create modal!</button>
+            </StyledFieldset>
+            </StyledFormForWizard>
         </StyledModalWizard>
     )
 }

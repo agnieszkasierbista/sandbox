@@ -3,7 +3,7 @@ import { Validation } from "./App.types";
 import { Link } from "react-router-dom";
 
 export const StyledForm = styled.form`
-  width: 80%;
+  width: 90%;
 `;
 
 export const StyledInput = styled.input<{ isEmpty?: boolean }>`
@@ -284,8 +284,9 @@ export const StyledSecurityRating = styled.div`
 `;
 
 export const StyledCustomizableModal = styled.div`
-  display: flex;
-  justify-content: space-between;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 3px dashed magenta;
 `;
 
 export const StyledOverlay = styled.div`
@@ -311,4 +312,15 @@ export const StyledModalContent = styled.div`
 
 export const StyledSection = styled.section<{isHidden: boolean}>`
   visibility: ${props => props.isHidden ? "hidden" : "visible" };
+`;
+
+export const StyledFormForWizard = styled.form`
+  width: 87%;
+
+`;
+
+export const StyledFieldset = styled.fieldset`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 `;

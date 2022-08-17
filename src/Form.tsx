@@ -38,7 +38,7 @@ function Form(props: any) {
     const [state, setState] = React.useState<string[]>([]);
 
     return (<>
-        <StyledForm ref={reference}
+        <StyledForm name="form" ref={reference}
             onSubmit={(event) => {
                 // console.log(reference.current);
                 const formData = new FormData(event.currentTarget);
@@ -100,16 +100,12 @@ function Form(props: any) {
                         validateIfInputContainsAtLeastOneSpecialCharacter]}
                 />
             </fieldset>
-            <fieldset id="modalCustomizer">
-                <legend>Modal window customizer:</legend>
-                <ModalWizard />
-
-            </fieldset>
-
-
+            
             <button type="submit">Submit</button>
             <div>{state}</div>
         </StyledForm>
+
+        <ModalWizard />
     </>
     );
 }
