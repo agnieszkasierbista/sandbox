@@ -366,3 +366,47 @@ export const StyledFieldset = styled.fieldset`
 export const StyledCreatePortalModal = styled.div`
   bacground-color: 
 `;
+
+export const StyleDialog = styled.dialog<{colorOption: Color, backgroundOption: Background}>`
+&::backdrop {
+  background-color: ${(props) => {
+
+    const val = props.colorOption[1];
+    const a = props.backgroundOption.map(option => option[1]).includes("transparent");
+    console.log("props.backgroundOption", props.backgroundOption, "a co to?", a)
+
+    if (props.backgroundOption.map(option => option[1]).includes("transparent")) {
+
+
+      switch (val) {
+        case "yellow":
+          return "rgba(255,255,0, 0.5)"
+
+        case "blue":
+          return "rgba(0, 0, 255, 0.5)"
+
+        case "green":
+          return "rgba(0,128,0, 0.5)"
+
+        default:
+          return "none"
+      }
+    } else {
+      switch (val) {
+        case "yellow":
+          return "rgb(255,255,0)"
+
+        case "blue":
+          return "rgb(0, 0, 255)"
+
+        case "green":
+          return "rgb(0,128,0)"
+
+        default:
+          return "none"
+      }
+    }
+  }};
+  backdrop-filter: ${props => props.backgroundOption.map(option => option[1]).includes("blured") ? css`blur(2px)` : css`blur(0)`};
+}
+`;

@@ -27,7 +27,7 @@ export const CreatePortalModal = (props: { dispatchToggleModalVisibility: () => 
                 </StyledOverlay>
             </div >
             :
-            <div>mmm</div>
+            null
     ), document.body);
 }
 
