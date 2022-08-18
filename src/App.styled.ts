@@ -301,7 +301,6 @@ export const StyledOverlay = styled.div<{ colorOption: Color, backgroundOption: 
 
     const val = props.colorOption[1];
     const a = props.backgroundOption.map(option => option[1]).includes("transparent");
-    console.log("props.backgroundOption", props.backgroundOption, "a co to?", a)
 
     if (props.backgroundOption.map(option => option[1]).includes("transparent")) {
 
@@ -317,7 +316,7 @@ export const StyledOverlay = styled.div<{ colorOption: Color, backgroundOption: 
           return "rgba(0,128,0, 0.5)"
 
         default:
-          return "none"
+          return "rgba(255,192,203, 0.5)"
       }
     } else {
       switch (val) {
@@ -331,7 +330,7 @@ export const StyledOverlay = styled.div<{ colorOption: Color, backgroundOption: 
           return "rgb(0,128,0)"
 
         default:
-          return "none"
+          return "pink"
       }
     }
   }};
@@ -373,7 +372,6 @@ export const StyleDialog = styled.dialog<{colorOption: Color, backgroundOption: 
 
     const val = props.colorOption[1];
     const a = props.backgroundOption.map(option => option[1]).includes("transparent");
-    console.log("props.backgroundOption", props.backgroundOption, "a co to?", a)
 
     if (props.backgroundOption.map(option => option[1]).includes("transparent")) {
 

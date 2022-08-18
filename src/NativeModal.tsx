@@ -23,11 +23,21 @@ export const NativeModal = (props: any) => {
                 onClick={() => props.dispatchToggleModalVisibility()}
             >
 
-                <div>x</div>
+                <button
+                    onClick={() => console.log("X")}
+                >x</button>
                 <article>
                     <p>
                         Here goes some message.
                     </p>
+                    <button
+                        onClick={() => console.log("Cancel")}
+
+                    >Cancel</button>
+                    <button
+                        onClick={() => console.log("Confirm")}
+
+                    >Confirm</button>
                 </article>
 
             </StyleDialog>

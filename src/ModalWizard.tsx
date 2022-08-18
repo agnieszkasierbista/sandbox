@@ -62,7 +62,7 @@ export const ModalWizard = (props: any) => {
                 <label htmlFor="custom">Custom</label><br />
             </section>
 
-            <button type="submit">Create modal!</button>
+            <button id="createModal" type="submit">Create modal!</button>
             </StyledFieldset>
             </StyledFormForWizard>
         </StyledModalWizard>
