@@ -3,6 +3,7 @@ import { Router, Link, Route, Routes } from "react-router-dom";
 import { Accordeon } from "./Accordeon";
 import { StyledLink, StyledNav } from "./App.styled";
 import { CarouselContainer } from "./CarouselContainer";
+import CreatePortalModalContainer from "./CreatePortalModal.container";
 import CustomModal from "./CustomModal.container";
 import Form from "./Form.container";
 import { Loader } from "./Loader";
@@ -37,6 +38,7 @@ const App = () => {
 
             </Routes>
              <CustomModal/>
+             <CreatePortalModalContainer />
         </>
     )
 }

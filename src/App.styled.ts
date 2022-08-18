@@ -362,3 +362,7 @@ export const StyledFieldset = styled.fieldset`
   width: 100%;
   justify-content: space-between;
 `;
+
+export const StyledCreatePortalModal = styled.div`
+  bacground-color: 
+`;
