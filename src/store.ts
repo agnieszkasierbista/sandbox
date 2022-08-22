@@ -9,6 +9,7 @@ export const preloadedState: State = {
     reducerB: {
         isModalVisible: false,
         color: ["modalColor", ""],
+        blur: ["modalBlur", ""],
         background: [["modalBackground", ""]],
         creator: ["modalCreator", ""],
         xButton: ["actionForX", ""],

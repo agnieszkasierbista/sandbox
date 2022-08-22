@@ -11,7 +11,8 @@ export const CustomModal = (props: any) => {
                     id="overlay"
                     onClick={() => props.dispatchToggleModalVisibility()}
                     colorOption={props.color}
-                    backgroundOption={props.background}>
+                    backgroundOption={props.background}
+                    blurOption={props.blur}>
 
                     <StyledModalContent
                         id="customModal"

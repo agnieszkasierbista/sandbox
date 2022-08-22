@@ -2,7 +2,7 @@ import { getConfirmButton, getCancelButton, getXbutton } from "./helpers";
 import React from "react";
 import ReactDOM from "react-dom";
 import { StyledModalContent, StyledOverlay } from "./App.styled";
-import { Color, Background, Creator, XButton, CancelButton, ConfirmButton } from "./App.types";
+import { Color, Background, Creator, XButton, CancelButton, ConfirmButton, Blur } from "./App.types";
 import FocusTrap from 'focus-trap-react';
 
 export const CreatePortalModal = (props: {
@@ -25,6 +25,7 @@ export const CreatePortalModal = (props: {
     confirmButton: ConfirmButton;
     dispatchToggleModalVisibility: () => void;
     color: Color;
+    blur: Blur;
     background: Background;
     isModalVisible: boolean,
     creator: Creator
@@ -40,7 +41,8 @@ export const CreatePortalModal = (props: {
                 <StyledOverlay
                     onClick={() => props.dispatchToggleModalVisibility()}
                     colorOption={props.color}
-                    backgroundOption={props.background}>
+                    backgroundOption={props.background}
+                    blurOption={props.blur}>
 
                     <StyledModalContent
 

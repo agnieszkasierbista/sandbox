@@ -10,6 +10,7 @@ function mapStateToProps(state: State) {
         creator: state.reducerB.creator,
         background: state.reducerB.background,
         color: state.reducerB.color,
+        blur: state.reducerB.blur,
         xButton: state.reducerB.xButton,
         cancelButton: state.reducerB.cancelButton,
         confirmButton: state.reducerB.confirmButton,

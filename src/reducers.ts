@@ -30,13 +30,15 @@ export const reducerA: Reducer = (state = initialStateReducerA, action: any) => 
 
 };
 
-export const initialStateReducerB = { isModalVisible: false, color: [], background: [], creator: [] };
+export const initialStateReducerB = { isModalVisible: false, color: [], background: [], creator: [], blur: [] };
 
 export const reducerB: Reducer = (state = initialStateReducerB, action: any) => {
 
     const payload = action.payload;
+    console.log("ACTIOP PAYL", payload)
     const backgroundOptions = payload?.filter((item: string[]) => item[0] === "modalBackground") || []
     const colorOption = payload?.filter((item: string[]) => item[0] === "modalColor") || []
+    const blurOption = payload?.filter((item: string[]) => item[0] === "modalBlur") || []
     const creatorOption = payload?.filter((item: string[]) => item[0] === "modalCreator").flatMap((x: any) => x) || []
     const xButtonOption = payload?.filter((item: string[]) => item[0] === "actionForX").flatMap((x: any) => x) || []
     const cancelButtonOption = payload?.filter((item: string[]) => item[0] === "actionForCancel").flatMap((x: any) => x) || []
@@ -56,6 +58,7 @@ export const reducerB: Reducer = (state = initialStateReducerB, action: any) => 
                 ...state,
                 background: backgroundOptions,
                 color: backgroundOptions.map((option: string[]) => option[1]).includes("colored") ? colorOption.flatMap((x: any) => x) : [],
+                blur: backgroundOptions.map((option: string[]) => option[1]).includes("blured") ? blurOption.flatMap((x: any) => x) : [],
                 creator: creatorOption,
                 xButton: xButtonOption,
                 cancelButton: cancelButtonOption,

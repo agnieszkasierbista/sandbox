@@ -2,14 +2,15 @@ import { Dispatch } from "redux";
 import { connect } from "react-redux"
 import { CustomModal } from "./CustomModal"
 import { ModalState, State } from "./App.types";
-import {cancel, cancelAndClose, cancelX, close, confirmX, save, confirm, clear, confirmAndClose,  } from "./actions";
+import { cancel, cancelAndClose, cancelX, close, confirmX, save, confirm, clear, confirmAndClose, } from "./actions";
 
 function mapStateToProps(state: State) {
-    return{
+    return {
         isModalVisible: state.reducerB.isModalVisible,
         creator: state.reducerB.creator,
         background: state.reducerB.background,
         color: state.reducerB.color,
+        blur: state.reducerB.blur,
         xButton: state.reducerB.xButton,
         cancelButton: state.reducerB.cancelButton,
         confirmButton: state.reducerB.confirmButton,
@@ -18,7 +19,7 @@ function mapStateToProps(state: State) {
 
 function mapDispatchToProps(dispatch: Dispatch) {
     return {
-        dispatchToggleModalVisibility: () => dispatch({type: "MODAL_TOGGLE"}),
+        dispatchToggleModalVisibility: () => dispatch({ type: "MODAL_TOGGLE" }),
         dispatchClose: () => dispatch(close()),
         dispatchCancelX: () => dispatch(cancelX()),
         dispatchConfirmX: () => dispatch(confirmX()),

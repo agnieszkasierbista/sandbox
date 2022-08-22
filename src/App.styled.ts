@@ -1,5 +1,5 @@
 import styled, { keyframes, css } from "styled-components";
-import { Background, Color, Validation } from "./App.types";
+import { Background, Blur, Color, Validation } from "./App.types";
 import { Link } from "react-router-dom";
 
 export const StyledForm = styled.form`
@@ -289,7 +289,7 @@ export const StyledCustomizableModal = styled.div`
   border-top: 3px dashed magenta;
 `;
 
-export const StyledOverlay = styled.div<{ colorOption: Color, backgroundOption: Background }>`
+export const StyledOverlay = styled.div<{ colorOption: Color, backgroundOption: Background, blurOption: Blur }>`
   position: fixed;
   display: block;
   top: 0;
@@ -299,13 +299,13 @@ export const StyledOverlay = styled.div<{ colorOption: Color, backgroundOption: 
   z-index: 1;
   background-color: ${(props) => {
 
-    const val = props.colorOption[1];
+    const colorVal = props.colorOption[1];
     const a = props.backgroundOption.map(option => option[1]).includes("transparent");
 
     if (props.backgroundOption.map(option => option[1]).includes("transparent")) {
 
 
-      switch (val) {
+      switch (colorVal) {
         case "yellow":
           return "rgba(255,255,0, 0.5)"
 
@@ -319,7 +319,7 @@ export const StyledOverlay = styled.div<{ colorOption: Color, backgroundOption: 
           return "rgba(255,192,203, 0.5)"
       }
     } else {
-      switch (val) {
+      switch (colorVal) {
         case "yellow":
           return "rgb(255,255,0)"
 
@@ -334,7 +334,26 @@ export const StyledOverlay = styled.div<{ colorOption: Color, backgroundOption: 
       }
     }
   }};
-  backdrop-filter: ${props => props.backgroundOption.map(option => option[1]).includes("blured") ? css`blur(2px)` : css`blur(0)`};
+  backdrop-filter: ${(props) => {
+
+    console.log("BLUR", props.blurOption);
+
+    const blurVal = props.blurOption[1];
+
+    if (props.backgroundOption.map(option => option[1]).includes("blured")) {
+      switch (blurVal) {
+        case "light":
+          return css`blur(2px)`
+        case "medium":
+          return css`blur(4px)`
+        case "strong":
+          return css`blur(10px)`
+        default:
+          return css`blur(4px)`
+      }
+    }
+    else { css`blur(0)` }
+  }};
 `;
 
 export const StyledModalContent = styled.div`
@@ -347,7 +366,11 @@ export const StyledModalContent = styled.div`
   border: 2px solid gold;
 `;
 
-export const StyledSection = styled.section<{ isHidden: boolean }>`
+export const StyledSectionColors = styled.section<{ isHidden: boolean }>`
+  visibility: ${props => props.isHidden ? "hidden" : "visible"};
+`;
+
+export const StyledSectionBlurs = styled.section<{ isHidden: boolean }>`
   visibility: ${props => props.isHidden ? "hidden" : "visible"};
 `;
 
@@ -358,6 +381,7 @@ export const StyledFormForWizard = styled.form`
 
 export const StyledFieldset = styled.fieldset`
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   justify-content: space-between;
 `;
@@ -366,7 +390,7 @@ export const StyledCreatePortalModal = styled.div`
   bacground-color: 
 `;
 
-export const StyleDialog = styled.dialog<{colorOption: Color, backgroundOption: Background}>`
+export const StyleDialog = styled.dialog<{ colorOption: Color, backgroundOption: Background }>`
 &::backdrop {
   background-color: ${(props) => {
 
