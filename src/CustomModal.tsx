@@ -16,7 +16,7 @@ export const CustomModal = (props: any) => {
                     <StyledModalContent
                         id="customModal"
                     >
-                       <button
+                        <button
                             onClick={() => getXbutton(props)}
                         >x</button>
                         <article>

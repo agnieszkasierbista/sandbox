@@ -16,6 +16,10 @@ export const CreatePortalModal = (props: {
     dispatchCancelX: () => void;
     dispatchConfirmX: () => void;
 
+    forXButton?: Function;
+    forConfirmButton?: Function;
+    forCancelButton?: Function;
+
     xButton: XButton;
     cancelButton: CancelButton;
     confirmButton: ConfirmButton;
@@ -41,22 +45,49 @@ export const CreatePortalModal = (props: {
                     <StyledModalContent
 
                     >
-                        <button
-                            onClick={() => getXbutton(props)}
-                        >x</button>
-                        <article>
-                            <p>
-                                Here goes some message.
-                            </p>
-                            <button
-                                onClick={() => getCancelButton(props)}
+                        {props.forXButton && props.forCancelButton && props.forConfirmButton
+                            ?
+                            <div>JEST OK
 
-                            >Cancel</button>
-                            <button
-                                onClick={() => getConfirmButton(props)}
+                                <button
+                                    onClick={() => props.forXButton}
+                                >x</button>
+                                <article>
+                                    <p>
+                                        Here goes some message.
+                                    </p>
+                                    <button
+                                        onClick={() => props.forCancelButton}
 
-                            >Confirm</button>
-                        </article>
+                                    >Cancel</button>
+                                    <button
+                                        onClick={() => props.forConfirmButton}
+
+                                    >Confirm</button>
+                                </article>
+
+                            </div>
+                            :
+                            (
+                                <>
+                                    <button
+                                        onClick={() => getXbutton(props)}
+                                    >x</button>
+                                    <article>
+                                        <p>
+                                            Here goes some message.
+                                        </p>
+                                        <button
+                                            onClick={() => getCancelButton(props)}
+
+                                        >Cancel</button>
+                                        <button
+                                            onClick={() => getConfirmButton(props)}
+
+                                        >Confirm</button>
+                                    </article>
+                                </>
+                            )}
                     </StyledModalContent>
                 </StyledOverlay>
             </FocusTrap >

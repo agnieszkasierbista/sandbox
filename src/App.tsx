@@ -7,7 +7,7 @@ import CreatePortalModalContainer from "./CreatePortalModal.container";
 import CustomModal from "./CustomModal.container";
 import Form from "./Form.container";
 import { Loader } from "./Loader";
-import  NativeModal  from "./NativeModal.container";
+import NativeModal from "./NativeModal.container";
 import Progress from "./Progress.container";
 
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
                 <Route path="/b" element={<Accordeon />}>
                 </Route>
 
-                <Route path="/c" element={<Progress/>}>
+                <Route path="/c" element={<Progress />}>
                 </Route>
 
                 <Route path="/" element={<Form />}>
@@ -38,9 +38,12 @@ const App = () => {
 
 
             </Routes>
-             <CustomModal/>
-             <CreatePortalModalContainer />
-             <NativeModal />
+            <CustomModal />
+            <CreatePortalModalContainer
+                forXButton={() => console.log("forXButton")}
+                forCancelButton={() => console.log("forCancelButton")}
+                forConfirmButton={() => console.log("forConfirmButton")} />
+            <NativeModal />
         </>
     )
 }
