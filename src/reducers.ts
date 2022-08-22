@@ -37,7 +37,11 @@ export const reducerB: Reducer = (state = initialStateReducerB, action: any) => 
     const payload = action.payload;
     const backgroundOptions = payload?.filter((item: string[]) => item[0] === "modalBackground") || []
     const colorOption = payload?.filter((item: string[]) => item[0] === "modalColor") || []
-    const creatorOption = payload?.filter((item: string[]) => item[0] === "modalCreator") || []
+    const creatorOption = payload?.filter((item: string[]) => item[0] === "modalCreator").flatMap((x: any) => x) || []
+    const xButtonOption = payload?.filter((item: string[]) => item[0] === "actionForX").flatMap((x: any) => x) || []
+    const cancelButtonOption = payload?.filter((item: string[]) => item[0] === "actionForCancel").flatMap((x: any) => x) || []
+    const confirmButtonOption = payload?.filter((item: string[]) => item[0] === "actionForConfirm").flatMap((x: any) => x) || []
+
     
 
     switch (action.type) {
@@ -52,7 +56,10 @@ export const reducerB: Reducer = (state = initialStateReducerB, action: any) => 
                 ...state,
                 background: backgroundOptions,
                 color: backgroundOptions.map((option: string[]) => option[1]).includes("colored") ? colorOption.flatMap((x: any) => x) : [],
-                creator: creatorOption.flatMap((x: any) => x),
+                creator: creatorOption,
+                xButton: xButtonOption,
+                cancelButton: cancelButtonOption,
+                confirmButton: confirmButtonOption
             }
 
         default:

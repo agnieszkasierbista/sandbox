@@ -10,7 +10,10 @@ export const preloadedState: State = {
         isModalVisible: false,
         color: ["modalColor", ""],
         background: [["modalBackground", ""]],
-        creator: ["modalCreator", ""]
+        creator: ["modalCreator", ""],
+        xButton: ["actionForX", ""],
+        cancelButton: ["actionForCancel", ""],
+        confirmButton: ["actionForConfirm", ""]
     },
     reducerC: { isLoading: false }
 };

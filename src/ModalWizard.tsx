@@ -66,10 +66,10 @@ export const ModalWizard = (props: any) => {
                 <h2>Choose your action for X button:</h2>
                 <input type="radio" name="actionForX" value="close" id="close" />
                 <label htmlFor="close">Close</label><br />
-                <input type="radio" name="actionForX" value="cancel" id="cancel" />
-                <label htmlFor="cancel">Cancel</label><br />
-                <input type="radio" name="actionForX" value="confirm" id="confirm" />
-                <label htmlFor="confirm">Confirm</label><br />
+                <input type="radio" name="actionForX" value="cancelX" id="cancelX" />
+                <label htmlFor="cancelX">Cancel</label><br />
+                <input type="radio" name="actionForX" value="confirmX" id="confirmX" />
+                <label htmlFor="confirmX">Confirm</label><br />
             </section>
 
             <section>
@@ -78,8 +78,8 @@ export const ModalWizard = (props: any) => {
                 <label htmlFor="cancel">Cancel</label><br />
                 <input type="radio" name="actionForCancel" value="clear" id="clear" />
                 <label htmlFor="clear">Clear selection</label><br />
-                <input type="radio" name="actionForCancel" value="close" id="close" />
-                <label htmlFor="close">Cancel and Close</label><br />
+                <input type="radio" name="actionForCancel" value="cancelAndClose" id="cancelAndClose" />
+                <label htmlFor="cancelAndClose">Cancel and Close</label><br />
             </section>
 
             <section>
@@ -88,8 +88,8 @@ export const ModalWizard = (props: any) => {
                 <label htmlFor="confirm">Confirm</label><br />
                 <input type="radio" name="actionForConfirm" value="save" id="save" />
                 <label htmlFor="save">Save selection</label><br />
-                <input type="radio" name="actionForConfirm" value="close" id="close" />
-                <label htmlFor="close">Confirm and Close</label><br />
+                <input type="radio" name="actionForConfirm" value="confirmAndClose" id="confirmAndClose" />
+                <label htmlFor="confirmAndClose">Confirm and Close</label><br />
             </section>
 
             <button id="createModal" type="submit">Create modal!</button>

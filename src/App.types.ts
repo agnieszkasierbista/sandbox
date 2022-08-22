@@ -32,12 +32,18 @@ export interface AutoValidateInputType {
 export type Color = ["modalColor", string];
 export type Background = ["modalBackground", string][];
 export type Creator = ["modalCreator", string];
+export type XButton = ["actionForX", string];
+export type CancelButton = ["actionForCancel", string];
+export type ConfirmButton = ["actionForConfirm", string];
 
 export interface ModalState {
     isModalVisible: boolean,
     color: Color,
     background: Background,
-    creator: Creator
+    creator: Creator,
+    xButton: XButton,
+    cancelButton: CancelButton,
+    confirmButton: ConfirmButton,
 }
 
 export interface State {
