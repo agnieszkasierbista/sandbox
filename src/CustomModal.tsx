@@ -1,5 +1,6 @@
 import FocusTrap from 'focus-trap-react';
 import { StyledModalContent, StyledOverlay } from "./App.styled";
+import { getCancelButton, getConfirmButton, getXbutton } from './helpers';
 
 export const CustomModal = (props: any) => {
     return (
@@ -15,19 +16,19 @@ export const CustomModal = (props: any) => {
                     <StyledModalContent
                         id="customModal"
                     >
-                        <button
-                            onClick={() => console.log("X")}
+                       <button
+                            onClick={() => getXbutton(props)}
                         >x</button>
                         <article>
                             <p>
                                 Here goes some message.
                             </p>
                             <button
-                                onClick={() => console.log("Cancel")}
+                                onClick={() => getCancelButton(props)}
 
                             >Cancel</button>
                             <button
-                                onClick={() => console.log("Confirm")}
+                                onClick={() => getConfirmButton(props)}
 
                             >Confirm</button>
                         </article>
