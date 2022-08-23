@@ -32,5 +32,5 @@
 ~~32. poziom blura równiez konfigurowalny z propa.~~
 ~~33. w modal wizard konfiguruje sie jaka akcja ma byc wyslana na klikniecie ktorego buttona.~~
 ~~34. butony na modalu wykonują różne akcje, cos tam w state zmieniają - w portal przyjmuje propy, które są callbackami (co sie wykonuje na jaki button),   w customowym też (bedzie mniej zastosowań, bo jest w konkretnym miejscu w aplikacji)~~
-35. gdy wybierzesz manual blur pojawia sie suwak.
-36. usunąć any i ts-ignore!!!
+~~35. gdy wybierzesz manual blur pojawia sie suwak.~~
+~~36. usunąć any i ts-ignore!!!~~

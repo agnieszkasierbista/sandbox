@@ -336,12 +336,13 @@ export const StyledOverlay = styled.div<{ colorOption: Color, backgroundOption: 
   }};
   backdrop-filter: ${(props) => {
 
-    // console.log("BLUR", props.blurOption);
+    console.log("BLUR", props.blurOption);
 
-    const blurVal = props.blurOption[1];
+    const blurValRadio = props.blurOption[1];
+    const blurValManual = props.blurOption[3];
 
-    if (props.backgroundOption.map(option => option[1]).includes("blured")) {
-      switch (blurVal) {
+    if (props.backgroundOption.map(option => option[1]).includes("blured") && props.blurOption[1] !== "manual") {
+      switch (blurValRadio) {
         case "light":
           return css`blur(2px)`
         case "medium":
@@ -351,6 +352,10 @@ export const StyledOverlay = styled.div<{ colorOption: Color, backgroundOption: 
         default:
           return css`blur(4px)`
       }
+    }
+    else if(props.backgroundOption.map(option => option[1]).includes("blured") && props.blurOption[1] === "manual") {
+      return css`blur(${blurValManual}px)`
+      
     }
     else { css`blur(0)` }
   }};
@@ -372,6 +377,14 @@ export const StyledSectionColors = styled.section<{ isHidden: boolean }>`
 
 export const StyledSectionBlurs = styled.section<{ isHidden: boolean }>`
   visibility: ${props => props.isHidden ? "hidden" : "visible"};
+`;
+
+export const StyledRange = styled.div<{ isHidden: {color: boolean, blur: boolean, manual: boolean} }>`
+  visibility: ${(props) => props.isHidden.manual 
+    ? "hidden" 
+    : props.isHidden.blur 
+    ? "hidden"
+    : "visible"};
 `;
 
 export const StyledFormForWizard = styled.form`

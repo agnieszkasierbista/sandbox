@@ -30,7 +30,7 @@ export interface AutoValidateInputType {
 }
 
 export type Color = ["modalColor", string];
-export type Blur = ["modalBlur", string];
+export type Blur = ["modalBlur", string, "modalBlur", string];
 export type Background = ["modalBackground", string][];
 export type Creator = ["modalCreator", string];
 export type XButton = ["actionForX", string];

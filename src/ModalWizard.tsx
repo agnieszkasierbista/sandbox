@@ -1,5 +1,6 @@
+import { is } from "ramda";
 import React from "react";
-import { StyledCustomizableModal as StyledModalWizard, StyledFieldset, StyledFormForWizard, StyledSectionBlurs, StyledSectionColors } from "./App.styled"
+import { StyledCustomizableModal as StyledModalWizard, StyledFieldset, StyledFormForWizard, StyledRange, StyledSectionBlurs, StyledSectionColors } from "./App.styled"
 import { FormFieldNameAndValueArray } from "./App.types";
 
 
@@ -22,7 +23,7 @@ export const ModalWizard = (props: {
     dispatchToggleModalVisibility: () => void;
 }) => {
 
-    const [isHidden, setIsHidden] = React.useState({ color: true, blur: true });
+    const [isHidden, setIsHidden] = React.useState({ color: true, blur: true, manual: true });
 
     return (
         <StyledModalWizard>
@@ -74,12 +75,40 @@ export const ModalWizard = (props: {
 
                     <StyledSectionBlurs id="blurs" isHidden={isHidden.blur}>
                         <h2>Choose your blur intensity:</h2>
-                        <input type="radio" name="modalBlur" value="light" id="light" />
+                        <input
+                            type="radio"
+                            name="modalBlur"
+                            value="light"
+                            id="light"
+                            disabled={!isHidden.manual} />
                         <label htmlFor="light">Light</label><br />
-                        <input type="radio" name="modalBlur" value="medium" id="medium" />
+                        <input
+                            type="radio"
+                            name="modalBlur"
+                            value="medium"
+                            id="medium"
+                            disabled={!isHidden.manual} />
                         <label htmlFor="medium">Medium</label><br />
-                        <input type="radio" name="modalBlur" value="strong" id="strong" />
+                        <input
+                            type="radio"
+                            name="modalBlur"
+                            value="strong"
+                            id="strong"
+                            disabled={!isHidden.manual} />
                         <label htmlFor="strong">Strong</label><br />
+                        <input
+                            type="checkbox"
+                            name="modalBlur"
+                            value="manual"
+                            id="manual"
+                            onChange={() => setIsHidden((prev) => { return { ...prev, manual: !prev.manual } })}
+                        />
+                        <label htmlFor="manual">Manual</label><br />
+                        <StyledRange id="picker" isHidden={isHidden}>
+                            <label htmlFor="range">Choose your custom value between 1 and 10: </label><br />
+                            <input type="range" name="modalBlur" id="range" min="1" max="10" />
+                        </StyledRange>
+
                     </StyledSectionBlurs>
 
                     <section>
