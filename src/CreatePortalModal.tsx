@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { StyledModalContent, StyledOverlay } from "./App.styled";
 import { Color, Background, Creator, XButton, CancelButton, ConfirmButton, Blur } from "./App.types";
 import FocusTrap from 'focus-trap-react';
+import { useScrollBlocking } from "./customHooks";
 
 export const CreatePortalModal = (props: {
     dispatchCancelAndClose: () => void;
@@ -32,6 +33,8 @@ export const CreatePortalModal = (props: {
 }) => {
 
     console.log("props", props)
+
+    useScrollBlocking(props.isModalVisible);
 
     return ReactDOM.createPortal((
         props.isModalVisible && props.creator[1] === "portal"

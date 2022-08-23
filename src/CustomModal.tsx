@@ -1,8 +1,14 @@
 import FocusTrap from 'focus-trap-react';
+import React from 'react';
 import { StyledModalContent, StyledOverlay } from "./App.styled";
+import { useScrollBlocking } from './customHooks';
 import { getCancelButton, getConfirmButton, getXbutton } from './helpers';
 
 export const CustomModal = (props: any) => {
+
+    useScrollBlocking(props.isModalVisible);
+
+
     return (
         props.isModalVisible && props.creator[1] === "custom"
             ?

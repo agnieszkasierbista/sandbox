@@ -27,8 +27,10 @@
 ~~27. okno modalne - wyskakuje na środku, bedzie miało overlay, pełny kolor, blurowany, transaprentny albo mieszany (input typu radio z wyborem i modal wyskakuje na button).~~
 ~~28. Wariacje modala: bez uzycia reactowego createPortal, druga z createPortal, trzecia natywny dialog.~~
 ~~29.  Focus trap (poza natywnym)~~
-30. kiedy jest wyświetlony modal blokuje sie scroll.
+~~30. kiedy jest wyświetlony modal blokuje sie scroll: na mount modala w useeffect document.body.style.overflow=hidden, a na unmout robimy initial~~
 31. content modala pochodzi z propów.
-32. poziom blura równiez konfigurowalny z propa.
-33. w modal wizard konfiguruje sie jaka akcja ma byc wyslana na klikniecie ktorego buttona.
-34. butony na modalu wykonują różne akcje, cos tam w state zmieniają - w portal przyjmuje propy, które są callbackami (co sie wykonuje na jaki button),   w customowym też (bedzie mniej zastosowań, bo jest w konkretnym miejscu w aplikacji)
+~~32. poziom blura równiez konfigurowalny z propa.~~
+~~33. w modal wizard konfiguruje sie jaka akcja ma byc wyslana na klikniecie ktorego buttona.~~
+~~34. butony na modalu wykonują różne akcje, cos tam w state zmieniają - w portal przyjmuje propy, które są callbackami (co sie wykonuje na jaki button),   w customowym też (bedzie mniej zastosowań, bo jest w konkretnym miejscu w aplikacji)~~
+35. gdy wybierzesz manual blur pojawia sie suwak.
+36. usunąć any i ts-ignore!!!
