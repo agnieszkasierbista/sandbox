@@ -5,7 +5,7 @@ import { LoadingStarsState, State } from "./App.types";
 
 
 export function mapStateToProps(state: State) {
-    console.log(state, "state")
+    // console.log(state, "state")
     return {
         values: state.reducerA.values,
         isFetching: state.reducerA.isFetching

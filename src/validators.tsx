@@ -42,7 +42,7 @@ function validateInputContentContainsAbcLowerCase(inputValue: string): Validatio
 }
 export function validateIfInputContainsOnlyNumbers(inputValue: string): Validation {
     if (inputValue.match(/[A-Za-z]+/)) {
-        console.log("Bang!");
+        // console.log("Bang!");
         return {
             isValid: false,
             errors: ["You must type numbers only!"]

@@ -29,10 +29,10 @@ export const FillingStars = () => {
                         return 0
                     }
                 });
-                console.log(indexOfFirstZero, "ZERO");
-                console.log(updatedArray, "updated");
+                // console.log(indexOfFirstZero, "ZERO");
+                // console.log(updatedArray, "updated");
 
-                console.log(state.starsArray, "STARS");
+                // console.log(state.starsArray, "STARS");
 
                 return {
                     ...prev,

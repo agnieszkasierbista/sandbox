@@ -9,7 +9,7 @@ export const CarouselContainer = () => {
     const [counter, setCounter] = React.useState(0);
     const [direction, setDirection] = React.useState("");
 
-    console.log(counter, "counter")
+    // console.log(counter, "counter")
 
     return (
         <StyledCarouselContainer>

@@ -19,7 +19,7 @@ export const AutoValidateInput: React.FC<AutoValidateInputType> = props => {
                 value={fieldState?.value || ""}
                 onChange={(evt) => {
                    props.observe?.(evt.target.value);
-                    console.log("state on change", fieldState);
+                    // console.log("state on change", fieldState);
                     setFieldState((prev) => {
                         return {
                             ...prev,
@@ -36,11 +36,11 @@ export const AutoValidateInput: React.FC<AutoValidateInputType> = props => {
                         ...postValidationState,
                         ...(postValidationState.isValid ? props.formatTo?.(evtValue) : {})
                     }));
-                    console.log("state on blur", fieldState);
+                    // console.log("state on blur", fieldState);
 
                 }}
                 onFocus={() => {
-                    console.log("state on focus", fieldState);
+                    // console.log("state on focus", fieldState);
 
                     if (fieldState.value && fieldState.isFormatted) {
                         setFieldState(

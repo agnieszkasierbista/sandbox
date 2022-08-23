@@ -336,7 +336,7 @@ export const StyledOverlay = styled.div<{ colorOption: Color, backgroundOption: 
   }};
   backdrop-filter: ${(props) => {
 
-    console.log("BLUR", props.blurOption);
+    // console.log("BLUR", props.blurOption);
 
     const blurVal = props.blurOption[1];
 

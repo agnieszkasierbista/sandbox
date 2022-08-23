@@ -32,7 +32,7 @@ export const CreatePortalModal = (props: {
     creator: Creator
 }) => {
 
-    console.log("props", props)
+    // console.log("props", props)
 
     useScrollBlocking(props.isModalVisible);
 
@@ -47,26 +47,24 @@ export const CreatePortalModal = (props: {
                     backgroundOption={props.background}
                     blurOption={props.blur}>
 
-                    <StyledModalContent
-
-                    >
+                    <StyledModalContent>
                         {props.forXButton && props.forCancelButton && props.forConfirmButton
                             ?
                             <div>JEST OK
 
                                 <button
-                                    onClick={() => props.forXButton}
+                                    onClick={() => props.forXButton?.()}
                                 >x</button>
                                 <article>
                                     <p>
                                         Here goes some message.
                                     </p>
                                     <button
-                                        onClick={() => props.forCancelButton}
+                                        onClick={() => props.forCancelButton?.()}
 
                                     >Cancel</button>
                                     <button
-                                        onClick={() => props.forConfirmButton}
+                                        onClick={() => props.forConfirmButton?.()}
 
                                     >Confirm</button>
                                 </article>
@@ -76,21 +74,21 @@ export const CreatePortalModal = (props: {
                             (
                                 <>
                                     <button
-                            onClick={() => getXbutton(props.xButton, props.dispatchClose, props.dispatchCancelX, props.dispatchConfirmX)}
-                        >x</button>
-                        <article>
-                            <p>
-                                Here goes some message.
-                            </p>
-                            <button
-                                onClick={() => getCancelButton(props.cancelButton, props.dispatchCancel, props.dispatchClear, props.dispatchCancelAndClose)}
+                                        onClick={() => getXbutton(props.xButton, props.dispatchClose, props.dispatchCancelX, props.dispatchConfirmX)}
+                                    >x</button>
+                                    <article>
+                                        <p>
+                                            Here goes some message.
+                                        </p>
+                                        <button
+                                            onClick={() => getCancelButton(props.cancelButton, props.dispatchCancel, props.dispatchClear, props.dispatchCancelAndClose)}
 
-                            >Cancel</button>
-                            <button
-                                onClick={() => getConfirmButton(props.confirmButton, props.dispatchConfirm, props.dispatchSave, props.dispatchConfirmAndClose)}
+                                        >Cancel</button>
+                                        <button
+                                            onClick={() => getConfirmButton(props.confirmButton, props.dispatchConfirm, props.dispatchSave, props.dispatchConfirmAndClose)}
 
-                            >Confirm</button>
-                        </article>
+                                        >Confirm</button>
+                                    </article>
                                 </>
                             )}
                     </StyledModalContent>

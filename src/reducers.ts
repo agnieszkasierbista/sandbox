@@ -35,7 +35,7 @@ export const initialStateReducerB = { isModalVisible: false, color: [], backgrou
 export const reducerB: Reducer = (state = initialStateReducerB, action: AnyAction) => {
 
     const payload = action.payload;
-    console.log("ACTIOP PAYL", payload)
+    // console.log("ACTIOP PAYL", payload)
     const backgroundOptions = payload?.filter((item: string[]) => item[0] === "modalBackground") || []
     const colorOption = payload?.filter((item: string[]) => item[0] === "modalColor") || []
     const blurOption = payload?.filter((item: string[]) => item[0] === "modalBlur") || []
@@ -75,7 +75,7 @@ export const initialStateReducerC = { isLoading: false };
 
 export const reducerC: Reducer = (state = initialStateReducerC, action: Action) => {
 
-    console.log("state.isLoading", state.isLoading)
+    // console.log("state.isLoading", state.isLoading)
     switch (action.type) {
         case "TOGGLE":
             return {

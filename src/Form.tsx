@@ -17,8 +17,8 @@ import ModalWizard from './ModalWizard.container';
 function handleSubmit(event: React.FormEvent<HTMLFormElement>, formData: FormData) {
 
     event.preventDefault();
-    console.log("all form data", Array.from(formData.entries()))
-    console.log("EMPTY", findEmptyFields(Array.from(formData.entries())))
+    // console.log("all form data", Array.from(formData.entries()))
+    // console.log("EMPTY", findEmptyFields(Array.from(formData.entries())))
 
     if (isString(Array.from(formData.entries()))) {
         fetch('https://localhost:8080/abc').then((res) => {

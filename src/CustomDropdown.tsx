@@ -30,7 +30,7 @@ export const CustomDropdown: React.FC<{values: string[], dispatchSetDropdownCont
                 autoComplete='off'
                 value={inputState.value}
                 onChange={(event) => {
-                    console.log("value", event.target.value);
+                    // console.log("value", event.target.value);
                     if (event.target.value.length <= 1) {
                         setDropdownState({ ...dropdownState, isVisible: false });
                         setInputState({ value: event.target.value });
