@@ -1,12 +1,12 @@
 import { ModalState, LoadingStarsState, State, Background } from "./App.types";
-import { combineReducers } from "redux";
+import { Action, AnyAction, combineReducers } from "redux";
 import { Reducer } from "redux";
 
 export const initialStateReducerA = {
     values: [], isFetching: false
 };
 
-export const reducerA: Reducer = (state = initialStateReducerA, action: any) => {
+export const reducerA: Reducer = (state = initialStateReducerA, action: Action) => {
     switch (action.type) {
         case "ABC":
             return {
@@ -32,17 +32,17 @@ export const reducerA: Reducer = (state = initialStateReducerA, action: any) => 
 
 export const initialStateReducerB = { isModalVisible: false, color: [], background: [], creator: [], blur: [] };
 
-export const reducerB: Reducer = (state = initialStateReducerB, action: any) => {
+export const reducerB: Reducer = (state = initialStateReducerB, action: AnyAction) => {
 
     const payload = action.payload;
     console.log("ACTIOP PAYL", payload)
     const backgroundOptions = payload?.filter((item: string[]) => item[0] === "modalBackground") || []
     const colorOption = payload?.filter((item: string[]) => item[0] === "modalColor") || []
     const blurOption = payload?.filter((item: string[]) => item[0] === "modalBlur") || []
-    const creatorOption = payload?.filter((item: string[]) => item[0] === "modalCreator").flatMap((x: any) => x) || []
-    const xButtonOption = payload?.filter((item: string[]) => item[0] === "actionForX").flatMap((x: any) => x) || []
-    const cancelButtonOption = payload?.filter((item: string[]) => item[0] === "actionForCancel").flatMap((x: any) => x) || []
-    const confirmButtonOption = payload?.filter((item: string[]) => item[0] === "actionForConfirm").flatMap((x: any) => x) || []
+    const creatorOption = payload?.filter((item: string[]) => item[0] === "modalCreator").flatMap((x: string) => x) || []
+    const xButtonOption = payload?.filter((item: string[]) => item[0] === "actionForX").flatMap((x: string) => x) || []
+    const cancelButtonOption = payload?.filter((item: string[]) => item[0] === "actionForCancel").flatMap((x: string) => x) || []
+    const confirmButtonOption = payload?.filter((item: string[]) => item[0] === "actionForConfirm").flatMap((x: string) => x) || []
 
     
 
@@ -57,8 +57,8 @@ export const reducerB: Reducer = (state = initialStateReducerB, action: any) => 
             return {
                 ...state,
                 background: backgroundOptions,
-                color: backgroundOptions.map((option: string[]) => option[1]).includes("colored") ? colorOption.flatMap((x: any) => x) : [],
-                blur: backgroundOptions.map((option: string[]) => option[1]).includes("blured") ? blurOption.flatMap((x: any) => x) : [],
+                color: backgroundOptions.map((option: string[]) => option[1]).includes("colored") ? colorOption.flatMap((x: string) => x) : [],
+                blur: backgroundOptions.map((option: string[]) => option[1]).includes("blured") ? blurOption.flatMap((x: string) => x) : [],
                 creator: creatorOption,
                 xButton: xButtonOption,
                 cancelButton: cancelButtonOption,
@@ -73,7 +73,7 @@ export const reducerB: Reducer = (state = initialStateReducerB, action: any) => 
 
 export const initialStateReducerC = { isLoading: false };
 
-export const reducerC: Reducer = (state = initialStateReducerC, action: any) => {
+export const reducerC: Reducer = (state = initialStateReducerC, action: Action) => {
 
     console.log("state.isLoading", state.isLoading)
     switch (action.type) {

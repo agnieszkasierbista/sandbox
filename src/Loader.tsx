@@ -1,7 +1,7 @@
 import React from "react";
 import { StyledLoader } from "./App.styled"
 
-export const Loader = (props: any) => {
+export const Loader = (props: { isLoading: boolean; }) => {
 
 React.useEffect(() => {
     

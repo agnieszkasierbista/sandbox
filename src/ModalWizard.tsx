@@ -1,16 +1,26 @@
 import React from "react";
 import { StyledCustomizableModal as StyledModalWizard, StyledFieldset, StyledFormForWizard, StyledSectionBlurs, StyledSectionColors } from "./App.styled"
+import { FormFieldNameAndValueArray } from "./App.types";
 
 
-//@ts-ignore
-function handleSubmit(payload, updateFunc, toggleFunc) {
+
+function handleSubmit(payload: FormFieldNameAndValueArray, updateFunc: (values: FormFieldNameAndValueArray) => {
+    type: string;
+    payload: FormFieldNameAndValueArray;
+}, toggleFunc: () => void) {
 
     updateFunc(payload);
     toggleFunc();
 
 }
 
-export const ModalWizard = (props: any) => {
+export const ModalWizard = (props: {
+    dispatchUpdateWizardValues: (values: FormFieldNameAndValueArray) => {
+        type: string;
+        payload: FormFieldNameAndValueArray;
+    };
+    dispatchToggleModalVisibility: () => void;
+}) => {
 
     const [isHidden, setIsHidden] = React.useState({ color: true, blur: true });
 

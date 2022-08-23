@@ -1,10 +1,30 @@
 import FocusTrap from 'focus-trap-react';
 import React from 'react';
 import { StyledModalContent, StyledOverlay } from "./App.styled";
+import { Color, Background, Blur, Creator, CancelButton, ConfirmButton, XButton } from './App.types';
 import { useScrollBlocking } from './customHooks';
 import { getCancelButton, getConfirmButton, getXbutton } from './helpers';
 
-export const CustomModal = (props: any) => {
+export const CustomModal = (props: {
+    isModalVisible: boolean;
+    creator: Creator;
+    dispatchToggleModalVisibility: () => void;
+    color: Color;
+    background: Background;
+    blur: Blur;
+    xButton: XButton;
+    dispatchClose: () => void;
+    dispatchCancelX: () => void;
+    dispatchConfirmX: () => void;
+    cancelButton: CancelButton;
+    dispatchCancel: () => void;
+    dispatchClear: () => void;
+    dispatchCancelAndClose: () => void;
+    confirmButton: ConfirmButton;
+    dispatchConfirm: () => void;
+    dispatchSave: () => void;
+    dispatchConfirmAndClose: () => void;
+}) => {
 
     useScrollBlocking(props.isModalVisible);
 
@@ -24,18 +44,18 @@ export const CustomModal = (props: any) => {
                         id="customModal"
                     >
                         <button
-                            onClick={() => getXbutton(props)}
+                            onClick={() => getXbutton(props.xButton, props.dispatchClose, props.dispatchCancelX, props.dispatchConfirmX)}
                         >x</button>
                         <article>
                             <p>
                                 Here goes some message.
                             </p>
                             <button
-                                onClick={() => getCancelButton(props)}
+                                onClick={() => getCancelButton(props.cancelButton, props.dispatchCancel, props.dispatchClear, props.dispatchCancelAndClose)}
 
                             >Cancel</button>
                             <button
-                                onClick={() => getConfirmButton(props)}
+                                onClick={() => getConfirmButton(props.confirmButton, props.dispatchConfirm, props.dispatchSave, props.dispatchConfirmAndClose)}
 
                             >Confirm</button>
                         </article>

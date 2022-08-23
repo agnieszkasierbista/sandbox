@@ -2,7 +2,8 @@ import React from 'react';
 import "./App.css";
 import {
     StyledForm,
-    StyledInput} from './App.styled';
+    StyledInput
+} from './App.styled';
 import { validateInputLengthEquals5, validateIfInputContainsOnlyNumbers, validateInputLengthEquals16, validateIfInputContainsAtLeastOneUppercaseLetter, validateIfInputContainsAtLeastOneLowercaseLetter, validateIfInputContainsAtLeastOneNumber, validateIfInputContainsAtLeastOneSpecialCharacter } from "./validators";
 import { formatToPostalCode, formatFromPostalCode, formatToCreditCardNumber, formatFromCreditCardNumber } from './formatters';
 import { AutoValidateInput } from './AutoValidateInput';
@@ -31,7 +32,11 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>, formData: FormDat
     }
 }
 
-function Form(props: any) {
+function Form(props: {
+    dispatchSetDropdownContent: () => void;
+    values: string[];
+    isFetching: boolean;
+}) {
 
     const reference = React.useRef<HTMLFormElement>(null);
 
@@ -100,7 +105,7 @@ function Form(props: any) {
                         validateIfInputContainsAtLeastOneSpecialCharacter]}
                 />
             </fieldset>
-            
+
             <button type="submit">Submit</button>
             <div>{state}</div>
         </StyledForm>

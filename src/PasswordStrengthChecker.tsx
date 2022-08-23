@@ -53,9 +53,9 @@ export const PasswordStrengthChecker = (props: { validate: ((inputValue: string)
             <AutoValidateInput
                 validate={props.validate}
                
-                observe={(a: any) => {
+                observe={(inputValue: string) => {
                     setState((prev) => {
-                        return { ...prev, inputValue: a }
+                        return { ...prev, inputValue: inputValue }
                     });
                 }}
             />

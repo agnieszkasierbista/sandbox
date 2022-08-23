@@ -1,7 +1,14 @@
 import React from "react";
 import { StyleDialog, StyledModalContent } from "./App.styled";
+import { Color, Background, Creator } from "./App.types";
 
-export const NativeModal = (props: any) => {
+export const NativeModal = (props: {
+    creator: Creator;
+    isModalVisible: boolean;
+    color: Color;
+    background: Background;
+    dispatchToggleModalVisibility: () => void;
+}) => {
 
     const ref = React.useRef<HTMLDialogElement>(null);
 

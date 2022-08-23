@@ -76,21 +76,21 @@ export const CreatePortalModal = (props: {
                             (
                                 <>
                                     <button
-                                        onClick={() => getXbutton(props)}
-                                    >x</button>
-                                    <article>
-                                        <p>
-                                            Here goes some message.
-                                        </p>
-                                        <button
-                                            onClick={() => getCancelButton(props)}
+                            onClick={() => getXbutton(props.xButton, props.dispatchClose, props.dispatchCancelX, props.dispatchConfirmX)}
+                        >x</button>
+                        <article>
+                            <p>
+                                Here goes some message.
+                            </p>
+                            <button
+                                onClick={() => getCancelButton(props.cancelButton, props.dispatchCancel, props.dispatchClear, props.dispatchCancelAndClose)}
 
-                                        >Cancel</button>
-                                        <button
-                                            onClick={() => getConfirmButton(props)}
+                            >Cancel</button>
+                            <button
+                                onClick={() => getConfirmButton(props.confirmButton, props.dispatchConfirm, props.dispatchSave, props.dispatchConfirmAndClose)}
 
-                                        >Confirm</button>
-                                    </article>
+                            >Confirm</button>
+                        </article>
                                 </>
                             )}
                     </StyledModalContent>
