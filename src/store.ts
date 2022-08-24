@@ -16,7 +16,8 @@ export const preloadedState: State = {
         cancelButton: ["actionForCancel", ""],
         confirmButton: ["actionForConfirm", ""]
     },
-    reducerC: { isLoading: false }
+    reducerC: { isLoading: false },
+    reducerD:{isUploading: false, shouldShowImg: false}
 };
 
 const epicMiddleware = createEpicMiddleware();

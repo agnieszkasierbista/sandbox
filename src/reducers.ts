@@ -42,7 +42,7 @@ export const reducerB: Reducer = (state = initialStateReducerB, action: AnyActio
     const cancelButtonOption = payload?.filter((item: string[]) => item[0] === "actionForCancel").flatMap((x: string) => x) || []
     const confirmButtonOption = payload?.filter((item: string[]) => item[0] === "actionForConfirm").flatMap((x: string) => x) || []
 
-    
+
 
     switch (action.type) {
         case "MODAL_TOGGLE":
@@ -86,6 +86,29 @@ export const reducerC: Reducer = (state = initialStateReducerC, action: Action) 
     }
 }
 
-const rootReducer = combineReducers({ reducerA: reducerA, reducerB: reducerB, reducerC: reducerC });
+export const initialStateReducerD = { isUploading: false, shouldShowImg: false }
+
+export const reducerD: Reducer = (state = initialStateReducerD, action: Action) => {
+    switch (action.type) {
+        case "START":
+            return {
+                ...state,
+                isUploading: true,
+                shouldShowImg: false
+            }
+
+        case "UPLOADED":
+            return {
+                ...state,
+                isUploading: false,
+                shouldShowImg: true
+            }
+
+        default:
+            return state
+    }
+}
+
+const rootReducer = combineReducers({ reducerA: reducerA, reducerB: reducerB, reducerC: reducerC, reducerD: reducerD });
 
 export default rootReducer;

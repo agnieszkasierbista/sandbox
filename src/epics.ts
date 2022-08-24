@@ -11,6 +11,15 @@ export const abc: Epic = action$ => action$.pipe(
     })
 );
 
+export const uploadImg: Epic = action$ => action$.pipe(
+    ofType('START'),
+    delay(3000),
+    switchMap(() => {
+        return of({type: "UPLOADED"})
+    })
+);
+
 export const rootEpic = combineEpics(
-    abc
+    abc,
+    uploadImg
 );

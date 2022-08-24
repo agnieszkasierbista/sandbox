@@ -48,8 +48,14 @@ export interface ModalState {
     confirmButton: ConfirmButton,
 }
 
+
+export interface ScrollState {
+    isUploading: boolean,
+    shouldShowImg: boolean,
+}
 export interface State {
     reducerA: FetchingState,
     reducerB: ModalState,
-    reducerC: LoadingStarsState
+    reducerC: LoadingStarsState,
+    reducerD: ScrollState
 }

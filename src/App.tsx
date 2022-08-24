@@ -7,7 +7,7 @@ import CustomModal from "./CustomModal.container";
 import Form from "./Form.container";
 import NativeModal from "./NativeModal.container";
 import Progress from "./Progress.container";
-import { Scroll } from "./Scroll";
+import Scroll  from "./Scroll.container";
 
 const App = () => {
     return (
