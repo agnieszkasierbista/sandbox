@@ -106,7 +106,7 @@ export const ModalWizard = (props: {
                         <label htmlFor="manual">Manual</label><br />
                         <StyledRange id="picker" isHidden={isHidden}>
                             <label htmlFor="range">Choose your custom value between 1 and 10: </label><br />
-                            <input type="range" name="modalBlur" id="range" min="1" max="10" />
+                            <input type="range" name="modalBlur" id="range" min="1" max="10" defaultValue={5}/>
                         </StyledRange>
 
                     </StyledSectionBlurs>

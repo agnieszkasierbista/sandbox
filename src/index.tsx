@@ -6,14 +6,18 @@ import store from "./store";
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
-const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement
-);
-root.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </Provider>
-);
+const possiblyRoot = document.getElementById('root');
+
+if (possiblyRoot) {
+
+    const root = ReactDOM.createRoot(possiblyRoot);
+    root.render(
+        <Provider store={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Provider>
+    );
+}
+
 

@@ -3,10 +3,10 @@ import { StyledLoadingStars, StyledStar } from "./App.styled"
 
 export const LoadingStars = (props: {toggleLoading: () => void}) => {
 
-    const [state, setState] = React.useState(
+    const [state, setState] = React.useState<{counter: number, counterArray: number[], isUpdating: boolean}>(
         {
             counter: 0,
-            counterArray: [] as number[],
+            counterArray: [],
             isUpdating: false,
         }
     )

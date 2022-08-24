@@ -1,6 +1,4 @@
-import { ModalState, LoadingStarsState, State, Background } from "./App.types";
-import { Action, AnyAction, combineReducers } from "redux";
-import { Reducer } from "redux";
+import { Action, AnyAction, combineReducers, Reducer } from "redux";
 
 export const initialStateReducerA = {
     values: [], isFetching: false

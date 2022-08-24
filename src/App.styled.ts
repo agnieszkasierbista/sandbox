@@ -445,3 +445,23 @@ export const StyleDialog = styled.dialog<{ colorOption: Color, backgroundOption:
   backdrop-filter: ${props => props.backgroundOption.map(option => option[1]).includes("blured") ? css`blur(2px)` : css`blur(0)`};
 }
 `;
+
+export const StyledCuteImg = styled.img`
+  margin: 30px;
+  width: 600px;
+  height: 400px;
+  border: 3px solid blue;
+  border-radius: 4px;
+  box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px, rgb(255, 85, 85) 40px -40px;
+`;
+
+export const StyledCuteArticle = styled.article`
+  padding: 20px;
+  margin: 20px;
+`;
+
+export const StyledCuteSection = styled.section`
+  display: inline-block;
+  width: 80%;
+  margin: auto;
+`;

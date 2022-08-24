@@ -8,9 +8,9 @@ export const PasswordStrengthChecker = (props: { validate: ((inputValue: string)
     const starsCount = props.validate.length;
     const starsArray: number[] = new Array(starsCount).fill(0);
 
-    const [state, setState] = React.useState({
+    const [state, setState] = React.useState<{inputValue: string, validationResults: Validation[], starsArray: number[]}>({
         inputValue: "",
-        validationResults: [] as Validation[],
+        validationResults: [],
         starsArray: starsArray
     })
 
