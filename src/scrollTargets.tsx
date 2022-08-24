@@ -1,8 +1,9 @@
 import React from "react"
 import { StyledCuteArticle, StyledCuteImg, StyledCuteSection } from "./App.styled"
+import { useScrollBlocking } from "./customHooks"
 import { loremipsum } from "./loremipsum"
 
-export const Cats = (props: { shouldShowImg: boolean }) => {
+export const Cats = (props: { shouldShowImg: boolean, isUploading: boolean }) => {
 
     const refCats = React.useRef<HTMLImageElement>(null)
 
@@ -11,6 +12,8 @@ export const Cats = (props: { shouldShowImg: boolean }) => {
             refCats.current?.scrollIntoView({behavior: "smooth",});
         }
     }, [props.shouldShowImg]);
+
+    useScrollBlocking(props.isUploading);
 
     return (
         <StyledCuteSection>
@@ -44,7 +47,7 @@ export const Cats = (props: { shouldShowImg: boolean }) => {
     )
 }
 
-export const Dogs = (props: { shouldShowImg: boolean }) => {
+export const Dogs = (props: { shouldShowImg: boolean,  isUploading: boolean  }) => {
 
     const refDogs = React.useRef<HTMLImageElement>(null);
 
@@ -53,6 +56,9 @@ export const Dogs = (props: { shouldShowImg: boolean }) => {
             refDogs.current?.scrollIntoView({behavior: "smooth",});
         }
     }, [props.shouldShowImg]);
+
+    useScrollBlocking(props.isUploading);
+
 
     return (
         <StyledCuteSection>
@@ -86,7 +92,7 @@ export const Dogs = (props: { shouldShowImg: boolean }) => {
     )
 }
 
-export const Bunnies = (props: { shouldShowImg: boolean }) => {
+export const Bunnies = (props: { shouldShowImg: boolean,  isUploading: boolean  }) => {
 
     const refBunnies = React.useRef<HTMLImageElement>(null);
 
@@ -95,6 +101,9 @@ export const Bunnies = (props: { shouldShowImg: boolean }) => {
             refBunnies.current?.scrollIntoView({behavior: "smooth",});
         }
     }, [props.shouldShowImg]);
+
+
+    useScrollBlocking(props.isUploading);
 
     return (
         <StyledCuteSection>

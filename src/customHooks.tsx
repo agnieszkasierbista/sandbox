@@ -11,4 +11,3 @@ export function useScrollBlocking(isModalVisible: boolean) {
     }, [isModalVisible])
 
 }
-
