@@ -1,11 +1,11 @@
-import rootReducer, { reducerA } from "./reducers";
-import { combineReducers, configureStore, Reducer } from "@reduxjs/toolkit";
-import { createEpicMiddleware } from "redux-observable";
-import { LoadingStarsState, State } from "./App.types";
-import { rootEpic } from "./epics";
+import rootReducer from "./reducers";
+import {configureStore} from "@reduxjs/toolkit";
+import {createEpicMiddleware} from "redux-observable";
+import {State} from "./components/App/App.types";
+import {rootEpic} from "./epics";
 
 export const preloadedState: State = {
-    reducerA: { values: [], isFetching: false },
+    reducerA: {values: [], isFetching: false},
     reducerB: {
         isModalVisible: false,
         color: ["modalColor", ""],
@@ -16,8 +16,8 @@ export const preloadedState: State = {
         cancelButton: ["actionForCancel", ""],
         confirmButton: ["actionForConfirm", ""]
     },
-    reducerC: { isLoading: false },
-    reducerD:{isUploading: false, shouldShowImg: false}
+    reducerC: {isLoading: false},
+    reducerD: {isUploading: false, shouldShowImg: false}
 };
 
 const epicMiddleware = createEpicMiddleware();

@@ -1,6 +1,6 @@
-import { of } from "ramda";
-import { combineEpics, Epic, ofType } from "redux-observable";
-import { delay, EMPTY, switchMap } from "rxjs";
+import {of} from "ramda";
+import {combineEpics, Epic, ofType} from "redux-observable";
+import {delay, switchMap} from "rxjs";
 
 
 export const abc: Epic = action$ => action$.pipe(

@@ -1,4 +1,4 @@
-import { Action, AnyAction, combineReducers, Reducer } from "redux";
+import {Action, AnyAction, combineReducers, Reducer} from "redux";
 
 export const initialStateReducerA = {
     values: [], isFetching: false
@@ -28,7 +28,7 @@ export const reducerA: Reducer = (state = initialStateReducerA, action: Action) 
 
 };
 
-export const initialStateReducerB = { isModalVisible: false, color: [], background: [], creator: [], blur: [] };
+export const initialStateReducerB = {isModalVisible: false, color: [], background: [], creator: [], blur: []};
 
 export const reducerB: Reducer = (state = initialStateReducerB, action: AnyAction) => {
 
@@ -41,7 +41,6 @@ export const reducerB: Reducer = (state = initialStateReducerB, action: AnyActio
     const xButtonOption = payload?.filter((item: string[]) => item[0] === "actionForX").flatMap((x: string) => x) || []
     const cancelButtonOption = payload?.filter((item: string[]) => item[0] === "actionForCancel").flatMap((x: string) => x) || []
     const confirmButtonOption = payload?.filter((item: string[]) => item[0] === "actionForConfirm").flatMap((x: string) => x) || []
-
 
 
     switch (action.type) {
@@ -69,7 +68,7 @@ export const reducerB: Reducer = (state = initialStateReducerB, action: AnyActio
 
 };
 
-export const initialStateReducerC = { isLoading: false };
+export const initialStateReducerC = {isLoading: false};
 
 export const reducerC: Reducer = (state = initialStateReducerC, action: Action) => {
 
@@ -86,7 +85,7 @@ export const reducerC: Reducer = (state = initialStateReducerC, action: Action) 
     }
 }
 
-export const initialStateReducerD = { isUploading: false, shouldShowImg: false }
+export const initialStateReducerD = {isUploading: false, shouldShowImg: false}
 
 export const reducerD: Reducer = (state = initialStateReducerD, action: Action) => {
     switch (action.type) {
@@ -109,6 +108,6 @@ export const reducerD: Reducer = (state = initialStateReducerD, action: Action) 
     }
 }
 
-const rootReducer = combineReducers({ reducerA: reducerA, reducerB: reducerB, reducerC: reducerC, reducerD: reducerD });
+const rootReducer = combineReducers({reducerA: reducerA, reducerB: reducerB, reducerC: reducerC, reducerD: reducerD});
 
 export default rootReducer;
