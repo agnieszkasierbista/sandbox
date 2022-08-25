@@ -32,9 +32,6 @@ const App = () => {
                 </Route>
 
                 <Route path="/scroll/*" element={<Scroll />}>
-
-                    
-
                 </Route>
 
                 <Route path="/" element={<Form />}>
