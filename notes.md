@@ -36,5 +36,6 @@
 ~~36. usunąć any i ts-ignore!!!~~
 ~~37. scroll do różnych elementów: klikasz link i po załadowaniu w nowej rutce, ma sie przeskrolowac do wyznaczonego momentu(zawartego w linku) - nie do elementu o danym ID ale do elementu, który ma sie dopiero wygenerowac dynamicznie na stronie~~
 38. JEST - teściki jednostkowe - sprawdzenie wyniku funkcji, uzywanie komponentu w zupełnej izolacji (enzyme)
-39. Pofolderkowac pliki
+~~39. Pofolderkowac pliki~~
 40. Dodas ES-lint: sprawdzi kod pod wzgledem stylistycznym.
+41.
