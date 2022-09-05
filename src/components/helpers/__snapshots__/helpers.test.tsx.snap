@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`newFunc newFuncSnap 1`] = `
+Object {
+  "name": "abc1",
+}
+`;
