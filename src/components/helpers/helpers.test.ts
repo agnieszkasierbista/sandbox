@@ -20,13 +20,13 @@ function newFunc(name?: string) {
 }
 
 describe("newFunc", () => {
-    it("newFunc", () => {
+    it("newFuncObj", () => {
         expect(newFunc()).toEqual({})
     });
-    xit("newFunc", () => {
-        expect(newFunc("abc")).toEqual({name: "abc"})
+    it("newFuncSnap", () => {
+        expect(newFunc("abc")).toMatchSnapshot()
     });
-    xit("newFunc", () => {
+    xit("newFuncXYZ", () => {
         expect(newFunc("xyz")).toEqual({name: "xyz"})
     });
     test.each(["abc", "xyz"])('test with %s entry',  (entry) => {
