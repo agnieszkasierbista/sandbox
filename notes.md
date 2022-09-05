@@ -38,4 +38,4 @@
 38. JEST - teściki jednostkowe - sprawdzenie wyniku funkcji, uzywanie komponentu w zupełnej izolacji (enzyme)
 ~~39. Pofolderkowac pliki~~
 40. Dodas ES-lint: sprawdzi kod pod wzgledem stylistycznym.
-41.
+41. Dev tools - react
