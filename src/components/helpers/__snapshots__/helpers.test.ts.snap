@@ -2,6 +2,6 @@
 
 exports[`newFunc newFuncSnap 1`] = `
 Object {
-  "name": "abc",
+  "name": "abc1",
 }
 `;

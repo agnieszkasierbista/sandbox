@@ -24,7 +24,7 @@ describe("newFunc", () => {
         expect(newFunc()).toEqual({})
     });
     it("newFuncSnap", () => {
-        expect(newFunc("abc")).toMatchSnapshot()
+        expect(newFunc("abc1")).toMatchSnapshot()
     });
     xit("newFuncXYZ", () => {
         expect(newFunc("xyz")).toEqual({name: "xyz"})
