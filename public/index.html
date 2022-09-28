@@ -9,6 +9,23 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-   
+
+    <script type="module">
+      import a from './someScript.js';
+
+      a();
+    </script>
+
+    <script type="module" src="thisIsAModule.js"></script>
+    <script nomodule src="iAmNoModule.js"></script>
+    <script>
+      a();
+    </script>
+
+    <script src="iAmNoModule.js"></script>
+    <script>
+      a();
+    </script>
+
   </body>
 </html>
