@@ -119,7 +119,7 @@ const move = (x1: number, x2: number) => keyframes`
 
 export const StyledCarouselChild = styled.div<{ counter: number, direction: string }>`
   flex-shrink: 0;
-  background-color: green;
+  background-color: white;
   height: 100%;
   width: 100%;
   animation: ${props => props.direction && move(
