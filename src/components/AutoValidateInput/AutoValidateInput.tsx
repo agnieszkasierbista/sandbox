@@ -1,6 +1,6 @@
 import React from 'react';
-import {StyledAutoValidateInput, StyledTextInput} from '../App/App.styled';
 import {AutoValidateInputType, FieldState} from "../App/App.types";
+import { StyledAutoValidateInput, StyledTextInput } from './AutoValidateInput.styled';
 
 export const AutoValidateInput: React.FC<AutoValidateInputType> = props => {
 

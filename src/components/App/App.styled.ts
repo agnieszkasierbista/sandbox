@@ -11,14 +11,6 @@ export const StyledInput = styled.input<{ isEmpty?: boolean }>`
   background-color: ${(props) => props.isEmpty ? "red" : "blue"};
 `;
 
-export const StyledAutoValidateInput = styled.div<{}>`
-
-`;
-
-export const StyledTextInput = styled.input<{ isValid: boolean | undefined }>`
-  outline: ${(props) => props.isValid === false ? "4px solid red" : ""};
-`;
-
 export const StyledTextInputForDropdown = styled.input`
   position: relative;
   outline: 2px solid green;

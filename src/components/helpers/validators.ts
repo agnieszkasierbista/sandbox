@@ -28,7 +28,7 @@ export function validateInputLengthEquals16(inputValue: string): Validation {
     }
 }
 
-function validateInputContentContainsAbcLowerCase(inputValue: string): Validation {
+export function validateInputContentContainsAbcLowerCase(inputValue: string): Validation {
     if (inputValue.includes("abc")) {
         return {
             isValid: true,
