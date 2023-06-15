@@ -35,7 +35,9 @@
     "eject": "react-scripts eject",
     "test": "jest",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "clean": "rm -rf dist",
+    "build-dist": "npm run clean && tsc --config ./tsconfig-dist.json && cp package.json README.md ./dist"
   },
   "eslintConfig": {
     "extends": [
