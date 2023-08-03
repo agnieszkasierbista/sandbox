@@ -1,7 +1,11 @@
+/// <reference path="../../../index.d.ts" />
 import React from "react"
 import {StyledCuteArticle, StyledCuteImg, StyledCuteSection} from "../App/App.styled"
 import {useScrollBlocking} from "../helpers/customHooks"
 import {loremipsum} from "./loremipsum"
+import cats from "../../assets/pictures/cute-cats.jpg"
+import dogs from "../../assets/pictures/cute-cats.jpg"
+import bunnies from "../../assets/pictures/cute-cats.jpg"
 
 export const Cats = (props: { shouldShowImg: boolean, isUploading: boolean }) => {
 
@@ -30,7 +34,7 @@ export const Cats = (props: { shouldShowImg: boolean, isUploading: boolean }) =>
 
                 props.shouldShowImg
                     ?
-                    <StyledCuteImg ref={refCats} src="../pictures/cute-cats.jpg" alt="cute-kitties" id="cats"/>
+                    <StyledCuteImg ref={refCats} src={cats} alt="cute-kitties" id="cats"/>
                     :
                     null
 
@@ -75,7 +79,7 @@ export const Dogs = (props: { shouldShowImg: boolean, isUploading: boolean }) =>
             {
                 props.shouldShowImg
                     ?
-                    <StyledCuteImg ref={refDogs} src="../pictures/cute_doggies.jpg" alt="cute-puppies" id="dogs"/>
+                    <StyledCuteImg ref={refDogs} src={dogs} alt="cute-puppies" id="dogs"/>
                     :
                     null
             }
@@ -120,7 +124,7 @@ export const Bunnies = (props: { shouldShowImg: boolean, isUploading: boolean })
             {
                 props.shouldShowImg
                     ?
-                    <StyledCuteImg ref={refBunnies} src="../pictures/cute-bunnies.jpg" alt="cute-bunnies" id="bunnies"/>
+                    <StyledCuteImg ref={refBunnies} src={bunnies} alt="cute-bunnies" id="bunnies"/>
                     :
                     null
             }

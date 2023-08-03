@@ -1,30 +1,11 @@
 import FocusTrap from 'focus-trap-react';
 import React from 'react';
-import {StyledModalContent, StyledOverlay} from "../App/App.styled";
-import {Background, Blur, CancelButton, Color, ConfirmButton, Creator, XButton} from '../App/App.types';
 import {useScrollBlocking} from '../helpers/customHooks';
-import {getCancelButton, getConfirmButton, getXbutton} from '../helpers/helpers';
+import {getCancelButton, getConfirmButton, getXbutton} from '../helpers';
+import {CustomModalProps} from "./CustomModal.types";
+import {StyledOverlay, StyledModalContent} from "./CustomModal.styled";
 
-export const CustomModal = (props: {
-    isModalVisible: boolean;
-    creator: Creator;
-    dispatchToggleModalVisibility: () => void;
-    color: Color;
-    background: Background;
-    blur: Blur;
-    xButton: XButton;
-    dispatchClose: () => void;
-    dispatchCancelX: () => void;
-    dispatchConfirmX: () => void;
-    cancelButton: CancelButton;
-    dispatchCancel: () => void;
-    dispatchClear: () => void;
-    dispatchCancelAndClose: () => void;
-    confirmButton: ConfirmButton;
-    dispatchConfirm: () => void;
-    dispatchSave: () => void;
-    dispatchConfirmAndClose: () => void;
-}) => {
+export const CustomModal = (props: CustomModalProps) => {
 
     useScrollBlocking(props.isModalVisible);
 

@@ -1,6 +1,7 @@
+/// <reference path="../../../index.d.ts" />
 import React, {PropsWithChildren} from "react"
 import { StyledAccordeon, StyledAccordeonContent, StyledAccordeonHeader, StyledAccordeonHeaderContent, StyledChevron } from "./Accordeon.styled"
-
+import expand_more from '../../assets/pictures/expand_more.png';
 
 export const Accordeon: React.FC<PropsWithChildren> = ({ children }) => {
 
@@ -9,8 +10,8 @@ export const Accordeon: React.FC<PropsWithChildren> = ({ children }) => {
     return (
         <StyledAccordeon>
             <StyledAccordeonHeader onClick={() => setIsExpanded((prev) => !prev)}>
-                <StyledAccordeonHeaderContent>Rozwiń</StyledAccordeonHeaderContent>
-                <StyledChevron isExpanded={isExpanded} src="\pictures\expand_more.png" height="30" width="30"/>
+                <StyledAccordeonHeaderContent>Expand</StyledAccordeonHeaderContent>
+                <StyledChevron isExpanded={isExpanded} src={expand_more} height="30" width="30"/>
             </StyledAccordeonHeader>
             <StyledAccordeonContent isExpanded={isExpanded}>
 

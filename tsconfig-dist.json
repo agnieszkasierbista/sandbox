@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "declaration": true,
     "esModuleInterop": true,
     "outDir": "dist",
@@ -9,7 +9,7 @@
     "module": "es6",
     "moduleResolution": "node"
   },
-  "include": ["src"],
+  "include": ["src/components"],
   "exclude": [
     "dist",
     "node_modules",

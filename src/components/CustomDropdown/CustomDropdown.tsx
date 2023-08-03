@@ -6,7 +6,7 @@ import {
     StyledDropdownElement,
     StyledDropdownListElement,
     StyledTextInputForDropdown
-} from '../App/App.styled';
+} from './CustomDropdown.styled';
 
 export const CustomDropdown: React.FC<{ values: string[], dispatchSetDropdownContent: () => void }> = props => {
 
@@ -31,7 +31,6 @@ export const CustomDropdown: React.FC<{ values: string[], dispatchSetDropdownCon
                 autoComplete='off'
                 value={inputState.value}
                 onChange={(event) => {
-                    // console.log("value", event.target.value);
                     if (event.target.value.length <= 1) {
                         setDropdownState({...dropdownState, isVisible: false});
                         setInputState({value: event.target.value});

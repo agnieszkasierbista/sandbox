@@ -1,13 +1,16 @@
+/// <reference path="../../../index.d.ts" />
 import React from "react";
 import {StyledFillingStars, StyledStar} from "../App/App.styled";
+import star_empty from "../../assets/pictures/star_empty.png";
+import star_filled from "../../assets/pictures/star.png";
 
 export const FillingStars = () => {
 
     const starsCount = 10;
     const starsArray: number[] = new Array(starsCount).fill(0);
 
-    const star = <StyledStar src="/pictures/star.png"/>;
-    const emptyStar = <StyledStar src="/pictures/star_empty.png"/>;
+    const star = <StyledStar src={star_filled}/>;
+    const emptyStar = <StyledStar src={star_empty}/>;
 
     const [state, setState] = React.useState({
         starsArray: starsArray,
